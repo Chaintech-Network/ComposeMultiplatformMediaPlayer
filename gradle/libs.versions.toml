@@ -1,0 +1,44 @@
+[versions]
+agp = "8.2.2"
+kotlin = "1.9.23"
+compose = "1.6.2"
+compose-compiler = "1.5.13"
+compose-material3 = "1.2.1"
+androidx-activityCompose = "1.9.0"
+
+voyager_version = "1.0.0"
+
+
+[libraries]
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
+androidx-core = { group = "androidx.core", name = "core", version = "1.12.0" }
+
+#android
+android-accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version = "0.30.1" }
+android-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+android-appcompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
+android-core-ktx = { module = "androidx.core:core-ktx", version = "1.12.0" }
+android-koin-core = { module = "io.insert-koin:koin-android", version = "3.5.0" }
+android-kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version = "1.7.3" }
+
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.7.3" }
+
+#Navigator - Transitions
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager_version" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager_version" }
+voyager-tab = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager_version" }
+
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
