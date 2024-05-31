@@ -26,6 +26,6 @@
     }
   ],
   "resources": [
-    "build/compose/ios/shared/compose-resources"
+    "build/compose/cocoapods/compose-resources"
   ]
 }

@@ -28,7 +28,6 @@ object MediaFont {
             LexendDeca.Medium -> Font(Res.font.lexenddeca_medium, FontWeight.Normal, FontStyle.Normal)
             LexendDeca.Bold -> Font(Res.font.lexenddeca_bold, FontWeight.Normal, FontStyle.Normal)
         }
-
         val fontFamily = fontType.toFontFamily()
         return TextStyle(
             fontSize = size.fontSize.ssp,

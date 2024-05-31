@@ -90,17 +90,18 @@ private fun VideoPlayerContentView(currentVideo: VideoModel) {
                     .height(224.sdp),
                 url = video.sources,
                 playerConfig = PlayerConfig(
-                    enablePauseResume = true,
-                    showSeekBar = true,
-                    showDuration = true,
-                    thumbColor = Color.Red,
-                    activeTrackColor = Color.Red,
-                    inactiveTrackColor = Color.White,
-                    textColor = Color.White,
+                    seekBarActiveTrackColor = Color.Red,
+                    seekBarInactiveTrackColor = Color.White,
                     seekBarBottomPadding = 8.sdp,
-                    pauseResumeIconSize = 32.sdp,
-                    autoHideControl = true,
-                    controlHideInterval = 5
+                    pauseResumeIconSize = 30.sdp,
+                    controlHideIntervalSeconds = 5,
+                    topControlSize = 20.sdp,
+                    durationTextStyle = MediaFont.lexendDeca(
+                        size = FontType.Regular,
+                        type = MediaFont.LexendDeca.Medium
+                    ),
+                    fastForwardBackwardIconSize = 28.sdp,
+                    controlTopPadding = 10.sdp
                 )
             )
 

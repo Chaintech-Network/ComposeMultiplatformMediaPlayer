@@ -77,7 +77,7 @@ kotlin {
                     implementation(libs.voyager.tab)
                     /* ********************* */
 
-                    implementation("network.chaintech:compose-multiplatform-media-player:1.0.5")
+                    implementation("network.chaintech:compose-multiplatform-media-player:1.0.7")
                     implementation("network.chaintech:sdp-ssp-compose-multiplatform:1.0.0")
                     api("io.github.qdsfdhvh:image-loader:1.6.7")
                 }

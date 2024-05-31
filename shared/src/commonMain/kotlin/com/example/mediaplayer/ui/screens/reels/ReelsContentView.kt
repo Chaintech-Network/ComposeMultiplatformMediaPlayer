@@ -15,10 +15,15 @@ fun ReelsContentView() {
             .fillMaxSize(),
         urls = MockData().reelsUrlArray,
         playerConfig = PlayerConfig(
-            enablePauseResume = true,
-            showSeekBar = false,
+            isPauseResumeEnabled  = true,
+            isSeekBarVisible = false,
             pauseResumeIconSize = 32.sdp,
-            reelVerticalScrolling = true
+            reelVerticalScrolling = true,
+            isFastForwardBackwardEnabled = false,
+            isMuteControlEnabled = false,
+            isSpeedControlEnabled = false,
+            isFullScreenEnabled = false,
+            isScreenLockEnabled = false
         )
     )
 }
