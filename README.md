@@ -80,6 +80,7 @@ You can customize various aspects of the media player:
 | isScreenLockEnabled                | Enable or disable screen lock functionality. |
 | iconsTintColor                    | Customize the tint color of the control icons. |
 
+![media-player-animation](https://github.com/ChainTechNetwork/ComposeMultiplatformMediaPlayer/assets/143475887/3c0d2f57-8741-4e46-8e4e-9ee3040eedf1)
 
 ```kotlin
 VideoPlayerView(modifier = Modifier.fillMaxSize(),
@@ -119,8 +120,6 @@ ReelsPlayerView(modifier = Modifier.fillMaxSize(),
         )
     )
 ```
-
-![media-player-animation](https://github.com/ChainTechNetwork/ComposeMultiplatformMediaPlayer/assets/143475887/3c0d2f57-8741-4e46-8e4e-9ee3040eedf1)
 
 
 ## Detailed Explanation
