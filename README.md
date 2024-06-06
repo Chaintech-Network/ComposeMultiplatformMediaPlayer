@@ -2,8 +2,7 @@
 
 Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback and reels viewing on both iOS and Android platforms, offering extensive customization options for various controls.
 
-![Blog-banner-02](https://github.com/ChainTechNetwork/ComposeMultiplatformMediaPlayer/assets/143475887/1e874d76-0ddc-49b2-a65e-dd5ca069bbcb)
-
+![Blog-banner-02 3](https://github.com/ChainTechNetwork/ComposeMultiplatformMediaPlayer/assets/143475887/754150a6-e86e-4a67-87fe-a600e90a4578)
 
 ## Features
 **Cross-Platform Compatibility:** Works seamlessly on both iOS and Android platforms within Compose Multiplatform projects.
@@ -12,7 +11,7 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 **Reel Viewing:** Enjoy reel viewing with support for horizontal and vertical scrolling.
 
-**Customizable Controls:** Customize controls such as enabling/disabling pause/resume functionality and adjusting the appearance and visibility of the seek bar.
+**Customizable Controls:** Enable/disable pause/resume functionality and adjust the appearance and visibility of the seek bar, along with various control icons and colors.
 
 ## Installation
 
@@ -20,7 +19,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.5")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.7")
 }
 ```
 
@@ -51,53 +50,77 @@ You can customize various aspects of the media player:
 * `url`: The URL of the video to be played in the video player.
 * `urls`: An array of URLs for the reel player, allowing playback of multiple reels.
 * `playerConfig`: You can configure various aspects of the player appearance and behavior.
-    - `enablePauseResume`: Enables or disables the pause and resume functionality in the media player, giving users control over playback.
-    - `showSeekBar`: Controls the visibility of the seek bar, allowing users to seek through the video or reel content.
-    - `showDuration`: Determines whether the playback time duration is displayed alongside the seek bar, providing users with information about the total duration of the media content.
-    - `thumbColor`: Allows customization of the color of the seek bar thumb, which indicates the current position of the playback.
-    - `activeTrackColor`: Enables setting the color of the seek bar's active track, representing the portion of the media content that has already been played.
-    - `inactiveTrackColor`: Provides the option to set the color of the seek bar's inactive track, representing the remaining portion of the media content yet to be played.
-    - `textColor`: Allows customization of the color of the duration text displayed alongside the seek bar, ensuring visibility and aesthetic consistency with the app's design.
-    - `seekBarBottomPadding`: Allows configuring the bottom padding for the seek bar control, ensuring proper alignment within the UI layout.
-    - `playIcon & pauseIcon`: Custom DrawableResource used as the play & pause button icon, providing flexibility in the appearance of the play & pause button.
-    - `pauseResumeIconSize`: Customization of the size of the play and pause icons.
-    - `reelVerticalScrolling`: Allows for the management of vertical and horizontal scrolling in the reel player, enabling a customizable viewing experience.
-    - `autoHideControl & controlHideInterval`: These settings enable the automatic hiding of controls after a specified time interval, enhancing user experience by reducing clutter on the interface when controls are not in use.
 
-![Git-animation-video-small](https://github.com/ChainTechNetwork/ComposeMultiplatformMediaPlayer/assets/143475887/b79fd69c-8eb3-4f89-9c6b-1f0cb5575933)
+| Property                             | Description |
+| ------------------------------------ | ----------- |
+| isPauseResumeEnabled               | Enable or disable the pause/resume functionality. |
+| isSeekBarVisible                   | Toggle the visibility of the seek bar. |
+| isDurationVisible                  | Control the display of the playback time duration. |
+| seekBarThumbColor                  | Customize the color of the seek bar thumb. |
+| seekBarActiveTrackColor            | Customize the color of the seek bar’s active track, representing the portion of the media content that has already been played. |
+| seekBarInactiveTrackColor          | Customize the color of the seek bar’s inactive track, representing the remaining portion of the media content yet to be played. |
+| durationTextColor                  | Customize the color of the duration text displayed alongside the seek bar. |
+| durationTextStyle                  | Customize the text style of the duration text, including font size and weight. |
+| seekBarBottomPadding              | Configure the bottom padding for the seek bar control, ensuring proper alignment within the UI layout. |
+| playIconResource & pauseIconResource | Customize the play and pause button icons. |
+| pauseResumeIconSize                | Customize the size of the pause/resume icons. |
+| reelVerticalScrolling              | Manage vertical and horizontal scrolling in reel viewing. |
+| isAutoHideControlEnabled & controlHideIntervalSeconds | Enable the automatic hiding of controls after a specified time interval (in seconds). |
+| isFastForwardBackwardEnabled       | Enable or disable fast forward and backward controls. |
+| fastForwardBackwardIconSize       | Customize the size of the fast forward/backward icons. |
+| fastForwardIconResource & fastBackwardIconResource | Customize the icons for fast forward and fast backward controls. |
+| fastForwardBackwardIntervalSeconds | Set the interval (in seconds) for fast forward and backward actions. |
+| isMuteControlEnabled               | Enable or disable mute control functionality. |
+| unMuteIconResource & muteIconResource | Customize the icons for unmute and mute controls. |
+| topControlSize                     | Customize the size of the top control buttons. |
+| isSpeedControlEnabled             | Enable or disable speed control functionality. |
+| speedIconResource                  | Customize the icon for speed control. |
+| isFullScreenEnabled                | Enable or disable full-screen functionality. |
+| controlTopPadding                  | Configure the top padding for controls, ensuring proper alignment within the UI layout. |
+| isScreenLockEnabled                | Enable or disable screen lock functionality. |
+| iconsTintColor                    | Customize the tint color of the control icons. |
+
 
 ```kotlin
 VideoPlayerView(modifier = Modifier.fillMaxSize(),
                 url = videoUrl,
                 playerConfig = PlayerConfig(
-                    enablePauseResume = true,
-                    showSeekBar = true,
-                    showDuration = true,
-                    thumbColor = Color.Red,
-                    activeTrackColor = Color.Red,
-                    inactiveTrackColor = Color.White,
-                    textColor = Color.White,
+                    isPauseResumeEnabled = true,
+                    isSeekBarVisible = true,
+                    isDurationVisible = true,
+                    seekBarThumbColor = Color.Red,
+                    seekBarActiveTrackColor = Color.Red,
+                    seekBarInactiveTrackColor = Color.White,
+                    durationTextColor = Color.White,
                     seekBarBottomPadding = 10.dp,
-                    playIcon = Res.drawable.icn_play,
-                    pauseIcon = Res.drawable.icn_pause,
                     pauseResumeIconSize = 40.dp,
-                    autoHideControl = true,
-                    controlHideInterval = 5
+                    isAutoHideControlEnabled = true,
+                    controlHideIntervalSeconds = 5,
+                    isFastForwardBackwardEnabled = true,
+                    playIconResource = Res.drawable.icn_play,
+                    pauseIconResource = Res.drawable.icn_pause,
                 )
             )
 ```
+
 
 ```kotlin
 ReelsPlayerView(modifier = Modifier.fillMaxSize(),
-                url = videoUrlArray,
-                playerConfig = PlayerConfig(
-                    enablePauseResume = true,
-                    showSeekBar = false,
-                    playIcon = Res.drawable.icn_play,
-                    pauseIcon = Res.drawable.icn_pause,
-                    pauseResumeIconSize = 40.dp,
-                    reelVerticalScrolling = true
-                )
-            )
+        urls = videoUrlArray,
+        playerConfig = PlayerConfig(
+            isPauseResumeEnabled = true,
+            isSeekBarVisible = false,
+            isDurationVisible = false,
+            isMuteControlEnabled = false,
+            isSpeedControlEnabled = false,
+            isFullScreenEnabled = false,
+            isScreenLockEnabled = false,
+            reelVerticalScrolling = true
+        )
+    )
 ```
 
+
+
+## Detailed Explanation
+For a detailed explanation and a comprehensive guide, please read the [Medium blog post.](https://medium.com/mobile-innovation-network/introducing-compose-multiplatform-media-player-your-go-to-solution-for-seamless-media-playback-691df3cc4da9)
