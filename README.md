@@ -120,6 +120,7 @@ ReelsPlayerView(modifier = Modifier.fillMaxSize(),
     )
 ```
 
+![media-player-animation](https://github.com/ChainTechNetwork/ComposeMultiplatformMediaPlayer/assets/143475887/3c0d2f57-8741-4e46-8e4e-9ee3040eedf1)
 
 
 ## Detailed Explanation
