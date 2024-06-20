@@ -1,5 +1,6 @@
 # Compose Multiplatform Media Player
 Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback, reels viewing, and audio playing on both iOS and Android platforms, offering extensive customization options for various controls.
+
 ![Compose Multiplatform Media Player](https://github.com/ChainTechNetwork/ComposeMultiplatformMediaPlayer/assets/143475887/8045ac87-7620-44cd-9f26-5360f1b68109)
 
 
