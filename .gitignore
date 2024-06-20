@@ -1,10 +1,16 @@
+
 *.iml
 .gradle
 .idea
+.kotlin
 .DS_Store
 build
+*/build
 captures
 .externalNativeBuild
 .cxx
 local.properties
-xcuserdata
+xcuserdata/
+Pods/
+*.jks
+*yarn.lock
