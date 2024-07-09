@@ -184,3 +184,5 @@ AudioPlayerView(
 
 ## Detailed Explanation
 For a detailed explanation and a comprehensive guide, please read the [Medium blog post.](https://medium.com/mobile-innovation-network/introducing-compose-multiplatform-media-player-your-go-to-solution-for-seamless-media-playback-691df3cc4da9)
+
+Connect with us on [LinkedIn](https://www.linkedin.com/showcase/mobile-innovation-network)
