@@ -1,26 +1,22 @@
 [versions]
 
-kotlin = "2.0.0"
+kotlin = "1.9.23"
 compose = "1.6.10"
-agp = "8.2.2"
+agp = "8.3.2"
 androidx-activityCompose = "1.9.0"
 androidx-uiTest = "1.6.7"
-voyager_version = "1.0.0"
 
 [libraries]
 
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
 androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
-
-#Navigator - Transitions
-voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager_version" }
-voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager_version" }
-voyager-tab = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager_version" }
+androidx-core = { group = "androidx.core", name = "core", version = "1.13.1" }
 
 [plugins]
 
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version = "0.28.0" }

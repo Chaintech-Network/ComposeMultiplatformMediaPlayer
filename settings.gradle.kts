@@ -1,4 +1,4 @@
-rootProject.name = "MediaPlayer"
+rootProject.name = "ReelsDemo"
 include(":composeApp")
 
 pluginManagement {

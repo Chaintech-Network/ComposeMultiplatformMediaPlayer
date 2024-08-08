@@ -1,8 +1,8 @@
 # Compose Multiplatform Media Player
+
 Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback, reels viewing, and audio playing on both iOS and Android platforms, offering extensive customization options for various controls.
 
-![Compose Multiplatform Media Player](https://github.com/ChainTechNetwork/ComposeMultiplatformMediaPlayer/assets/143475887/8045ac87-7620-44cd-9f26-5360f1b68109)
-
+![Blog-banner-02 5](./assets/git_banner.jpg)  
 
 ## Features
 **Cross-Platform Compatibility:** Works seamlessly on both iOS and Android platforms within Compose Multiplatform projects.
@@ -15,8 +15,7 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 **Customizable Controls:** Enable/disable pause/resume functionality and adjust the appearance and visibility of the seek bar, along with various control icons and colors.
 
-![Compose Multiplatform Media Player](https://github.com/ChainTechNetwork/ComposeMultiplatformMediaPlayer/assets/143475887/00a0c1ce-2da3-4052-8398-c022e645dd27)
-
+![media-player-animation-updated2](./assets/player_example.gif)
 
 ## Installation
 
@@ -24,7 +23,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.11")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.12")
 }
 ```
 
@@ -93,6 +92,10 @@ You can customize various aspects of the media player:
 | controlTopPadding                  | Configure the top padding for controls, ensuring proper alignment within the UI layout. |
 | isScreenLockEnabled                | Enable or disable screen lock functionality. |
 | iconsTintColor                    | Customize the tint color of the control icons. |
+| isMute                            | Manage the mute/unmute state of the player. |
+| muteCallback                      | Callback function triggered when the mute state changes. |
+| isPause                            | Manage the pause/resume state of the player. |
+| pauseCallback                      | Callback function triggered when the pause/resume state changes. |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   
@@ -186,3 +189,13 @@ AudioPlayerView(
 For a detailed explanation and a comprehensive guide, please read the [Medium blog post.](https://medium.com/mobile-innovation-network/introducing-compose-multiplatform-media-player-your-go-to-solution-for-seamless-media-playback-691df3cc4da9)
 
 Connect with us on [LinkedIn](https://www.linkedin.com/showcase/mobile-innovation-network)
+
+## Roadmap
+We're committed to continuously improving and expanding the capabilities of our media player library. Here's a glimpse into our future plans:
+
+### Upcoming Features
+- Local Video Playback
+- YouTube Video Integration
+- Live Streaming
+- Picture-in-Picture (PiP) Mode
+- Desktop Support

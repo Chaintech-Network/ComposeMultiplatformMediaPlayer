@@ -4,7 +4,7 @@
     <application
         android:name=".AndroidApp"
         android:icon="@android:drawable/ic_menu_compass"
-        android:label="MediaPlayer"
+        android:label="ReelsDemo"
         android:theme="@android:style/Theme.Material.NoActionBar">
         <activity
             android:name=".AppActivity"
