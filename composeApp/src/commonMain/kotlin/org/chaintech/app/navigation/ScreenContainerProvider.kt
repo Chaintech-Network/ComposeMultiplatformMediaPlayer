@@ -6,6 +6,6 @@ import org.chaintech.app.ui.screens.videoplayerview.VideoPlayerView
 
 
 class ScreenContainerProvider : ScreenContainer {
-    override fun goToVideoPlayerScreen(currentVideo: VideoModel): Screen = VideoPlayerView(currentVideo)
+    override fun goToVideoPlayerScreen(currentVideo: VideoModel, videoList: List<VideoModel>): Screen = VideoPlayerView(currentVideo, videoList)
 }
 

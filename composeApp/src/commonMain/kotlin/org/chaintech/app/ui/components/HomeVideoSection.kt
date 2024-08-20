@@ -74,7 +74,7 @@ fun HomeVideoSection(
                             .background(MyApplicationTheme.colors.border)
                             .pointerInput(Unit) {
                                 detectTapGestures { _ ->
-                                    navigator.goToVideoPlayerScreen(MockData().mockData.random())
+                                    navigator.goToVideoPlayerScreen(MockData().mockData.random(), MockData().mockData)
                                 }
                             }
                     )

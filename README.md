@@ -1,13 +1,18 @@
 # Compose Multiplatform Media Player
 
-Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback, reels viewing, and audio playing on both iOS and Android platforms, offering extensive customization options for various controls.
+Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback, reels viewing, audio playing, and YouTube video integration on both iOS and Android platforms, offering extensive customization options for various controls.
 
 ![Blog-banner-02 5](./assets/git_banner.jpg)  
+
+## What's New in Version 1.0.16
+🚀 **YouTube Playback:** We've introduced YouTube video integration in the latest release! You can now easily embed and control YouTube videos directly within your app using the YouTubePlayerView composable. Enjoy full playback control and seamless integration with other media player features.
 
 ## Features
 **Cross-Platform Compatibility:** Works seamlessly on both iOS and Android platforms within Compose Multiplatform projects.
 
 **Video Playback:** Effortlessly play videos in your app with high performance and reliability.
+
+**YouTube Playback:** Integrate YouTube videos directly into your app, with full control over playback and video state management.
 
 **Reel Viewing:** Enjoy reel viewing with support for horizontal and vertical scrolling.
 
@@ -23,7 +28,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.12")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.16")
 }
 ```
 
@@ -35,6 +40,15 @@ To play videos in your app, use the VideoPlayerView composable:
 VideoPlayerView(
     modifier = Modifier.fillMaxSize(),
     url = videoUrl
+)
+```
+
+### YouTube Playback
+To play youtube videos in your app, use the YouTubePlayerView composable:
+```kotlin
+YouTubePlayerView(
+    modifier = Modifier.fillMaxSize(),
+    videoId = youtubeVideoId
 )
 ```
 
@@ -61,6 +75,7 @@ You can customize various aspects of the media player:
 
 * `modifier`: Modifies the layout and appearance of the video player and reel player.
 * `url`: The URL of the video to be played in the video player.
+* `videoId`: The YouTube video ID or URL to be played in the YouTube player.
 * `urls`: An array of URLs for the reel player, allowing playback of multiple reels.
 * `playerConfig`: You can configure various aspects of the video player appearance and behavior using the PlayerConfig data class.
 
@@ -144,6 +159,28 @@ VideoPlayerView(modifier = Modifier.fillMaxSize(),
             )
 ```
 
+```kotlin
+YouTubePlayerView(modifier = Modifier.fillMaxSize(),
+                videoId = "QFxN2oDKk0E",
+                playerConfig = PlayerConfig(
+                    isPauseResumeEnabled = true,
+                    isSeekBarVisible = true,
+                    isDurationVisible = true,
+                    seekBarThumbColor = Color.Red,
+                    seekBarActiveTrackColor = Color.Red,
+                    seekBarInactiveTrackColor = Color.White,
+                    durationTextColor = Color.White,
+                    seekBarBottomPadding = 10.dp,
+                    pauseResumeIconSize = 40.dp,
+                    isAutoHideControlEnabled = true,
+                    controlHideIntervalSeconds = 5,
+                    isFastForwardBackwardEnabled = true,
+                    playIconResource = Res.drawable.icn_play,
+                    pauseIconResource = Res.drawable.icn_pause,
+                )
+            )
+```
+
 
 ```kotlin
 ReelsPlayerView(modifier = Modifier.fillMaxSize(),
@@ -195,7 +232,6 @@ We're committed to continuously improving and expanding the capabilities of our 
 
 ### Upcoming Features
 - Local Video Playback
-- YouTube Video Integration
 - Live Streaming
 - Picture-in-Picture (PiP) Mode
 - Desktop Support

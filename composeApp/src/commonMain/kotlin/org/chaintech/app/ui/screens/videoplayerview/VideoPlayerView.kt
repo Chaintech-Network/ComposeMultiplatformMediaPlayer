@@ -57,15 +57,15 @@ import reelsdemo.composeapp.generated.resources.icn_add
 import reelsdemo.composeapp.generated.resources.icn_download
 import reelsdemo.composeapp.generated.resources.icn_share
 
-class VideoPlayerView(private val currentVideo: VideoModel) : Screen {
+class VideoPlayerView(private val currentVideo: VideoModel, private val videoList: List<VideoModel>) : Screen {
     @Composable
     override fun Content() {
-        VideoPlayerContentView(currentVideo)
+        VideoPlayerContentView(currentVideo, videoList)
     }
 }
 
 @Composable
-private fun VideoPlayerContentView(currentVideo: VideoModel) {
+private fun VideoPlayerContentView(currentVideo: VideoModel, videoList: List<VideoModel>) {
     val navigator = LocalNavigation.current
     var video by remember { mutableStateOf(currentVideo) }
 
@@ -100,7 +100,7 @@ private fun VideoPlayerContentView(currentVideo: VideoModel) {
                         type = MediaFont.LexendDeca.Medium
                     ),
                     fastForwardBackwardIconSize = 28.sdp,
-                    controlTopPadding = 10.sdp
+                    controlTopPadding = 10.sdp,
                 )
             )
 
@@ -122,7 +122,7 @@ private fun VideoPlayerContentView(currentVideo: VideoModel) {
                 videoDetails(video)
             }
 
-            items(MockData().getFilteredData(video)) {
+            items(MockData().getFilteredData(videoList, video)) {
                 Column(
                     modifier = Modifier.padding(4.sdp)
                 ) {
@@ -204,7 +204,7 @@ private fun videoDetails(video: VideoModel) {
 
             Spacer(modifier = Modifier.height(8.sdp))
             AddBanner(
-                title = "Anokhi Kahani Atoot Bandhan ki",
+                title = "Demon Slayer Season 1 &2",
                 image = MockData().detailBanner,
                 padding = 5.sdp
             )

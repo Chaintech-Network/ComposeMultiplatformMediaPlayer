@@ -27,9 +27,9 @@ class NavigationProvider : Navigation {
             nav.popUntilRoot()
         }
     }
-    override fun goToVideoPlayerScreen(currentVideo: VideoModel): Boolean {
+    override fun goToVideoPlayerScreen(currentVideo: VideoModel, videoList: List<VideoModel>): Boolean {
         return tryAction { nav ->
-            screenContainer.value?.goToVideoPlayerScreen(currentVideo)?.let {
+            screenContainer.value?.goToVideoPlayerScreen(currentVideo, videoList)?.let {
                 nav.push(it)
             }
         }

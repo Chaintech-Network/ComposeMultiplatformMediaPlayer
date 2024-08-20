@@ -5,8 +5,8 @@ import chaintech.videoplayer.model.AudioFile
 class MockData {
 
     val bottomAddBanner = "https://v3img.voot.com/resizeMedium,w_2304,h_493/v3Storage/assets/newseasonmotu14x3nonewsseason-1714503970736.jpg"
-    val topAddBanner = "https://v3img.voot.com/resizeMedium,w_2304,h_493/v3Storage/assets/akelli-14x3-1714726941908.jpg"
-    val detailBanner = "https://v3img.voot.com/resizeMedium,w_1536,h_329/v3Storage/assets/14x3-1714475610921.jpg"
+    val topAddBanner = "https://v3img.voot.com/resizeMedium,w_2304,h_493/v3Storage/assets/flash-14x3-1699990763334.jpg"
+    val detailBanner = "https://v3img.voot.com/resizeMedium,w_2304,h_493/v3Storage/assets/14x3dsk-1722539359934.jpg"
 
     val reelsUrlArray = listOf(
         "https://user-images.githubusercontent.com/90382113/170887700-e405c71e-fe31-458d-8572-aea2e801eecc.mp4",
@@ -42,7 +42,7 @@ class MockData {
                 description = "Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself.",
                 sources = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
                 subtitle = "By Blender Foundation",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1707810184096.jpg",
+                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/aquaman_3x4-1685448020016.jpg",
                 title = "Big Buck Bunny",
                 duration = "9 min 56 s",
                 rating = "4"
@@ -62,7 +62,7 @@ class MockData {
                 description = "HBO GO now works with Chromecast -- the easiest way to enjoy online video on your TV.",
                 sources = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" ,
                 subtitle = "By Google",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/jioimage/13/5/daad0dd074f611e688d58522ba040c22_1592564179458_p.jpg",
+                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/dunkirk-3x4-1685712551831.jpg",
                 title = "For Bigger Blazes",
                 duration = "14 s",
                 rating = "4.5"
@@ -72,7 +72,7 @@ class MockData {
                 description = "Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for when Batman's escapes aren't quite big enough. ",
                 sources = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" ,
                 subtitle = "By Google",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/badlapur-1683802156653.jpg",
+                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/hp6_3x4-1687867758365.jpg",
                 title = "For Bigger Escape",
                 duration = "15 s",
                 rating = "3"
@@ -92,7 +92,7 @@ class MockData {
                 description = "Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for the times that call for bigger joyrides. For $35. Learn how to use Chromecast with YouTube and more at google.com/chromecast.",
                 sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" ,
                 subtitle = "By Google",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/omg-2-3x4-1715057980908.jpg",
+                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/hangover_3x4-1686200517765.jpg",
                 title = "For Bigger Joyrides",
                 duration = "15 s",
                 rating = "4"
@@ -102,7 +102,7 @@ class MockData {
                 description ="Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for when you want to make Buster's big meltdowns even bigger. For $35. Learn how to use Chromecast with Netflix and more at google.com/chromecast.",
                 sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" ,
                 subtitle = "By Google",
-                thumb = "https://v3img.voot.com/resizeMedium,w_810,h_1080/v3Storage/assets/mukkabaaz-1674448667486.jpg",
+                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/theintern-3x4-1686484570836.jpg",
                 title = "For Bigger Meltdowns",
                 duration = "15 s",
                 rating = "4"
@@ -112,7 +112,7 @@ class MockData {
                 description = "Sintel is an independently produced short film, initiated by the Blender Foundation as a means to further improve and validate the free/open source 3D creation suite Blender. With initial funding provided by 1000s of donations via the internet community, it has again proven to be a viable development model for both open 3D technology as for independent animation film.\nThis 15 minute film has been realized in the studio of the Amsterdam Blender Institute, by an international team of artists and developers. In addition to that, several crucial technical and creative targets have been realized online, by developers and artists and teams all over the world.\nwww.sintel.org",
                 sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" ,
                 subtitle = "By Blender Foundation",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/bhediya-3x4-1713964720177.jpg",
+                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/funnypeople-3x4-1686899522715.jpg",
                 title = "Sintel",
                 duration = "14 min 47 s",
                 rating = "4"
@@ -142,7 +142,7 @@ class MockData {
                 description = "The Smoking Tire heads out to Adams Motorsports Park in Riverside, CA to test the most requested car of 2010, the Volkswagen GTI. Will it beat the Mazdaspeed3's standard-setting lap time? Watch and see...",
                 sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4" ,
                 subtitle = "By Garage419",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/shubh-mangal-saavdhan-3x4-1713983454025.jpg",
+                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/shazam-fury-of-the-gods-3x4-1698688392769.jpg",
                 title = "Volkswagen GTI Review",
                 duration = "2 hr 10 min",
                 rating = "4"
@@ -152,7 +152,7 @@ class MockData {
                 description = "The Smoking Tire is going on the 2010 Bullrun Live Rally in a 2011 Shelby GT500, and posting a video from the road every single day!",
                 sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" ,
                 subtitle = "By Garage419",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/golmaal_3_3x4-1696869682101.jpg",
+                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1709006719984.jpg",
                 title = "We Are Going On Bullrun",
                 duration = "2 hr 10 min",
                 rating = "4"
@@ -162,15 +162,151 @@ class MockData {
                 description = "The Smoking Tire meets up with Chris and Jorge from CarsForAGrand.com to see just how far $1,000 can go when looking for a car.",
                 sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4" ,
                 subtitle = "By Garage419",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/my-big-fat-greek-wedding-3-3x4language-1706859008778.jpg",
+                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1717082469138.jpg",
                 title = "What care can you get for a grand?",
                 duration = "1 hr 10 min",
                 rating = "4"
             ),
         )
 
-    fun getFilteredData(selectedVideo: VideoModel): List<VideoModel> {
-        return mockData.filter { video ->
+    val youtbeMockData = listOf(
+        VideoModel(
+            id = "1",
+            description = "",
+            sources = "https://www.youtube.com/watch?v=8hP9D6kZseM",
+            subtitle = "BoxOfficeSmashers",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/inception_3x4-1685712225537.jpg",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/inception-tv-1697699284926.jpg",
+            title = "Inception - Official Trailer",
+            duration = "",
+            rating = "3.1M",
+            date = "9 year ago"
+        ),
+        VideoModel(
+            id = "2",
+            description = "",
+            sources = "https://www.youtube.com/watch?v=YWNWi-ZWL3c",
+            subtitle = "Warner Bros. Pictures",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/mad-max-fury-road-3x4-1685449047400.jpg",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/mad-max--fury-road--tv-1698657374548.jpg",
+            title = "Mad Max: Fury Road",
+            duration = "",
+            rating = "5M",
+            date = "10 days ago"
+        ),
+        VideoModel(
+            id = "3",
+            description = "",
+            sources = "https://www.youtube.com/watch?v=QFxN2oDKk0E",
+            subtitle = "Warner Bros. Pictures",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/godzilla-king-of-the-monsters-3x4-1685527991115.jpg",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/godzilla-king-of-the-monsterstv-1697885255069.jpg",
+            title = "Godzilla: King of the Monsters",
+            duration = "",
+            rating = "2M",
+            date = "6 month ago"
+        ),
+        VideoModel(
+            id = "4",
+            description = "",
+            sources = "https://www.youtube.com/watch?v=smTK_AeAPHs",
+            subtitle = "StudiocanalUK",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/evil-dead-rise-3x4-1698688439226.jpg",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/evil-dead-rise-tv-2-1697432060944.jpg",
+            title = "EVIL DEAD RISE",
+            duration = "",
+            rating = "20M",
+            date = "5 year ago"
+        ),
+        VideoModel(
+            id = "5",
+            description = "",
+            sources = "https://www.youtube.com/watch?v=RqrXhwS33yc",
+            subtitle = "Universal Pictures",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/puss-in-boots-the-last-wish-3x4-1685358468713.jpg",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/puss-in-boots-tv-1696331422101.jpg",
+            title = "Puss In Boots: The Last Wish",
+            duration = "",
+            rating = "1M",
+            date = "6 month ago"
+        ),
+        VideoModel(
+            id = "6",
+            description = "",
+            sources = "https://www.youtube.com/watch?v=eoOaKN4qCKw",
+            subtitle = "The Fast Saga",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1720436834347.jpg",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1717431474775.jpg",
+            title = "FAST X | Final Trailer",
+            duration = "",
+            rating = "200K",
+            date = "3 year ago"
+        ),
+        VideoModel(
+            id = "7",
+            description = "",
+            sources = "https://www.youtube.com/watch?v=EXeTwQWrcwY",
+            subtitle = "Rotten Tomatoes Classic Trailers",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/the-dark-knight-rises-pre-3x4-1684028768183.jpg",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/the-dark-knight-tv-1696338828687.jpg",
+            title = "The Dark Knight (2008) Official Trailer",
+            duration = "",
+            rating = "6M",
+            date = "9 month ago"
+        ),
+        VideoModel(
+            id = "8",
+            description = "",
+            sources = "https://www.youtube.com/watch?v=hebWYacbdvc",
+            subtitle = "Warner Bros. Pictures",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/flash-3x4-lang-1711431077214.jpg",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/flash-tv-1699991069563.jpg",
+            title = "The Flash ",
+            duration = "",
+            rating = "9M",
+            date = "1 month ago"
+        ),
+        VideoModel(
+            id = "9",
+            description = "",
+            sources = "https://www.youtube.com/watch?v=0ucTl-cxIjc",
+            subtitle = "Well Go USA Entertainment",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1723187283942.jpg",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-tv-1723182567870.jpg",
+            title = "CREATION OF THE GODS",
+            duration = "",
+            rating = "300M",
+            date = "4 year ago"
+        ),
+        VideoModel(
+            id = "10",
+            description = "",
+            sources = "https://www.youtube.com/watch?v=2OPOGUUkauc",
+            subtitle = "Scene City",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1703676311201.jpg",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1703659873046.jpg",
+            title = "Spider-Man 2",
+            duration = "",
+            rating = "24M",
+            date = "1 year ago"
+        ),
+        VideoModel(
+            id = "11",
+            description = "",
+            sources = "https://www.youtube.com/watch?v=otNh9bTjXWg",
+            subtitle = "Warner Bros. Pictures",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1717935204380.jpg",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1714658980641.jpg",
+            title = "WONKA | Official Trailer",
+            duration = "",
+            rating = "45M",
+            date = "6 month ago"
+        )
+    )
+
+
+    fun getFilteredData(data: List<VideoModel>, selectedVideo: VideoModel): List<VideoModel> {
+        return data.filter { video ->
             video.title != selectedVideo.title
         }.shuffled()
     }

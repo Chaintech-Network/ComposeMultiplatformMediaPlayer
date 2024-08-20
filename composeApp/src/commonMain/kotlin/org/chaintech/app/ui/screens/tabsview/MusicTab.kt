@@ -1,4 +1,4 @@
-package chainteck.network.app.ui.screens.tabsview
+package org.chaintech.app.ui.screens.tabsview
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,7 +12,7 @@ import org.chaintech.app.ui.screens.music.MusicContentView
 import org.chaintech.app.utility.BottomNavigationBarHeight
 import org.jetbrains.compose.resources.painterResource
 import reelsdemo.composeapp.generated.resources.Res
-import reelsdemo.composeapp.generated.resources.ic_music_tab
+import reelsdemo.composeapp.generated.resources.tab_music
 
 internal object MusicTab: Tab {
     @Composable
@@ -28,7 +28,7 @@ internal object MusicTab: Tab {
     override val options: TabOptions
         @Composable
         get() {
-            val image = painterResource(Res.drawable.ic_music_tab)
+            val image = painterResource(Res.drawable.tab_music)
             return remember { TabOptions(index = 0u, title = "Music", icon = image) }
         }
 }

@@ -9,5 +9,6 @@ data class VideoModel  (
     var title: String,
     var duration: String = "",
     var rating: String = "",
-    var date: String = ""
+    var date: String = "",
+    var thumbL: String = ""
     )

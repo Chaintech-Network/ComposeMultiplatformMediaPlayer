@@ -33,11 +33,12 @@ import org.chaintech.app.navigation.NavigationProvider
 import org.chaintech.app.navigation.ScreenContainerProvider
 import org.chaintech.app.theme.MyApplicationTheme
 import org.chaintech.app.ui.screens.tabsview.HomeTab
-import chainteck.network.app.ui.screens.tabsview.MusicTab
+import org.chaintech.app.ui.screens.tabsview.MusicTab
 import org.chaintech.app.ui.screens.tabsview.ReelsTab
 import org.chaintech.app.utility.BottomNavigationBarHeight
 import org.chaintech.app.utility.getSafeAreaSize
 import network.chaintech.sdpcomposemultiplatform.sdp
+import org.chaintech.app.ui.screens.tabsview.YoutubeTab
 
 @Composable
 fun MainView() {
@@ -53,7 +54,7 @@ fun MainView() {
                 tabDisposable = {
                     TabDisposable(
                         navigator = it,
-                        tabs = listOf(HomeTab, ReelsTab, MusicTab)
+                        tabs = listOf(HomeTab, ReelsTab, MusicTab, YoutubeTab)
                     )
                 }
             ) {
@@ -85,6 +86,7 @@ class HomeScreen : Screen {
                     TabNavigationItem(tab = HomeTab)
                     TabNavigationItem(tab = ReelsTab)
                     TabNavigationItem(tab = MusicTab)
+                    TabNavigationItem(tab = YoutubeTab)
                 }
             },
         ) {

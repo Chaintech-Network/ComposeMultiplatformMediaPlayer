@@ -7,7 +7,7 @@ interface Navigation {
     fun back(): Boolean
     fun backToRoot(): Boolean
 
-    fun goToVideoPlayerScreen(currentVideo: VideoModel): Boolean
+    fun goToVideoPlayerScreen(currentVideo: VideoModel, videoList: List<VideoModel>): Boolean
 }
 
 val LocalNavigation = compositionLocalOf<Navigation> { error("navigation failure") }

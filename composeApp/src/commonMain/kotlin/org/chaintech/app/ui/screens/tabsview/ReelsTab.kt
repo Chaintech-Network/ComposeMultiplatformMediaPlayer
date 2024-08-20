@@ -12,7 +12,7 @@ import org.chaintech.app.ui.screens.reels.ReelsContentView
 import org.chaintech.app.utility.BottomNavigationBarHeight
 import org.jetbrains.compose.resources.painterResource
 import reelsdemo.composeapp.generated.resources.Res
-import reelsdemo.composeapp.generated.resources.ic_foryou_tab
+import reelsdemo.composeapp.generated.resources.tab_reels
 
 internal object ReelsTab: Tab {
     @Composable
@@ -28,7 +28,7 @@ internal object ReelsTab: Tab {
     override val options: TabOptions
         @Composable
         get() {
-            val image = painterResource(Res.drawable.ic_foryou_tab)
+            val image = painterResource(Res.drawable.tab_reels)
             return remember { TabOptions(index = 0u, title = "Reels", icon = image) }
         }
 }

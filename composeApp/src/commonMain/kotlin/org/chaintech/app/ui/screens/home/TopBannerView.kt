@@ -41,7 +41,7 @@ fun TopView() {
         TopBannerCarousel(pageCount = videoList.size, content = { index ->
             val item = videoList[index]
             TopMovieBannerCarouselView(item, onClickEvent = {
-                navigator.goToVideoPlayerScreen(item)
+                navigator.goToVideoPlayerScreen(item, MockData().mockData)
             })
         })
     }
