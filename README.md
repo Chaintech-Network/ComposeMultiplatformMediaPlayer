@@ -2,9 +2,9 @@
 
 Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback, reels viewing, audio playing, and YouTube video integration on both iOS and Android platforms, offering extensive customization options for various controls.
 
-![Blog-banner-02 5](./assets/git_banner.jpg)  
+![Blog-banner-02 5](./assets/git_banner1.jpg)  
 
-## What's New in Version 1.0.16
+## What's New in Version 1.0.18
 🚀 **YouTube Playback:** We've introduced YouTube video integration in the latest release! You can now easily embed and control YouTube videos directly within your app using the YouTubePlayerView composable. Enjoy full playback control and seamless integration with other media player features.
 
 ## Features
@@ -20,12 +20,19 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 **Customizable Controls:** Enable/disable pause/resume functionality and adjust the appearance and visibility of the seek bar, along with various control icons and colors.
 
-![media-player-animation-updated2](./assets/player_example.gif)
+![media-player-animation-updated2](./assets/player_example1.gif)
 
 ## Installation
 
 Add the following dependency to your `build.gradle.kts` file:
 
+```kotlin
+commonMain.dependencies {
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.18")
+}
+```
+### Compatibility Notice
+If you are using Kotlin version below 2.0.0 and Jetpack Compose version below 1.6.11, you may encounter compatibility issues with the current dependencies. To resolve these issues, please consider using an older version of the Compose Multiplatform Media Player library.
 ```kotlin
 commonMain.dependencies {
     implementation("network.chaintech:compose-multiplatform-media-player:1.0.16")

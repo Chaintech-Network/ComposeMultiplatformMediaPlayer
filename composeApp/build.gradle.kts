@@ -1,5 +1,11 @@
+import com.android.build.api.dsl.ManagedVirtualDevice
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
+
 plugins {
     alias(libs.plugins.multiplatform)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
     alias(libs.plugins.android.application)
 }
@@ -7,8 +13,20 @@ plugins {
 kotlin {
     androidTarget {
         compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
+            compileTaskProvider {
+                compilerOptions {
+                    jvmTarget.set(JvmTarget.JVM_1_8)
+                    freeCompilerArgs.add("-Xjdk-release=${JavaVersion.VERSION_1_8}")
+                }
+            }
+        }
+        //https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        instrumentedTestVariant {
+            sourceSetTree.set(KotlinSourceSetTree.test)
+            dependencies {
+                debugImplementation(libs.androidx.testManifest)
+                implementation(libs.androidx.junit4)
             }
         }
     }
@@ -50,7 +68,7 @@ kotlin {
             implementation("network.chaintech:sdp-ssp-compose-multiplatform:1.0.1")
             api("io.github.qdsfdhvh:image-loader:1.8.1")
 
-            implementation("network.chaintech:compose-multiplatform-media-player:1.0.16")
+            implementation("network.chaintech:compose-multiplatform-media-player:1.0.18")
         }
 
         commonTest.dependencies {
@@ -86,6 +104,16 @@ android {
         manifest.srcFile("src/androidMain/AndroidManifest.xml")
         res.srcDirs("src/androidMain/res")
     }
+    @Suppress("UnstableApiUsage")
+    testOptions {
+        managedDevices.devices {
+            maybeCreate<ManagedVirtualDevice>("pixel5").apply {
+                device = "Pixel 5"
+                apiLevel = 34
+                systemImageSource = "aosp"
+            }
+        }
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -93,8 +121,5 @@ android {
     }
     buildFeatures {
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.11"
     }
 }
