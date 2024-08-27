@@ -5,6 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.memScoped
 import kotlinx.cinterop.pointed
+import platform.Foundation.NSBundle
 import platform.UIKit.UIApplication
 import platform.UIKit.UIStatusBarStyleLightContent
 import platform.UIKit.UIWindow
@@ -34,4 +35,9 @@ actual fun getSafeAreaHeight(): SafeAreaSize {
     }
 
     return SafeAreaSize(top = topPadding.toFloat(), bottom = bottomPadding.toFloat())
+}
+
+actual fun getLocalFilePathFor(item: String): String {
+    val videoFilePath = NSBundle.mainBundle.pathForResource(item, null)
+    return videoFilePath ?: ""
 }

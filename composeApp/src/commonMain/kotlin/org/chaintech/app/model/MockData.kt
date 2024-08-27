@@ -1,6 +1,7 @@
 package org.chaintech.app.model
 
 import chaintech.videoplayer.model.AudioFile
+import org.chaintech.app.utility.getLocalFilePathFor
 
 class MockData {
 
@@ -15,7 +16,13 @@ class MockData {
         "https://user-images.githubusercontent.com/90382113/170889265-7ed9a56c-dd5f-4d78-b453-18b011644da0.mp4",
         "https://user-images.githubusercontent.com/90382113/170890384-43214cc8-79c6-4815-bcb7-e22f6f7fe1bc.mp4"
     )
+
+
     val audioFilesArray = listOf(
+        AudioFile(
+            getLocalFilePathFor("Believer.mp3"),
+            audioTitle = "Believer (From Local Storage)"
+        ),
         AudioFile(
             audioUrl = "https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/theme_01.mp3",
             audioTitle = "Galaxy Invaders",
@@ -304,6 +311,79 @@ class MockData {
         )
     )
 
+    val localData = listOf(
+        VideoModel(
+            id = "1",
+            description = "Bumblebee",
+            sources = getLocalFilePathFor("1.mp4"),
+            subtitle = "Paramount Pictures",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/bumblebee-language-3x4-1704698849437.jpg",
+            title = "Bumblebee",
+            duration = "9 min 56 s",
+            rating = "4"
+        ),
+        VideoModel(
+            id = "2",
+            description = "The first Blender Open Movie from 2006",
+            sources = getLocalFilePathFor("2.mp4"),
+            subtitle = "20th Century Studios",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/deadwood-themovie-3x4-1691555895191.jpg",
+            title = "Deadpool 2",
+            duration = "10 min 53 s",
+            rating = "5"
+        ),
+        VideoModel(
+            id = "3",
+            description = "HBO GO now works with Chromecast -- the easiest way to enjoy online video on your TV.",
+            sources = getLocalFilePathFor( "3.mp4") ,
+            subtitle = "Movies",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1723143075888.jpg",
+            title = "Incredibles 2",
+            duration = "14 s",
+            rating = "4.5"
+        ),
+        VideoModel(
+            id = "4",
+            description = "Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for when Batman's escapes aren't quite big enough. ",
+            sources = getLocalFilePathFor( "4.mp4") ,
+            subtitle = "Marvel Entertainment",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/justice-league-warworld-3x4-1697367402693.jpg",
+            title = "Avengers: Infinity War",
+            duration = "15 s",
+            rating = "3"
+        ),
+        VideoModel(
+            id = "5",
+            description = "Introducing Chromecast. The easiest way to enjoy online video and music on your TV. For $35.  Find out more at google.com/chromecast.",
+            sources =  getLocalFilePathFor( "5.mp4") ,
+            subtitle = "Rotten Tomatoes Trailers",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1708145297782.jpg",
+            title = "Sinister",
+            duration = "1 min",
+            rating = "5"
+        ),
+        VideoModel(
+            id = "6",
+            description = "Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for the times that call for bigger joyrides. For $35. Learn how to use Chromecast with YouTube and more at google.com/chromecast.",
+            sources =  getLocalFilePathFor( "6.mp4") ,
+            subtitle = "By Google",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/hangover_3x4-1686200517765.jpg",
+            title = "The Giver",
+            duration = "15 s",
+            rating = "4"
+        ),
+        VideoModel(
+            id = "7",
+            description ="Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for when you want to make Buster's big meltdowns even bigger. For $35. Learn how to use Chromecast with Netflix and more at google.com/chromecast.",
+            sources =  getLocalFilePathFor( "7.mp4") ,
+            subtitle = "The Lion King",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/the-pride-kingdom-3x4-1674589010518.jpg",
+            title = "Walt Disney Studios",
+            duration = "15 s",
+            rating = "4"
+        )
+    )
+
 
     fun getFilteredData(data: List<VideoModel>, selectedVideo: VideoModel): List<VideoModel> {
         return data.filter { video ->
@@ -313,6 +393,7 @@ class MockData {
     fun topBannerData(): List<VideoModel> {
         return mockData.shuffled().take(5)
     }
+
     fun hotRightNow(): List<String> {
         return  listOf(
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1714876334737.jpg",

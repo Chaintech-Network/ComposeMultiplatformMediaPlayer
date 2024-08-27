@@ -2,10 +2,12 @@
 
 Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback, reels viewing, audio playing, and YouTube video integration on both iOS and Android platforms, offering extensive customization options for various controls.
 
-![Blog-banner-02 5](./assets/git_banner1.jpg)  
+![Blog-banner-02 5](./assets/git_banner2.jpg)  
 
-## What's New in Version 1.0.18
+## What's New in Version 1.0.19
 🚀 **YouTube Playback:** We've introduced YouTube video integration in the latest release! You can now easily embed and control YouTube videos directly within your app using the YouTubePlayerView composable. Enjoy full playback control and seamless integration with other media player features.
+
+**Local Playback:** Added local audio/video playback support.
 
 ## Features
 **Cross-Platform Compatibility:** Works seamlessly on both iOS and Android platforms within Compose Multiplatform projects.
@@ -28,11 +30,13 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.18")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.19")
 }
 ```
-### Compatibility Notice
-If you are using Kotlin version below 2.0.0 and Jetpack Compose version below 1.6.11, you may encounter compatibility issues with the current dependencies. To resolve these issues, please consider using an older version of the Compose Multiplatform Media Player library.
+
+## 🚨 **Compatibility Notice** 🚨
+
+If you are using **Kotlin version below 2.0.0** and **Jetpack Compose version below 1.6.11**, you may encounter compatibility issues with the current dependencies. ⚠️ To resolve these issues, please consider using an **older version** of the Compose Multiplatform Media Player library. 🎯
 ```kotlin
 commonMain.dependencies {
     implementation("network.chaintech:compose-multiplatform-media-player:1.0.16")
@@ -49,6 +53,7 @@ VideoPlayerView(
     url = videoUrl
 )
 ```
+💡 **Note:** The VideoPlayerView supports both online and local video playback. You can provide a URL for a remote video or a local file path.
 
 ### YouTube Playback
 To play youtube videos in your app, use the YouTubePlayerView composable:
@@ -76,6 +81,7 @@ AudioPlayerView(
     audios = audioFilesArray
 )
 ```
+💡 **Note:** The AudioPlayerView supports both online and local audio playback. You can provide a URL for a remote audio file or a local file path.
 
 ## Customization
 You can customize various aspects of the media player:
@@ -229,6 +235,25 @@ AudioPlayerView(
     )
 ```
 
+## Format Support
+| Format  | Android             | iOS           |
+|---------|---------------------|---------------|
+| MP4     | ✅                   | ✅             |
+| MOV     | ✅                   | ✅             |
+| 3GP     | ✅                   | ✅             |
+| AVI     | ✅                   | ❌             |
+| MKV     | ✅                   | ❌             |
+| WEBM    | ✅                   | ❌             |
+| MTS     | ✅                   | ❌             |
+| MP3     | ✅                   | ✅             |
+| FLAC    | ✅                   | ✅             |
+| WAV     | ✅                   | ✅             |
+| AAC     | ✅                   | ❌             |
+| AIF     | ❌                   | ✅             |
+| ALAC    | ✅                   | ❌             |
+| OGG     | ✅                   | ❌             |
+| YouTube | ✅                   | ✅             |
+
 ## Detailed Explanation
 For a detailed explanation and a comprehensive guide, please read the [Medium blog post.](https://medium.com/mobile-innovation-network/introducing-compose-multiplatform-media-player-your-go-to-solution-for-seamless-media-playback-691df3cc4da9)
 
@@ -238,7 +263,6 @@ Connect with us on [LinkedIn](https://www.linkedin.com/showcase/mobile-innovatio
 We're committed to continuously improving and expanding the capabilities of our media player library. Here's a glimpse into our future plans:
 
 ### Upcoming Features
-- Local Video Playback
 - Live Streaming
 - Picture-in-Picture (PiP) Mode
 - Desktop Support

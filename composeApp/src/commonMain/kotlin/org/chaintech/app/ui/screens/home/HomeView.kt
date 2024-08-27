@@ -20,6 +20,7 @@ import org.chaintech.app.ui.components.AddBanner
 import org.chaintech.app.ui.components.HomeVideoSection
 import org.chaintech.app.utility.getSafeAreaSize
 import network.chaintech.sdpcomposemultiplatform.sdp
+import org.chaintech.app.ui.components.LocalVideoSection
 
 @Composable
 fun HomeView() {
@@ -58,6 +59,10 @@ fun HomeView() {
                     }
                 }
 
+                LocalVideoSection(
+                    title = "Local Videos \uD83D\uDD25"
+                )
+
                 AddBanner(
                     title = "Subscribe Now",
                     image = dataStore.topAddBanner
@@ -65,7 +70,7 @@ fun HomeView() {
 
                 HomeVideoSection(
                     data = dataStore.hotRightNow(),
-                    title = "Hot Right Now \uD83D\uDD25"
+                    title = "Hot Right Now"
                 )
 
                 HomeVideoSection(
