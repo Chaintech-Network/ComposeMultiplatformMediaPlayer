@@ -1,18 +1,22 @@
 # Compose Multiplatform Media Player
 
-Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback, reels viewing, audio playing, and YouTube video integration on both iOS and Android platforms, offering extensive customization options for various controls.
+Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback, reels viewing, audio playing, YouTube video integration, and now HLS m3u8 support on both iOS and Android platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
 
-![Blog-banner-02 5](./assets/git_banner2.jpg)  
+![Blog-banner-02 5](./assets/git_banner3.jpg)  
 
-## What's New in Version 1.0.19
-🚀 **YouTube Playback:** We've introduced YouTube video integration in the latest release! You can now easily embed and control YouTube videos directly within your app using the YouTubePlayerView composable. Enjoy full playback control and seamless integration with other media player features.
+## 🎉 What's New in Version 1.0.20
+🌐 **HLS m3u8 Support:** We’ve added support for HLS (HTTP Live Streaming) with .m3u8 file format! Stream live and on-demand content with ease across both iOS and Android platforms.
 
-**Local Playback:** Added local audio/video playback support.
+📱️ **Screen Resize Configuration:** We've introduced a new screen resize configuration feature, allowing users to customize their viewing experience. This update includes:
+    **Fit:** Fit the video within the screen while maintaining the aspect ratio.
+    **Fill:** Fill the entire screen with the video, potentially cropping it to fit.
 
-## Features
+## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on both iOS and Android platforms within Compose Multiplatform projects.
 
 **Video Playback:** Effortlessly play videos in your app with high performance and reliability.
+
+**HLS m3u8 Playback:** Stream live and on-demand content using the HLS .m3u8 format.
 
 **YouTube Playback:** Integrate YouTube videos directly into your app, with full control over playback and video state management.
 
@@ -24,13 +28,13 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![media-player-animation-updated2](./assets/player_example1.gif)
 
-## Installation
+## 📦 Installation
 
 Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.19")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.20")
 }
 ```
 
@@ -43,9 +47,9 @@ commonMain.dependencies {
 }
 ```
 
-## Usage
+## 🎬 Usage
 
-### Video Playback
+### 📹 Video Playback
 To play videos in your app, use the VideoPlayerView composable:
 ```kotlin
 VideoPlayerView(
@@ -55,7 +59,7 @@ VideoPlayerView(
 ```
 💡 **Note:** The VideoPlayerView supports both online and local video playback. You can provide a URL for a remote video or a local file path.
 
-### YouTube Playback
+### ▶️ YouTube Playback
 To play youtube videos in your app, use the YouTubePlayerView composable:
 ```kotlin
 YouTubePlayerView(
@@ -64,7 +68,7 @@ YouTubePlayerView(
 )
 ```
 
-### Reel Viewing
+### 🎥 Reel Viewing
 For reel viewing, utilize the ReelsPlayerView composable:
 ```kotlin
 ReelsPlayerView(
@@ -73,7 +77,7 @@ ReelsPlayerView(
 )
 ```
 
-### Audio Playback
+### 🎧 Audio Playback
 To play audio in your app, use the AudioPlayerView composable:
 ```kotlin
 AudioPlayerView(
@@ -83,7 +87,7 @@ AudioPlayerView(
 ```
 💡 **Note:** The AudioPlayerView supports both online and local audio playback. You can provide a URL for a remote audio file or a local file path.
 
-## Customization
+## ⚙️ Customization
 You can customize various aspects of the media player:
 
 * `modifier`: Modifies the layout and appearance of the video player and reel player.
@@ -92,62 +96,63 @@ You can customize various aspects of the media player:
 * `urls`: An array of URLs for the reel player, allowing playback of multiple reels.
 * `playerConfig`: You can configure various aspects of the video player appearance and behavior using the PlayerConfig data class.
 
-| Property                             | Description |
-| ------------------------------------ | ----------- |
-| isPauseResumeEnabled               | Enable or disable the pause/resume functionality. |
-| isSeekBarVisible                   | Toggle the visibility of the seek bar. |
-| isDurationVisible                  | Control the display of the playback time duration. |
-| seekBarThumbColor                  | Customize the color of the seek bar thumb. |
-| seekBarActiveTrackColor            | Customize the color of the seek bar’s active track, representing the portion of the media content that has already been played. |
-| seekBarInactiveTrackColor          | Customize the color of the seek bar’s inactive track, representing the remaining portion of the media content yet to be played. |
-| durationTextColor                  | Customize the color of the duration text displayed alongside the seek bar. |
-| durationTextStyle                  | Customize the text style of the duration text, including font size and weight. |
-| seekBarBottomPadding              | Configure the bottom padding for the seek bar control, ensuring proper alignment within the UI layout. |
-| playIconResource & pauseIconResource | Customize the play and pause button icons. |
-| pauseResumeIconSize                | Customize the size of the pause/resume icons. |
-| reelVerticalScrolling              | Manage vertical and horizontal scrolling in reel viewing. |
-| isAutoHideControlEnabled & controlHideIntervalSeconds | Enable the automatic hiding of controls after a specified time interval (in seconds). |
-| isFastForwardBackwardEnabled       | Enable or disable fast forward and backward controls. |
-| fastForwardBackwardIconSize       | Customize the size of the fast forward/backward icons. |
-| fastForwardIconResource & fastBackwardIconResource | Customize the icons for fast forward and fast backward controls. |
-| fastForwardBackwardIntervalSeconds | Set the interval (in seconds) for fast forward and backward actions. |
-| isMuteControlEnabled               | Enable or disable mute control functionality. |
-| unMuteIconResource & muteIconResource | Customize the icons for unmute and mute controls. |
-| topControlSize                     | Customize the size of the top control buttons. |
-| isSpeedControlEnabled             | Enable or disable speed control functionality. |
-| speedIconResource                  | Customize the icon for speed control. |
-| isFullScreenEnabled                | Enable or disable full-screen functionality. |
-| controlTopPadding                  | Configure the top padding for controls, ensuring proper alignment within the UI layout. |
-| isScreenLockEnabled                | Enable or disable screen lock functionality. |
-| iconsTintColor                    | Customize the tint color of the control icons. |
-| isMute                            | Manage the mute/unmute state of the player. |
-| muteCallback                      | Callback function triggered when the mute state changes. |
-| isPause                            | Manage the pause/resume state of the player. |
-| pauseCallback                      | Callback function triggered when the pause/resume state changes. |
+| Property                                              | Description                                                                                                                     |
+|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| isPauseResumeEnabled                                  | Enable or disable the pause/resume functionality.                                                                               |
+| isSeekBarVisible                                      | Toggle the visibility of the seek bar.                                                                                          |
+| isDurationVisible                                     | Control the display of the playback time duration.                                                                              |
+| seekBarThumbColor                                     | Customize the color of the seek bar thumb.                                                                                      |
+| seekBarActiveTrackColor                               | Customize the color of the seek bar’s active track, representing the portion of the media content that has already been played. |
+| seekBarInactiveTrackColor                             | Customize the color of the seek bar’s inactive track, representing the remaining portion of the media content yet to be played. |
+| durationTextColor                                     | Customize the color of the duration text displayed alongside the seek bar.                                                      |
+| durationTextStyle                                     | Customize the text style of the duration text, including font size and weight.                                                  |
+| seekBarBottomPadding                                  | Configure the bottom padding for the seek bar control, ensuring proper alignment within the UI layout.                          |
+| playIconResource & pauseIconResource                  | Customize the play and pause button icons.                                                                                      |
+| pauseResumeIconSize                                   | Customize the size of the pause/resume icons.                                                                                   |
+| reelVerticalScrolling                                 | Manage vertical and horizontal scrolling in reel viewing.                                                                       |
+| isAutoHideControlEnabled & controlHideIntervalSeconds | Enable the automatic hiding of controls after a specified time interval (in seconds).                                           |
+| isFastForwardBackwardEnabled                          | Enable or disable fast forward and backward controls.                                                                           |
+| fastForwardBackwardIconSize                           | Customize the size of the fast forward/backward icons.                                                                          |
+| fastForwardIconResource & fastBackwardIconResource    | Customize the icons for fast forward and fast backward controls.                                                                |
+| fastForwardBackwardIntervalSeconds                    | Set the interval (in seconds) for fast forward and backward actions.                                                            |
+| isMuteControlEnabled                                  | Enable or disable mute control functionality.                                                                                   |
+| unMuteIconResource & muteIconResource                 | Customize the icons for unmute and mute controls.                                                                               |
+| topControlSize                                        | Customize the size of the top control buttons.                                                                                  |
+| isSpeedControlEnabled                                 | Enable or disable speed control functionality.                                                                                  |
+| speedIconResource                                     | Customize the icon for speed control.                                                                                           |
+| isFullScreenEnabled                                   | Enable or disable full-screen functionality.                                                                                    |
+| controlTopPadding                                     | Configure the top padding for controls, ensuring proper alignment within the UI layout.                                         |
+| isScreenLockEnabled                                   | Enable or disable screen lock functionality.                                                                                    |
+| iconsTintColor                                        | Customize the tint color of the control icons.                                                                                  |
+| isMute                                                | Manage the mute/unmute state of the player.                                                                                     |
+| muteCallback                                          | Callback function triggered when the mute state changes.                                                                        |
+| isPause                                               | Manage the pause/resume state of the player.                                                                                    |
+| pauseCallback                                         | Callback function triggered when the pause/resume state changes.                                                                |
+| isScreenResizeEnabled                                 | Enable or disable screen resize (Fit/Fill) functionality.                                                                       |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   
-| Property                             | Description |
-| ------------------------------------ | ----------- |
-| isControlsVisible                    | Toggle the visibility of the player controls. |
-| backgroundColor                      | Customize the background color of the audio player. |
-| coverBackground                      | Customize the background color of the cover image. |
-| seekBarThumbColor                    | Customize the color of the seek bar thumb. |
-| seekBarActiveTrackColor              | Customize the color of the seek bar’s active track, representing the portion of the media content that has already been played. |
-| seekBarInactiveTrackColor            | Customize the color of the seek bar’s inactive track, representing the remaining portion of the media content yet to be played. |
-| fontColor                            | Customize the color of the text used in the player. |
-| durationTextStyle                    | Customize the text style of the duration text, including font size and weight. |
-| titleTextStyle                       | Customize the text style of the title text, including font size and weight. |
-| controlsBottomPadding                | Configure the bottom padding for the controls, ensuring proper alignment within the UI layout. |
-| playIconResource & pauseIconResource | Customize the play and pause button icons. |
-| pauseResumeIconSize                  | Customize the size of the pause/resume icons. |
-| previousNextIconSize                 | Customize the size of the previous and next track icons. |
-| previousIconResource & nextIconResource | Customize the icons for the previous and next track controls. |
-| iconsTintColor                       | Customize the tint color of the control icons. |
-| loadingIndicatorColor                | Customize the color of the loading indicator. |
-| shuffleOnIconResource & shuffleOffIconResource | Customize the icons for the shuffle control when enabled and disabled. |
-| advanceControlIconSize               | Customize the size of the advance control icons (e.g., fast forward/backward). |
-| repeatOnIconResource & repeatOffIconResource | Customize the icons for the repeat control when enabled and disabled. |
+| Property                                       | Description                                                                                                                     |
+|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| isControlsVisible                              | Toggle the visibility of the player controls.                                                                                   |
+| backgroundColor                                | Customize the background color of the audio player.                                                                             |
+| coverBackground                                | Customize the background color of the cover image.                                                                              |
+| seekBarThumbColor                              | Customize the color of the seek bar thumb.                                                                                      |
+| seekBarActiveTrackColor                        | Customize the color of the seek bar’s active track, representing the portion of the media content that has already been played. |
+| seekBarInactiveTrackColor                      | Customize the color of the seek bar’s inactive track, representing the remaining portion of the media content yet to be played. |
+| fontColor                                      | Customize the color of the text used in the player.                                                                             |
+| durationTextStyle                              | Customize the text style of the duration text, including font size and weight.                                                  |
+| titleTextStyle                                 | Customize the text style of the title text, including font size and weight.                                                     |
+| controlsBottomPadding                          | Configure the bottom padding for the controls, ensuring proper alignment within the UI layout.                                  |
+| playIconResource & pauseIconResource           | Customize the play and pause button icons.                                                                                      |
+| pauseResumeIconSize                            | Customize the size of the pause/resume icons.                                                                                   |
+| previousNextIconSize                           | Customize the size of the previous and next track icons.                                                                        |
+| previousIconResource & nextIconResource        | Customize the icons for the previous and next track controls.                                                                   |
+| iconsTintColor                                 | Customize the tint color of the control icons.                                                                                  |
+| loadingIndicatorColor                          | Customize the color of the loading indicator.                                                                                   |
+| shuffleOnIconResource & shuffleOffIconResource | Customize the icons for the shuffle control when enabled and disabled.                                                          |
+| advanceControlIconSize                         | Customize the size of the advance control icons (e.g., fast forward/backward).                                                  |
+| repeatOnIconResource & repeatOffIconResource   | Customize the icons for the repeat control when enabled and disabled.                                                           |
 
 
 ```kotlin
@@ -235,7 +240,7 @@ AudioPlayerView(
     )
 ```
 
-## Format Support
+## 📀 Format Support
 | Format  | Android             | iOS           |
 |---------|---------------------|---------------|
 | MP4     | ✅                   | ✅             |
@@ -245,6 +250,7 @@ AudioPlayerView(
 | MKV     | ✅                   | ❌             |
 | WEBM    | ✅                   | ❌             |
 | MTS     | ✅                   | ❌             |
+| m3u8    | ✅                   | ✅             |
 | MP3     | ✅                   | ✅             |
 | FLAC    | ✅                   | ✅             |
 | WAV     | ✅                   | ✅             |
@@ -254,15 +260,32 @@ AudioPlayerView(
 | OGG     | ✅                   | ❌             |
 | YouTube | ✅                   | ✅             |
 
-## Detailed Explanation
-For a detailed explanation and a comprehensive guide, please read the [Medium blog post.](https://medium.com/mobile-innovation-network/introducing-compose-multiplatform-media-player-your-go-to-solution-for-seamless-media-playback-691df3cc4da9)
+## 📖 Detailed Explanation
+For an in-depth guide and detailed explanation, check out our comprehensive Medium Blog Post.
 
-Connect with us on [LinkedIn](https://www.linkedin.com/showcase/mobile-innovation-network)
+[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/mobile-innovation-network/introducing-compose-multiplatform-media-player-your-go-to-solution-for-seamless-media-playback-691df3cc4da9)  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/showcase/mobile-innovation-network)
 
-## Roadmap
+## 🛤️ Roadmap
 We're committed to continuously improving and expanding the capabilities of our media player library. Here's a glimpse into our future plans:
 
-### Upcoming Features
-- Live Streaming
+### 🌟 Upcoming Features
 - Picture-in-Picture (PiP) Mode
 - Desktop Support
+
+## 📄 License
+```
+Copyright 2023 Mobile Innovation Network
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```

@@ -1,7 +1,4 @@
-import com.android.build.api.dsl.ManagedVirtualDevice
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -20,21 +17,7 @@ kotlin {
                 }
             }
         }
-        //https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        instrumentedTestVariant {
-            sourceSetTree.set(KotlinSourceSetTree.test)
-            dependencies {
-                debugImplementation(libs.androidx.testManifest)
-                implementation(libs.androidx.junit4)
-            }
-        }
     }
-
-//    wasmJs {
-//        browser()
-//        binaries.executable()
-//    }
 
     listOf(
         iosX64(),
@@ -68,12 +51,10 @@ kotlin {
             implementation("network.chaintech:sdp-ssp-compose-multiplatform:1.0.1")
             api("io.github.qdsfdhvh:image-loader:1.8.1")
 
-            implementation("network.chaintech:compose-multiplatform-media-player:1.0.19")
+            implementation("network.chaintech:compose-multiplatform-media-player:1.0.20")
         }
 
-        commonTest.dependencies {
-            implementation(kotlin("test"))
-        }
+
 
         androidMain.dependencies {
             implementation(compose.uiTooling)
@@ -103,16 +84,6 @@ android {
     sourceSets["main"].apply {
         manifest.srcFile("src/androidMain/AndroidManifest.xml")
         res.srcDirs("src/androidMain/res")
-    }
-    @Suppress("UnstableApiUsage")
-    testOptions {
-        managedDevices.devices {
-            maybeCreate<ManagedVirtualDevice>("pixel5").apply {
-                device = "Pixel 5"
-                apiLevel = 34
-                systemImageSource = "aosp"
-            }
-        }
     }
 
     compileOptions {

@@ -1,16 +1,13 @@
 [versions]
 
-kotlin = "2.0.10"
+kotlin = "2.0.20"
 compose = "1.6.11"
 agp = "8.5.2"
-androidx-activityCompose = "1.9.1"
-androidx-uiTest = "1.6.8"
+androidx-activityCompose = "1.9.2"
 
 [libraries]
 
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
-androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
 androidx-core = { group = "androidx.core", name = "core", version = "1.13.1" }
 
 [plugins]
@@ -21,4 +18,3 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 mavenPublish = { id = "com.vanniktech.maven.publish", version = "0.28.0" }
-kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

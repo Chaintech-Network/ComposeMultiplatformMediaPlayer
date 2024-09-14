@@ -6,9 +6,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,8 +36,7 @@ fun BackButtonNavBar(
                 elevation = 0.sdp,
                 spotColor = Color.Transparent
             ),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top
     ) {
         Box(
             modifier = Modifier
@@ -49,29 +50,26 @@ fun BackButtonNavBar(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.sdp, vertical = 15.sdp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
+                    .padding(horizontal = 16.sdp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(
-                    modifier = Modifier,
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(13.sdp)
+                Box(modifier = Modifier
+                    .padding(top = 8.sdp)
+                    .size(30.sdp)
+                    .background(Color.Black.copy(alpha = 0.3f), shape = CircleShape)
                 ) {
-
-                    Box(modifier = Modifier.padding(top = 2.sdp)) {
-                        FromLocalDrawable(
-                            painterResource = Res.drawable.ic_back_button,
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .height(12.sdp)
-                                .pointerInput(Unit) {
-                                    detectTapGestures { _ ->
-                                        onBackButtonClick()
-                                    }
+                    FromLocalDrawable(
+                        painterResource = Res.drawable.ic_back_button,
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(all = 5.sdp)
+                            .pointerInput(Unit) {
+                                detectTapGestures { _ ->
+                                    onBackButtonClick()
                                 }
-                        )
-                    }
+                            }
+                    )
                 }
             }
         }

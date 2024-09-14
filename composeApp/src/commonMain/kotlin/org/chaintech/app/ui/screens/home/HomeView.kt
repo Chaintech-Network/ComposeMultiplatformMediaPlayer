@@ -20,6 +20,7 @@ import org.chaintech.app.ui.components.AddBanner
 import org.chaintech.app.ui.components.HomeVideoSection
 import org.chaintech.app.utility.getSafeAreaSize
 import network.chaintech.sdpcomposemultiplatform.sdp
+import org.chaintech.app.ui.components.LiveStreamSection
 import org.chaintech.app.ui.components.LocalVideoSection
 
 @Composable
@@ -59,13 +60,17 @@ fun HomeView() {
                     }
                 }
 
-                LocalVideoSection(
-                    title = "Local Videos \uD83D\uDD25"
+                LiveStreamSection(
+                    title = "Live Stream \uD83D\uDD34"
                 )
 
                 AddBanner(
                     title = "Subscribe Now",
                     image = dataStore.topAddBanner
+                )
+
+                LocalVideoSection(
+                    title = "Local Videos \uD83D\uDD25"
                 )
 
                 HomeVideoSection(

@@ -23,7 +23,8 @@ fun ReelsContentView() {
             isMuteControlEnabled = false,
             isSpeedControlEnabled = false,
             isFullScreenEnabled = false,
-            isScreenLockEnabled = false
+            isScreenLockEnabled = false,
+            isScreenResizeEnabled = false
         )
     )
 }
