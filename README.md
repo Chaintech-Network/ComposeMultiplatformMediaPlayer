@@ -4,7 +4,7 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner3.jpg)  
 
-## 🎉 What's New in Version 1.0.20
+## 🎉 What's New in Version 1.0.21
 🌐 **HLS m3u8 Support:** We’ve added support for HLS (HTTP Live Streaming) with .m3u8 file format! Stream live and on-demand content with ease across both iOS and Android platforms.
 
 📱️ **Screen Resize Configuration:** We've introduced a new screen resize configuration feature, allowing users to customize their viewing experience. This update includes:
@@ -34,7 +34,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.20")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.21")
 }
 ```
 
@@ -129,6 +129,9 @@ You can customize various aspects of the media player:
 | isPause                                               | Manage the pause/resume state of the player.                                                                                    |
 | pauseCallback                                         | Callback function triggered when the pause/resume state changes.                                                                |
 | isScreenResizeEnabled                                 | Enable or disable screen resize (Fit/Fill) functionality.                                                                       |
+| bufferCallback                                        | Callback function triggered when Buffer state changes.                                                                          |                                                                      |
+| didEndVideo                                           | Callback function triggered when current video end.                                                                             |                                                                      |
+| loop                                                  | Enable or disable video playing in loop.                                                                                        |                                                                      |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   

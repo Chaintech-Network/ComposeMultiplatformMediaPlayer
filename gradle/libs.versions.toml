@@ -1,7 +1,7 @@
 [versions]
 
 kotlin = "2.0.20"
-compose = "1.6.11"
+compose = "1.7.0-beta02"
 agp = "8.5.2"
 androidx-activityCompose = "1.9.2"
 

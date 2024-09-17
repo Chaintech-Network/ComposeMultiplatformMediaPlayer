@@ -388,7 +388,7 @@ class MockData {
         VideoModel(
             id = "1",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-THE-EXPLORERS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/8fc74dec-756e-4f12-ad0a-64a7da1779df/2.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-THE-EXPLORERS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/5d912b11-fc13-4721-bd2b-f8bd404e7628/0.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/ggdzvt.png",
             title = "The Explorers"
@@ -396,7 +396,7 @@ class MockData {
         VideoModel(
             id = "2",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-SCIFI-WORLD-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/a985e052-6868-4365-ac45-52afe9008b25/196b6a5b-d6c2-47fe-92fb-c693c849eabf/0.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-SCIFI-WORLD-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/a985e052-6868-4365-ac45-52afe9008b25/070e2ad5-67f6-4682-b090-00606822ba8a/0.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/oxsgsi.png",
             title = "Scifi World"

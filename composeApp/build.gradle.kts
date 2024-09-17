@@ -51,7 +51,7 @@ kotlin {
             implementation("network.chaintech:sdp-ssp-compose-multiplatform:1.0.1")
             api("io.github.qdsfdhvh:image-loader:1.8.1")
 
-            implementation("network.chaintech:compose-multiplatform-media-player:1.0.20")
+            implementation("network.chaintech:compose-multiplatform-media-player:1.0.21")
         }
 
 
