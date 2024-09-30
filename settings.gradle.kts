@@ -14,5 +14,6 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         mavenLocal()
+        maven("https://jogamp.org/deployment/maven")
     }
 }

@@ -38,6 +38,9 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import chaintech.videoplayer.model.PlayerConfig
 import chaintech.videoplayer.ui.video.VideoPlayerView
+import chaintech.videoplayer.util.isDesktop
+import network.chaintech.sdpcomposemultiplatform.sdp
+import network.chaintech.sdpcomposemultiplatform.ssp
 import org.chaintech.app.font.FontType
 import org.chaintech.app.font.MediaFont
 import org.chaintech.app.model.MockData
@@ -49,8 +52,6 @@ import org.chaintech.app.ui.components.BackButtonNavBar
 import org.chaintech.app.utility.FromLocalDrawable
 import org.chaintech.app.utility.FromRemote
 import org.chaintech.app.utility.getSafeAreaSize
-import network.chaintech.sdpcomposemultiplatform.sdp
-import network.chaintech.sdpcomposemultiplatform.ssp
 import org.jetbrains.compose.resources.DrawableResource
 import reelsdemo.composeapp.generated.resources.Res
 import reelsdemo.composeapp.generated.resources.icn_add
@@ -71,95 +72,67 @@ private fun VideoPlayerContentView(currentVideo: VideoModel, videoList: List<Vid
 
     Column(
         modifier = Modifier
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = MyApplicationTheme.colors.gradientPrimary,
-                )
-            )
             .fillMaxSize()
+            .background(brush = Brush.verticalGradient(colors = MyApplicationTheme.colors.gradientPrimary))
             .padding(top = getSafeAreaSize().top.dp),
         horizontalAlignment = Alignment.Start
     ) {
-        Box(
-            modifier = Modifier,
-             contentAlignment = Alignment.TopStart
-        ){
-            VideoPlayerView(
-                modifier = Modifier.fillMaxWidth()
-                    .height(224.sdp),
-                url = video.sources,
-                playerConfig = PlayerConfig(
-                    seekBarActiveTrackColor = Color.Red,
-                    seekBarInactiveTrackColor = Color.White,
-                    seekBarBottomPadding = 8.sdp,
-                    pauseResumeIconSize = 30.sdp,
-                    controlHideIntervalSeconds = 5,
-                    topControlSize = 20.sdp,
-                    durationTextStyle = MediaFont.lexendDeca(
-                        size = FontType.Regular,
-                        type = MediaFont.LexendDeca.Medium
-                    ),
-                    fastForwardBackwardIconSize = 28.sdp,
-                    controlTopPadding = 10.sdp,
-                )
-            )
-
-            BackButtonNavBar {
-                navigator.back()
-            }
+        if (isDesktop()) {
+            BackButtonNavBar { navigator.back() }
         }
 
-        Spacer(modifier = Modifier.height(4.sdp))
+        VideoPlayerBox(video)
 
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier.padding(horizontal = 8.sdp)
-        ) {
-            item (span = {
-                GridItemSpan(2)
-            })
-                {
-                videoDetails(video)
-            }
-
-            items(MockData().getFilteredData(videoList, video)) {
-                Column(
-                    modifier = Modifier.padding(4.sdp)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(200.sdp)
-                            .clip(RoundedCornerShape(8.sdp))
-                            .background(MyApplicationTheme.colors.border)
-                            .border(
-                                width = 1.sdp,
-                                color = MyApplicationTheme.colors.border,
-                                shape =  RoundedCornerShape(8.sdp)
-                            )
-                            .pointerInput(Unit) {
-                                detectTapGestures { _ ->
-                                    video = it
-                                }
-                            }
-
-                    ){
-                        FromRemote(
-                            painterResource = it.thumb,
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .fillMaxSize()
-                        )
-                    }
+        if (!isDesktop()) {
+            Spacer(modifier = Modifier.height(4.sdp))
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier.padding(horizontal = 8.sdp)
+            ) {
+                item(span = { GridItemSpan(2) }) {
+                    videoDetails(video)
+                }
+                items(MockData().getFilteredData(videoList, video)) { item ->
+                    VideoThumbnail(item) { video = item }
+                }
+                item(span = { GridItemSpan(2) }) {
+                    Spacer(modifier = Modifier.height(16.sdp))
                 }
             }
+        }
+    }
+}
 
-            item (span = {
-                GridItemSpan(2)
-            })
-            {
-                Spacer(modifier = Modifier.height(16.sdp))
-            }
+@Composable
+private fun VideoPlayerBox(video: VideoModel) {
+    val navigator = LocalNavigation.current
+    Box(
+        modifier = Modifier.fillMaxWidth(),
+        contentAlignment = Alignment.TopStart
+    ) {
+        VideoPlayerView(
+            modifier = Modifier.then(
+                if (isDesktop()) Modifier.fillMaxSize() else Modifier.height(224.sdp).fillMaxWidth()
+            ),
+            url = video.sources,
+            playerConfig = PlayerConfig(
+                seekBarActiveTrackColor = Color.Red,
+                seekBarInactiveTrackColor = Color.White,
+                seekBarBottomPadding = 8.sdp,
+                pauseResumeIconSize = if (isDesktop()) 18.sdp else 30.sdp,
+                controlHideIntervalSeconds = 5,
+                topControlSize = if (isDesktop()) 16.sdp else 20.sdp,
+                durationTextStyle = MediaFont.lexendDeca(
+                    size = if (isDesktop()) FontType.ExtraSmall else FontType.Regular,
+                    type = MediaFont.LexendDeca.Medium
+                ),
+                fastForwardBackwardIconSize = if (isDesktop()) 16.sdp else 28.sdp,
+                controlTopPadding = 10.sdp
+            )
+        )
+
+        if (!isDesktop()) {
+            BackButtonNavBar { navigator.back() }
         }
     }
 }
@@ -171,17 +144,10 @@ private fun videoDetails(video: VideoModel) {
         verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.spacedBy(7.sdp)
     ) {
-        Column(
-            modifier = Modifier,
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.Start,
-        ) {
+        Column(horizontalAlignment = Alignment.Start) {
             Text(
                 text = video.title,
-                style = MediaFont.lexendDeca(
-                    size = FontType.SubHeading,
-                    type = MediaFont.LexendDeca.Medium
-                ),
+                style = MediaFont.lexendDeca(size = FontType.SubHeading, type = MediaFont.LexendDeca.Medium),
                 color = MyApplicationTheme.colors.white,
                 modifier = Modifier.padding(horizontal = 4.sdp)
             )
@@ -190,10 +156,7 @@ private fun videoDetails(video: VideoModel) {
 
             Text(
                 text = video.subtitle,
-                style = MediaFont.lexendDeca(
-                    size = FontType.Small,
-                    type = MediaFont.LexendDeca.Regular
-                ),
+                style = MediaFont.lexendDeca(size = FontType.Small, type = MediaFont.LexendDeca.Regular),
                 color = MyApplicationTheme.colors.secondaryText,
                 modifier = Modifier.padding(horizontal = 4.sdp),
                 maxLines = 1,
@@ -203,20 +166,14 @@ private fun videoDetails(video: VideoModel) {
             downLoadView()
 
             Spacer(modifier = Modifier.height(8.sdp))
-            AddBanner(
-                title = "Demon Slayer Season 1 &2",
-                image = MockData().detailBanner,
-                padding = 5.sdp
-            )
+
+            AddBanner(title = "Demon Slayer Season 1 &2", image = MockData().detailBanner, padding = 5.sdp)
 
             Spacer(modifier = Modifier.height(20.sdp))
 
             Text(
                 text = "More Like This",
-                style = MediaFont.lexendDeca(
-                    size = FontType.SubHeading,
-                    type = MediaFont.LexendDeca.Medium
-                ),
+                style = MediaFont.lexendDeca(size = FontType.SubHeading, type = MediaFont.LexendDeca.Medium),
                 fontSize = 14.ssp,
                 fontWeight = FontWeight.Bold,
                 color = MyApplicationTheme.colors.white,
@@ -231,47 +188,45 @@ private fun videoDetails(video: VideoModel) {
 @Composable
 private fun downLoadView() {
     Row(
-        modifier = Modifier.padding(vertical =  12.sdp, horizontal = 4.sdp),
+        modifier = Modifier.padding(vertical = 12.sdp, horizontal = 4.sdp),
         verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.spacedBy(20.sdp)
     ) {
-
         downloadItem(Res.drawable.icn_add, "Watchlist")
-
-        downloadItem(Res.drawable.icn_share, "Share", size = 16.sdp)
-
+        downloadItem(Res.drawable.icn_share, "Share", size=14.sdp, modifier = Modifier.padding(top = 4.sdp))
         downloadItem(Res.drawable.icn_download, "Download")
-
     }
 }
 
 @Composable
-private fun downloadItem(
-    image: DrawableResource,
-    title: String,
-    size: Dp = 19.sdp) {
-    Column(
-        modifier = Modifier. height(32.sdp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        FromLocalDrawable(
-            painterResource = image,
-            contentScale = ContentScale.Fit,
-            modifier = Modifier
-                .size(size)
-        )
+private fun downloadItem(image: DrawableResource, title: String, size: Dp=19.sdp, modifier: Modifier = Modifier) {
+    Column(horizontalAlignment=Alignment.CenterHorizontally, modifier = modifier) {
+        FromLocalDrawable(painterResource=image, contentScale=ContentScale.Fit, modifier=Modifier.size(size))
 
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier=Modifier.weight(1f))
 
         Text(
-            text = title,
-            style = MediaFont.lexendDeca(
-                size = FontType.Small,
-                type = MediaFont.LexendDeca.Regular
-            ),
-            color = MyApplicationTheme.colors.white,
-            modifier = Modifier,
-            maxLines = 1
+            text=title,
+            style=MediaFont.lexendDeca(size=FontType.Small, type=MediaFont.LexendDeca.Regular),
+            color=MyApplicationTheme.colors.white,
+            maxLines=1
         )
+    }
+}
+
+@Composable
+private fun VideoThumbnail(video: VideoModel, onClick: () -> Unit) {
+    Column(modifier=Modifier.padding(4.sdp)) {
+        Box(
+            modifier=Modifier
+                .fillMaxWidth()
+                .height(200.sdp)
+                .clip(RoundedCornerShape(8.sdp))
+                .background(MyApplicationTheme.colors.border)
+                .border(width=1.sdp, color=MyApplicationTheme.colors.border, shape=RoundedCornerShape(8.sdp))
+                .pointerInput(Unit) { detectTapGestures { onClick() } }
+        ) {
+            FromRemote(painterResource=video.thumb, contentScale=ContentScale.Crop, modifier=Modifier.fillMaxSize())
+        }
     }
 }

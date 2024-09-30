@@ -1,18 +1,22 @@
 # Compose Multiplatform Media Player
+[![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-multiplatform-media-player.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-multiplatform-media-player)
+[![Kotlin](https://img.shields.io/badge/kotlin-v2.0.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.7.0_beta02-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![License](https://img.shields.io/github/license/Chaintech-Network/ComposeMultiplatformMediaPlayer)](http://www.apache.org/licenses/LICENSE-2.0)
 
-Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback, reels viewing, audio playing, YouTube video integration, and now HLS m3u8 support on both iOS and Android platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
+![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/platform-ios-FF375F.svg?style=flat)
+![badge-desktop](http://img.shields.io/badge/platform-desktop-FF9500.svg?style=flat)
 
-![Blog-banner-02 5](./assets/git_banner3.jpg)  
+Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback, reels viewing, audio playing, YouTube video integration, and now HLS m3u8 support on iOS, Android, and Desktop platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
 
-## 🎉 What's New in Version 1.0.21
-🌐 **HLS m3u8 Support:** We’ve added support for HLS (HTTP Live Streaming) with .m3u8 file format! Stream live and on-demand content with ease across both iOS and Android platforms.
+![Blog-banner-02 5](./assets/git_banner4.jpg)
 
-📱️ **Screen Resize Configuration:** We've introduced a new screen resize configuration feature, allowing users to customize their viewing experience. This update includes:
-    **Fit:** Fit the video within the screen while maintaining the aspect ratio.
-    **Fill:** Fill the entire screen with the video, potentially cropping it to fit.
+## 🎉 What's New in Version 1.0.22
+🖥️ Desktop support added
 
 ## ✨ Features
-**Cross-Platform Compatibility:** Works seamlessly on both iOS and Android platforms within Compose Multiplatform projects.
+**Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
 
 **Video Playback:** Effortlessly play videos in your app with high performance and reliability.
 
@@ -28,15 +32,18 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![media-player-animation-updated2](./assets/player_example1.gif)
 
+![media-player-animation-updated2](./assets/desktop_player.gif)
+
 ## 📦 Installation
 
 Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.21")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.22")
 }
 ```
+💡 **Note:** For desktop video playback support, VLC player must be installed on your system.
 
 ## 🚨 **Compatibility Notice** 🚨
 
@@ -132,6 +139,9 @@ You can customize various aspects of the media player:
 | bufferCallback                                        | Callback function triggered when Buffer state changes.                                                                          |                                                                      |
 | didEndVideo                                           | Callback function triggered when current video end.                                                                             |                                                                      |
 | loop                                                  | Enable or disable video playing in loop.                                                                                        |                                                                      |
+| showDesktopControls                                   | Hide/Show Desktop video player advance controls                                                                                 |
+| loadingIndicatorColor                                 | Customize the color of the loading indicator.                                                                                   |
+| loaderView                                            | Custom loader for showing loading state.                                                                                        |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   
@@ -244,24 +254,24 @@ AudioPlayerView(
 ```
 
 ## 📀 Format Support
-| Format  | Android             | iOS           |
-|---------|---------------------|---------------|
-| MP4     | ✅                   | ✅             |
-| MOV     | ✅                   | ✅             |
-| 3GP     | ✅                   | ✅             |
-| AVI     | ✅                   | ❌             |
-| MKV     | ✅                   | ❌             |
-| WEBM    | ✅                   | ❌             |
-| MTS     | ✅                   | ❌             |
-| m3u8    | ✅                   | ✅             |
-| MP3     | ✅                   | ✅             |
-| FLAC    | ✅                   | ✅             |
-| WAV     | ✅                   | ✅             |
-| AAC     | ✅                   | ❌             |
-| AIF     | ❌                   | ✅             |
-| ALAC    | ✅                   | ❌             |
-| OGG     | ✅                   | ❌             |
-| YouTube | ✅                   | ✅             |
+|  Format  | Android  |   iOS    | Desktop  |
+|:--------:|:--------:|:--------:|:--------:|
+|   MP4    |    ✅     |    ✅     |    ✅     |
+|   MOV    |    ✅     |    ✅     |    ✅     |
+|   3GP    |    ✅     |    ✅     |    ✅     |
+|   AVI    |    ✅     |    ❌     |    ✅     |
+|   MKV    |    ✅     |    ❌     |    ✅     |
+|   WEBM   |    ✅     |    ❌     |    ✅     |
+|   MTS    |    ✅     |    ❌     |    ✅     |
+|   m3u8   |    ✅     |    ✅     |    ✅     |
+|   MP3    |    ✅     |    ✅     |    ✅     |
+|   FLAC   |    ✅     |    ✅     |    ✅     |
+|   WAV    |    ✅     |    ✅     |    ✅     |
+|   AAC    |    ✅     |    ❌     |    ✅     |
+|   AIF    |    ❌     |    ✅     |    ✅     |
+|   ALAC   |    ✅     |    ❌     |    ✅     |
+|   OGG    |    ✅     |    ❌     |    ✅     |
+| YouTube  |    ✅     |    ✅     |    ❌     |
 
 ## 📖 Detailed Explanation
 For an in-depth guide and detailed explanation, check out our comprehensive Medium Blog Post.
@@ -274,7 +284,7 @@ We're committed to continuously improving and expanding the capabilities of our 
 
 ### 🌟 Upcoming Features
 - Picture-in-Picture (PiP) Mode
-- Desktop Support
+- YouTube support for Desktop
 
 ## 📄 License
 ```

@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Notifications
@@ -49,52 +50,52 @@ import reelsdemo.composeapp.generated.resources.youtubeLogo
 fun YoutubeContentView() {
     val videoList = MockData().youtbeMockData.shuffled()
     val navigator = LocalNavigation.current
+
     Scaffold(
-        topBar = {
-            TopBarYouTube()
-        }
+        topBar = { TopBarYouTube() }
     ) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .background(
-                    brush = Brush.verticalGradient(
-                        colors = MyApplicationTheme.colors.gradientPrimary,
-                    )
-                ),
+                    brush = Brush.verticalGradient(colors = MyApplicationTheme.colors.gradientPrimary)
+                )
         ) {
-            items(videoList.size) {
-                val video = videoList[it]
-                Column(
-                    modifier = Modifier.padding(vertical = 5.sdp)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(150.sdp)
-                            .background(MyApplicationTheme.colors.border)
-                            .pointerInput(Unit) {
-                                detectTapGestures { _ ->
-                                    navigator.goToVideoPlayerScreen(video, videoList)
-                                }
-                            }
-
-                    ) {
-                        FromRemote(
-                            painterResource = video.thumbL,
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .fillMaxSize()
-                        )
-                    }
-                    videoDetails(video)
+            items(videoList) { video ->
+                VideoItem(video) {
+                    navigator.goToVideoPlayerScreen(video, videoList)
                 }
             }
         }
     }
 }
+
 @Composable
-private fun videoDetails(video: VideoModel) {
+private fun VideoItem(video: VideoModel, onClick: () -> Unit) {
+    Column(
+        modifier = Modifier.padding(vertical = 5.sdp)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(150.sdp)
+                .background(MyApplicationTheme.colors.border)
+                .pointerInput(Unit) {
+                    detectTapGestures { onClick() }
+                }
+        ) {
+            FromRemote(
+                painterResource = video.thumbL,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+        VideoDetails(video)
+    }
+}
+
+@Composable
+private fun VideoDetails(video: VideoModel) {
     Row(
         verticalAlignment = Alignment.Top,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -102,30 +103,24 @@ private fun videoDetails(video: VideoModel) {
             .fillMaxWidth()
             .padding(horizontal = 10.dp, vertical = 12.dp)
     ) {
-        Row {
-            Column {
-                Text(
-                    text = video.title,
-                    style = MediaFont.lexendDeca(
-                        size = FontType.Regular,
-                        type = MediaFont.LexendDeca.Medium
-                    ),
-                    color = MyApplicationTheme.colors.white,
-                    modifier = Modifier.padding(horizontal = 4.sdp)
-                )
-                Spacer(modifier = Modifier.height(2.sdp))
-                Text(
-                    text = "${video.subtitle} - ${video.rating} views - ${video.date}",
-                    style = MediaFont.lexendDeca(
-                        size = FontType.Small,
-                        type = MediaFont.LexendDeca.Regular
-                    ),
-                    color = MyApplicationTheme.colors.secondaryText,
-                    modifier = Modifier.padding(horizontal = 4.sdp),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
+        Column {
+            Text(
+                text = video.title,
+                style = MediaFont.lexendDeca(size = FontType.Regular, type = MediaFont.LexendDeca.Medium),
+                color = MyApplicationTheme.colors.white,
+                modifier = Modifier.padding(horizontal = 4.sdp)
+            )
+
+            Spacer(modifier = Modifier.height(2.sdp))
+
+            Text(
+                text = "${video.subtitle} - ${video.rating} views - ${video.date}",
+                style = MediaFont.lexendDeca(size = FontType.Small, type = MediaFont.LexendDeca.Regular),
+                color = MyApplicationTheme.colors.secondaryText,
+                modifier = Modifier.padding(horizontal = 4.sdp),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
         }
 
         Icon(
@@ -135,6 +130,7 @@ private fun videoDetails(video: VideoModel) {
         )
     }
 }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TopBarYouTube() {
@@ -147,7 +143,7 @@ private fun TopBarYouTube() {
             )
         },
         actions = {
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { /* TODO: Handle notifications */ }) {
                 Icon(
                     imageVector = Icons.Outlined.Notifications,
                     contentDescription = null,
@@ -155,7 +151,7 @@ private fun TopBarYouTube() {
                     modifier = Modifier.size(20.sdp)
                 )
             }
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { /* TODO: Handle search */ }) {
                 Icon(
                     imageVector = Icons.Rounded.Search,
                     contentDescription = null,

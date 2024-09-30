@@ -43,43 +43,61 @@ fun HomeVideoSection(
             .fillMaxWidth()
             .padding(horizontal = 12.sdp),
         verticalArrangement = Arrangement.spacedBy(16.sdp),
-        horizontalAlignment = Alignment.Start,
+        horizontalAlignment = Alignment.Start
     ) {
-        Text(
-            text = title,
-            style = MediaFont.lexendDeca(
-                size = FontType.SubHeading,
-                type = MediaFont.LexendDeca.Medium
-            ),
-            fontSize = 14.ssp,
-            fontWeight = FontWeight.Bold,
-            color = MyApplicationTheme.colors.white,
-            modifier = Modifier,
-        )
+        SectionTitle(title)
 
         LazyRow(
-            modifier = Modifier
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.spacedBy(10.sdp),
+            horizontalArrangement = Arrangement.spacedBy(10.sdp)
         ) {
             itemsIndexed(data) { _, item ->
-                Card(shape = RoundedCornerShape(7.sdp)) {
-                    FromRemote(
-                        painterResource = item,
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .width(width)
-                            .height(height)
-                            .background(MyApplicationTheme.colors.border)
-                            .pointerInput(Unit) {
-                                detectTapGestures { _ ->
-                                    navigator.goToVideoPlayerScreen(MockData().mockData.random(), MockData().mockData)
-                                }
-                            }
-                    )
-                }
+                VideoCard(
+                    imageResource = item,
+                    width = width,
+                    height = height,
+                    onClick = {
+                        navigator.goToVideoPlayerScreen(MockData().mockData.random(), MockData().mockData)
+                    }
+                )
             }
         }
+    }
+}
+
+@Composable
+private fun SectionTitle(title: String) {
+    Text(
+        text = title,
+        style = MediaFont.lexendDeca(
+            size = FontType.SubHeading,
+            type = MediaFont.LexendDeca.Medium
+        ),
+        fontSize = 14.ssp,
+        fontWeight = FontWeight.Bold,
+        color = MyApplicationTheme.colors.white
+    )
+}
+
+@Composable
+private fun VideoCard(
+    imageResource: String,
+    width: Dp,
+    height: Dp,
+    onClick: () -> Unit
+) {
+    Card(shape = RoundedCornerShape(7.sdp)) {
+        FromRemote(
+            painterResource = imageResource,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .width(width)
+                .height(height)
+                .background(MyApplicationTheme.colors.border)
+                .pointerInput(Unit) {
+                    detectTapGestures { onClick() }
+                }
+        )
     }
 }

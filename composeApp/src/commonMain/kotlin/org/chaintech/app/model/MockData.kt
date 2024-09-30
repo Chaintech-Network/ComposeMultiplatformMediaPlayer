@@ -52,7 +52,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/aquaman_3x4-1685448020016.jpg",
                 title = "Big Buck Bunny",
                 duration = "9 min 56 s",
-                rating = "4"
+                rating = "4",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/inception-tv-1697699284926.jpg"
             ),
             VideoModel(
                 id = "2",
@@ -62,7 +63,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1707191348650.jpg",
                 title = "Elephant Dream",
                 duration = "10 min 53 s",
-                rating = "5"
+                rating = "5",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/mad-max--fury-road--tv-1698657374548.jpg"
             ),
             VideoModel(
                 id = "3",
@@ -72,7 +74,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/dunkirk-3x4-1685712551831.jpg",
                 title = "For Bigger Blazes",
                 duration = "14 s",
-                rating = "4.5"
+                rating = "4.5",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/godzilla-king-of-the-monsterstv-1697885255069.jpg"
             ),
             VideoModel(
                 id = "4",
@@ -82,7 +85,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/hp6_3x4-1687867758365.jpg",
                 title = "For Bigger Escape",
                 duration = "15 s",
-                rating = "3"
+                rating = "3",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/evil-dead-rise-tv-2-1697432060944.jpg"
             ),
             VideoModel(
                 id = "5",
@@ -92,7 +96,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1708145297782.jpg",
                 title = "For Bigger Fun",
                 duration = "1 min",
-                rating = "5"
+                rating = "5",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/puss-in-boots-tv-1696331422101.jpg"
             ),
             VideoModel(
                 id = "6",
@@ -102,7 +107,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/hangover_3x4-1686200517765.jpg",
                 title = "For Bigger Joyrides",
                 duration = "15 s",
-                rating = "4"
+                rating = "4",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1717431474775.jpg"
             ),
             VideoModel(
                 id = "7",
@@ -112,7 +118,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/theintern-3x4-1686484570836.jpg",
                 title = "For Bigger Meltdowns",
                 duration = "15 s",
-                rating = "4"
+                rating = "4",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/the-dark-knight-tv-1696338828687.jpg"
             ),
             VideoModel(
                 id = "8",
@@ -122,7 +129,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/funnypeople-3x4-1686899522715.jpg",
                 title = "Sintel",
                 duration = "14 min 47 s",
-                rating = "4"
+                rating = "4",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/flash-tv-1699991069563.jpg"
             ),
             VideoModel(
                 id = "9",
@@ -132,7 +140,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1701247349405.jpg",
                 title = "Subaru Outback On Street And Dirt",
                 duration = "2 hr 10 min",
-                rating = "4"
+                rating = "4",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1714658980641.jpg"
             ),
             VideoModel(
                 id = "10",
@@ -142,7 +151,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/oppenheimer-3x4-1712046716651.jpg",
                 title = "Tears of Steel",
                 duration = "2 hr 10 min",
-                rating = "4"
+                rating = "4",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1703659873046.jpg"
             ),
             VideoModel(
                 id = "11",
@@ -152,7 +162,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/shazam-fury-of-the-gods-3x4-1698688392769.jpg",
                 title = "Volkswagen GTI Review",
                 duration = "2 hr 10 min",
-                rating = "4"
+                rating = "4",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-tv-1723182567870.jpg"
             ),
             VideoModel(
                 id = "12",
@@ -162,7 +173,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1709006719984.jpg",
                 title = "We Are Going On Bullrun",
                 duration = "2 hr 10 min",
-                rating = "4"
+                rating = "4",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_512/v3Storage/assets/kong-skull-island-mobile-1696657717045.jpg"
             ),
             VideoModel(
                 id = "13",
@@ -172,7 +184,8 @@ class MockData {
                 thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1717082469138.jpg",
                 title = "What care can you get for a grand?",
                 duration = "1 hr 10 min",
-                rating = "4"
+                rating = "4",
+                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_512/v3Storage/assets/aquaman-mobile-1696657559914.jpg"
             ),
         )
 
@@ -388,7 +401,7 @@ class MockData {
         VideoModel(
             id = "1",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-THE-EXPLORERS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/5d912b11-fc13-4721-bd2b-f8bd404e7628/0.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-THE-EXPLORERS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/2c13f493-2fa0-4b40-b7e0-1f980ec24e87/1.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/ggdzvt.png",
             title = "The Explorers"
@@ -396,7 +409,7 @@ class MockData {
         VideoModel(
             id = "2",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-SCIFI-WORLD-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/a985e052-6868-4365-ac45-52afe9008b25/070e2ad5-67f6-4682-b090-00606822ba8a/0.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-SCIFI-WORLD-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/a985e052-6868-4365-ac45-52afe9008b25/9710f472-a853-404d-9437-a14fad18e013/1.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/oxsgsi.png",
             title = "Scifi World"
@@ -404,7 +417,7 @@ class MockData {
         VideoModel(
             id = "3",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-HERITAGE-ENG_yuppfast/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/e4523706-f2a8-4b0f-b081-40fe59a46f81/b75f8697-e26d-4aea-ae95-5cb04d413d6d/2.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-HERITAGE-ENG_yuppfast/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/e4523706-f2a8-4b0f-b081-40fe59a46f81/29d25823-2c21-4977-83d5-84833e7329b7/1.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/fndjia.png",
             title = "Heritage"
@@ -412,7 +425,7 @@ class MockData {
         VideoModel(
             id = "4",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-KIDDO-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/5bcf9d24-04f2-401d-a93f-7af54f29461a/8d4a8989-0540-42d4-9643-55325d420374/2.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-KIDDO-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/5bcf9d24-04f2-401d-a93f-7af54f29461a/f270d3f1-98e5-47aa-90a6-8c3db345a633/1.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/kiddo.png",
             title = "Kiddo"
@@ -420,10 +433,10 @@ class MockData {
         VideoModel(
             id = "5",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-XTREM-SPORTS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/e0b81a5c-6ab5-48cd-aaa9-f82de4ab5bf9/b0ae5aed-10bf-459f-94c8-38c50e75e289/2.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-FIGHT-TV-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/70e45fc8-1f6c-4492-ac26-9868f70f4e02/3abecc3d-6e98-467e-adf1-2ed7e62ba84a/1.m3u8",
             subtitle = "",
-            thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/xtrem-sports.png",
-            title = "Xtrem sports"
+            thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/fight-tv.png",
+            title = "Fight TV"
         )
     ).reversed()
 
@@ -434,7 +447,7 @@ class MockData {
         }.shuffled()
     }
     fun topBannerData(): List<VideoModel> {
-        return mockData.shuffled().take(5)
+        return mockData.take(10).shuffled().take(5)
     }
 
     fun hotRightNow(): List<String> {

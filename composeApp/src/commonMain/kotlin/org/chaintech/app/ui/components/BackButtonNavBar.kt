@@ -38,40 +38,45 @@ fun BackButtonNavBar(
             ),
         verticalArrangement = Arrangement.Top
     ) {
-        Box(
+        BackButtonContainer(onBackButtonClick)
+    }
+}
+
+@Composable
+private fun BackButtonContainer(onBackButtonClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Brush.verticalGradient(colors = listOf(Color.Transparent, Color.Transparent)))
+    ) {
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(
-                    brush = Brush.verticalGradient(
-                        colors = listOf(Color.Transparent, Color.Transparent),
-                    )
-                )
+                .padding(horizontal = 16.sdp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.sdp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Box(modifier = Modifier
-                    .padding(top = 8.sdp)
-                    .size(30.sdp)
-                    .background(Color.Black.copy(alpha = 0.3f), shape = CircleShape)
-                ) {
-                    FromLocalDrawable(
-                        painterResource = Res.drawable.ic_back_button,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(all = 5.sdp)
-                            .pointerInput(Unit) {
-                                detectTapGestures { _ ->
-                                    onBackButtonClick()
-                                }
-                            }
-                    )
-                }
-            }
+            BackButton(onBackButtonClick)
         }
+    }
+}
+
+@Composable
+private fun BackButton(onBackButtonClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .padding(top = 8.sdp)
+            .size(30.sdp)
+            .background(Color.Black.copy(alpha = 0.3f), shape = CircleShape)
+            .pointerInput(Unit) {
+                detectTapGestures { onBackButtonClick() }
+            }
+    ) {
+        FromLocalDrawable(
+            painterResource = Res.drawable.ic_back_button,
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(all = 5.sdp)
+        )
     }
 }

@@ -4,11 +4,21 @@ kotlin = "2.0.20"
 compose = "1.7.0-beta02"
 agp = "8.5.2"
 androidx-activityCompose = "1.9.2"
+voyager_version = "1.0.0"
+sdp_ssp_version = "1.0.4"
+image_loader_version = "1.8.1"
+media-player-version = "1.0.22"
 
 [libraries]
 
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 androidx-core = { group = "androidx.core", name = "core", version = "1.13.1" }
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager_version" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager_version" }
+voyager-tab = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager_version" }
+sdp-ssp = { module = "network.chaintech:sdp-ssp-compose-multiplatform", version.ref = "sdp_ssp_version" }
+image-loader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "image_loader_version" }
+media-player = { module = "network.chaintech:compose-multiplatform-media-player", version.ref = "media-player-version" }
 
 [plugins]
 

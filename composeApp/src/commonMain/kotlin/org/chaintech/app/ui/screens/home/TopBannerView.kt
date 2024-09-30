@@ -18,65 +18,58 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import chaintech.videoplayer.util.isDesktop
+import network.chaintech.sdpcomposemultiplatform.sdp
 import org.chaintech.app.model.MockData
 import org.chaintech.app.model.VideoModel
 import org.chaintech.app.navigation.LocalNavigation
 import org.chaintech.app.theme.MyApplicationTheme
 import org.chaintech.app.ui.components.TopBannerCarousel
 import org.chaintech.app.utility.FromRemote
-import network.chaintech.sdpcomposemultiplatform.sdp
 
 @Composable
 fun TopView() {
     val navigator = LocalNavigation.current
+    val videoList = MockData().topBannerData()
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 11.sdp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start,
+        horizontalAlignment = Alignment.Start
     ) {
-        val videoList = MockData().topBannerData()
-
-        TopBannerCarousel(pageCount = videoList.size, content = { index ->
+        TopBannerCarousel(pageCount = videoList.size) { index ->
             val item = videoList[index]
             TopMovieBannerCarouselView(item, onClickEvent = {
                 navigator.goToVideoPlayerScreen(item, MockData().mockData)
             })
-        })
+        }
     }
 }
 
 @Composable
 private fun TopMovieBannerCarouselView(item: VideoModel, onClickEvent: () -> Unit) {
     val roundedCornerShape = RoundedCornerShape(7.sdp)
+    val heightValue = if (isDesktop()) 160.sdp else 360.sdp
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(360.sdp)
-            .background(
-                color = Color.Transparent,
-                shape = roundedCornerShape
-            )
-            .border(
-                width = 1.sdp,
-                color = MyApplicationTheme.colors.border,
-                shape = roundedCornerShape
-            )
-            .clip(RoundedCornerShape(14.sdp))
+            .height(heightValue)
+            .background(color = Color.Transparent, shape = roundedCornerShape)
+            .border(width = 1.sdp, color = MyApplicationTheme.colors.border, shape = roundedCornerShape)
+            .clip(roundedCornerShape)
             .pointerInput(Unit) {
-                detectTapGestures { _ ->
-                    onClickEvent()
-                }
+                detectTapGestures { onClickEvent() }
             }
     ) {
         FromRemote(
-            painterResource = item.thumb,
+            painterResource = if (isDesktop()) item.thumbL else item.thumb,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxSize()
-                .background(color = Color.Transparent, shape = roundedCornerShape)
-                .clip(roundedCornerShape)
+                .clip(roundedCornerShape) // Clip the image to the shape of the box
         )
     }
 }

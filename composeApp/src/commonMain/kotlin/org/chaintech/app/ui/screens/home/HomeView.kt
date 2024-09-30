@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
+import chaintech.videoplayer.util.isDesktop
 import org.chaintech.app.model.MockData
 import org.chaintech.app.theme.MyApplicationTheme
 import org.chaintech.app.ui.components.AddBanner
@@ -31,92 +32,60 @@ fun HomeView() {
         modifier = Modifier
             .fillMaxSize()
             .background(
-                brush = Brush.verticalGradient(
-                    colors = MyApplicationTheme.colors.gradientPrimary,
-                )
-            ),
+                brush = Brush.verticalGradient(colors = MyApplicationTheme.colors.gradientPrimary)
+            )
     ) {
         item {
             Column(
-                modifier = Modifier
-                    .fillMaxSize(),
+                modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(16.sdp)
             ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(
-                            brush = Brush.linearGradient(
-                                colors = MyApplicationTheme.colors.homeTopGradient
-                            )
-                        )
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .padding(top = getSafeAreaSize().top.dp)
-                            .fillMaxSize()
-                    ) {
-                        TopView()
-                    }
-                }
+                TopSection()
 
-                LiveStreamSection(
-                    title = "Live Stream \uD83D\uDD34"
-                )
+                LiveStreamSection(title = "Live Stream \uD83D\uDD34")
 
                 AddBanner(
                     title = "Subscribe Now",
                     image = dataStore.topAddBanner
                 )
 
-                LocalVideoSection(
-                    title = "Local Videos \uD83D\uDD25"
-                )
+                LocalVideoSection(title = "Local Videos \uD83D\uDD25")
 
-                HomeVideoSection(
-                    data = dataStore.hotRightNow(),
-                    title = "Hot Right Now"
-                )
-
-                HomeVideoSection(
-                    data = dataStore.machoMix(),
-                    title = "Macho Mix: Must Watch Movies"
-                )
-
-                HomeVideoSection(
-                    data = dataStore.popularInKids(),
-                    title = "Popular In Kids & Family"
-                )
-
-                HomeVideoSection(
-                    data = dataStore.actionAdventure(),
-                    title = "Action & Adventure"
-                )
+                HomeVideoSection(data = dataStore.hotRightNow(), title = "Hot Right Now")
+                HomeVideoSection(data = dataStore.machoMix(), title = "Macho Mix: Must Watch Movies")
+                HomeVideoSection(data = dataStore.popularInKids(), title = "Popular In Kids & Family")
+                HomeVideoSection(data = dataStore.actionAdventure(), title = "Action & Adventure")
 
                 AddBanner(
                     title = "Motu Patlu: Streaming Now",
                     image = dataStore.bottomAddBanner
                 )
 
-                HomeVideoSection(
-                    data = dataStore.hollywoodFinest(),
-                    title = "Hollywood's Finest"
-                )
+                HomeVideoSection(data = dataStore.hollywoodFinest(), title = "Hollywood's Finest")
+                HomeVideoSection(data = dataStore.southDubbed(), title = "South Dubbed Hits")
+                HomeVideoSection(data = dataStore.globalHits(), title = "Global Hits In Hindi")
 
-                HomeVideoSection(
-                    data = dataStore.southDubbed(),
-                    title = "South Dubbed Hits"
-                )
-
-                HomeVideoSection(
-                    data = dataStore.globalHits(),
-                    title = "Global Hits In Hindi"
-                )
-
-                Spacer(modifier = Modifier.height(56.sdp))
+                Spacer(modifier = Modifier.height(if (isDesktop()) { 10.sdp } else { 56.sdp }))
             }
         }
     }
 }
 
-
+@Composable
+private fun TopSection() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                brush = Brush.linearGradient(colors = MyApplicationTheme.colors.homeTopGradient)
+            )
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(top = getSafeAreaSize().top.dp)
+                .fillMaxSize()
+        ) {
+            TopView()
+        }
+    }
+}

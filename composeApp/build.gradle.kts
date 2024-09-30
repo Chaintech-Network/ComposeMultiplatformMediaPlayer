@@ -1,3 +1,4 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -18,6 +19,8 @@ kotlin {
             }
         }
     }
+
+    jvm()
 
     listOf(
         iosX64(),
@@ -44,14 +47,13 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
-            implementation("cafe.adriel.voyager:voyager-navigator:1.0.0")
-            implementation("cafe.adriel.voyager:voyager-transitions:1.0.0")
-            implementation("cafe.adriel.voyager:voyager-tab-navigator:1.0.0")
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.transitions)
+            implementation(libs.voyager.tab)
+            implementation(libs.sdp.ssp)
+            implementation(libs.image.loader)
 
-            implementation("network.chaintech:sdp-ssp-compose-multiplatform:1.0.1")
-            api("io.github.qdsfdhvh:image-loader:1.8.1")
-
-            implementation("network.chaintech:compose-multiplatform-media-player:1.0.21")
+            implementation(libs.media.player)
         }
 
 
@@ -64,6 +66,9 @@ kotlin {
         iosMain.dependencies {
         }
 
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+        }
     }
 }
 
@@ -92,5 +97,16 @@ android {
     }
     buildFeatures {
         compose = true
+    }
+}
+compose.desktop {
+    application {
+        mainClass = "MainKt"
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "org.chaintech.app.desktopApp"
+            packageVersion = "1.0.0"
+        }
     }
 }

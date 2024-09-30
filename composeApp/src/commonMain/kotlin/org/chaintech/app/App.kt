@@ -1,10 +1,14 @@
 package org.chaintech.app
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -25,6 +29,8 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabDisposable
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import cafe.adriel.voyager.transitions.SlideTransition
+import chaintech.videoplayer.util.isDesktop
+import network.chaintech.sdpcomposemultiplatform.sdp
 import org.chaintech.app.font.FontType
 import org.chaintech.app.font.MediaFont
 import org.chaintech.app.navigation.LocalNavigation
@@ -35,16 +41,22 @@ import org.chaintech.app.theme.MyApplicationTheme
 import org.chaintech.app.ui.screens.tabsview.HomeTab
 import org.chaintech.app.ui.screens.tabsview.MusicTab
 import org.chaintech.app.ui.screens.tabsview.ReelsTab
+import org.chaintech.app.ui.screens.tabsview.YoutubeTab
 import org.chaintech.app.utility.BottomNavigationBarHeight
 import org.chaintech.app.utility.getSafeAreaSize
-import network.chaintech.sdpcomposemultiplatform.sdp
-import org.chaintech.app.ui.screens.tabsview.YoutubeTab
 
 @Composable
 fun MainView() {
+    val tabs: List<Tab> = if (isDesktop()) {
+        listOf(HomeTab, MusicTab)
+    } else {
+        listOf(HomeTab, ReelsTab, MusicTab, YoutubeTab)
+    }
+
     MyApplicationTheme {
         val navigation = remember { NavigationProvider() }
         val screenContainer = remember { ScreenContainerProvider() }
+
         CompositionLocalProvider(
             LocalScreenContainer provides screenContainer,
             LocalNavigation provides navigation,
@@ -54,7 +66,7 @@ fun MainView() {
                 tabDisposable = {
                     TabDisposable(
                         navigator = it,
-                        tabs = listOf(HomeTab, ReelsTab, MusicTab, YoutubeTab)
+                        tabs = tabs
                     )
                 }
             ) {
@@ -76,21 +88,52 @@ class HomeScreen : Screen {
                 .padding(bottom = getSafeAreaSize().bottom.dp),
             scaffoldState = rememberScaffoldState(),
             backgroundColor = MyApplicationTheme.colors.bottomTabBarColor,
-            bottomBar = {
-                BottomNavigation(
-                    modifier = Modifier
-                        .height(BottomNavigationBarHeight),
-                    contentColor = MyApplicationTheme.colors.bottomTabBarColor,
-                    backgroundColor = MyApplicationTheme.colors.bottomTabBarColor,
-                ) {
-                    TabNavigationItem(tab = HomeTab)
-                    TabNavigationItem(tab = ReelsTab)
-                    TabNavigationItem(tab = MusicTab)
-                    TabNavigationItem(tab = YoutubeTab)
-                }
-            },
+            bottomBar = { if (!isDesktop()) BottomNavigationBar() }
         ) {
-            CurrentTab()
+            Row {
+                if (isDesktop()) {
+                    DesktopNavigation()
+                }
+                CurrentTab()
+            }
+        }
+    }
+
+    @Composable
+    private fun BottomNavigationBar() {
+        BottomNavigation(
+            modifier = Modifier.height(BottomNavigationBarHeight),
+            contentColor = MyApplicationTheme.colors.bottomTabBarColor,
+            backgroundColor = MyApplicationTheme.colors.bottomTabBarColor,
+        ) {
+            TabNavigationItem(tab = HomeTab)
+            TabNavigationItem(tab = ReelsTab)
+            TabNavigationItem(tab = MusicTab)
+            TabNavigationItem(tab = YoutubeTab)
+        }
+    }
+
+    @Composable
+    private fun DesktopNavigation() {
+        Column(
+            modifier = Modifier.width(100.dp).fillMaxHeight()
+        ) {
+            BottomNavigation(
+                modifier = Modifier
+                    .height(BottomNavigationBarHeight),
+                contentColor = MyApplicationTheme.colors.bottomTabBarColor,
+                backgroundColor = MyApplicationTheme.colors.bottomTabBarColor,
+            ) {
+                TabNavigationItem(tab = HomeTab)
+            }
+            BottomNavigation(
+                modifier = Modifier
+                    .height(BottomNavigationBarHeight),
+                contentColor = MyApplicationTheme.colors.bottomTabBarColor,
+                backgroundColor = MyApplicationTheme.colors.bottomTabBarColor,
+            ) {
+                TabNavigationItem(tab = MusicTab)
+            }
         }
     }
 }
@@ -99,17 +142,16 @@ class HomeScreen : Screen {
 private fun RowScope.TabNavigationItem(tab: Tab) {
     val tabNavigator = LocalTabNavigator.current
     val title = tab.options.title
+
     BottomNavigationItem(
-        modifier = Modifier
-            .background(MyApplicationTheme.colors.bottomTabBarColor),
+        modifier = Modifier.background(MyApplicationTheme.colors.bottomTabBarColor),
         alwaysShowLabel = true,
         label = {
             Text(
-                modifier = Modifier
-                    .padding(bottom = 4.sdp),
+                modifier = Modifier.padding(bottom = 4.sdp),
                 text = title,
                 style = MediaFont.lexendDeca(
-                    size = FontType.Small,
+                    size = if (isDesktop()) FontType.ExtraSmall else FontType.Small,
                     type = MediaFont.LexendDeca.Regular
                 ),
             )
@@ -123,7 +165,7 @@ private fun RowScope.TabNavigationItem(tab: Tab) {
                     contentDescription = tab.options.title,
                     modifier = Modifier
                         .padding(top = 10.sdp, bottom = 5.sdp)
-                        .size(20.sdp)
+                        .size(if (isDesktop()) 14.sdp else 20.sdp)
                 )
             }
         },

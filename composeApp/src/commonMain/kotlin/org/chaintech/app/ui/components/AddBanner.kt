@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -26,36 +27,47 @@ import network.chaintech.sdpcomposemultiplatform.ssp
 fun AddBanner(
     title: String,
     image: String,
-    padding: Dp = 12.sdp) {
+    padding: Dp = 12.sdp
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = padding),
         verticalArrangement = Arrangement.spacedBy(16.sdp),
-        horizontalAlignment = Alignment.Start,
-
+        horizontalAlignment = Alignment.Start
     ) {
-        Text(
-            text = title,
-            style = MediaFont.lexendDeca(
-                size = FontType.SubHeading,
-                type = MediaFont.LexendDeca.Medium
-            ),
-            fontSize = 14.ssp,
-            fontWeight = FontWeight.Bold,
-            color = MyApplicationTheme.colors.white,
-            modifier = Modifier,
-        )
+        BannerTitle(title)
+        BannerImage(image)
+    }
+}
 
-        Card(shape = RoundedCornerShape(7.sdp)) {
-            FromRemote(
-                painterResource = image,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(104.sdp)
-                    .background(MyApplicationTheme.colors.border)
-            )
-        }
+@Composable
+private fun BannerTitle(title: String) {
+    Text(
+        text = title,
+        style = MediaFont.lexendDeca(
+            size = FontType.SubHeading,
+            type = MediaFont.LexendDeca.Medium
+        ),
+        fontSize = 14.ssp,
+        fontWeight = FontWeight.Bold,
+        color = MyApplicationTheme.colors.white
+    )
+}
+
+@Composable
+private fun BannerImage(image: String) {
+    Card(
+        shape = RoundedCornerShape(7.sdp),
+        modifier = Modifier
+            .background(MyApplicationTheme.colors.border, shape = RoundedCornerShape(7.sdp))
+    ) {
+        FromRemote(
+            painterResource = image,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(104.sdp)
+        )
     }
 }

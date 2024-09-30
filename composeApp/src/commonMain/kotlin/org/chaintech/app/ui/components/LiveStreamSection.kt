@@ -36,50 +36,68 @@ fun LiveStreamSection(
     height: Dp = 80.sdp
 ) {
     val navigator = LocalNavigation.current
-    val dataStore= MockData().liveStreamData
+    val dataStore = MockData().liveStreamData
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 12.sdp),
         verticalArrangement = Arrangement.spacedBy(16.sdp),
-        horizontalAlignment = Alignment.Start,
+        horizontalAlignment = Alignment.Start
     ) {
-        Text(
-            text = title,
-            style = MediaFont.lexendDeca(
-                size = FontType.Heading,
-                type = MediaFont.LexendDeca.Medium
-            ),
-            fontSize = 16.ssp,
-            fontWeight = FontWeight.Bold,
-            color = MyApplicationTheme.colors.white,
-            modifier = Modifier,
-        )
+        SectionTitle(title)
 
         LazyRow(
-            modifier = Modifier
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.spacedBy(10.sdp),
+            horizontalArrangement = Arrangement.spacedBy(10.sdp)
         ) {
             itemsIndexed(dataStore) { _, item ->
-                Card(shape = RoundedCornerShape(7.sdp)) {
-                    FromRemote(
-                        painterResource = item.thumb,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier
-                            .width(width)
-                            .height(height)
-                            .background(MyApplicationTheme.colors.border)
-                            .pointerInput(Unit) {
-                                detectTapGestures { _ ->
-                                    navigator.goToVideoPlayerScreen(item, dataStore)
-                                }
-                            }
-                    )
-                }
+                LiveStreamCard(
+                    imageResource = item.thumb,
+                    width = width,
+                    height = height,
+                    onClick = {
+                        navigator.goToVideoPlayerScreen(item, dataStore)
+                    }
+                )
             }
         }
+    }
+}
+
+@Composable
+private fun SectionTitle(title: String) {
+    Text(
+        text = title,
+        style = MediaFont.lexendDeca(
+            size = FontType.Heading,
+            type = MediaFont.LexendDeca.Medium
+        ),
+        fontSize = 16.ssp,
+        fontWeight = FontWeight.Bold,
+        color = MyApplicationTheme.colors.white
+    )
+}
+
+@Composable
+private fun LiveStreamCard(
+    imageResource: String,
+    width: Dp,
+    height: Dp,
+    onClick: () -> Unit
+) {
+    Card(shape = RoundedCornerShape(7.sdp)) {
+        FromRemote(
+            painterResource = imageResource,
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .width(width)
+                .height(height)
+                .background(MyApplicationTheme.colors.border)
+                .pointerInput(Unit) {
+                    detectTapGestures { onClick() }
+                }
+        )
     }
 }
