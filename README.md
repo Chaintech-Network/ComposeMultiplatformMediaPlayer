@@ -1,7 +1,7 @@
 # Compose Multiplatform Media Player
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-multiplatform-media-player.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-multiplatform-media-player)
 [![Kotlin](https://img.shields.io/badge/kotlin-v2.0.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.7.0_beta02-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.7.0_rc01-blue)](https://github.com/JetBrains/compose-multiplatform)
 [![License](https://img.shields.io/github/license/Chaintech-Network/ComposeMultiplatformMediaPlayer)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
@@ -12,8 +12,9 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
 
-## 🎉 What's New in Version 1.0.22
-🖥️ Desktop support added
+## 🎉 What's New in Version 1.0.23
+- 🚀 **Compose 1.7.0-rc01 Compatibility:** Now fully compatible with the latest Compose 1.7.0-rc01, ensuring smooth integration with your projects.
+- 🔧 **New videoFitMode Configuration:** Added a flexible configuration for setting the default video screen mode to either Fit or Fill, offering better control over your video playback experience.
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
@@ -40,7 +41,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.22")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.23")
 }
 ```
 💡 **Note:** For desktop video playback support, VLC player must be installed on your system.
@@ -136,12 +137,13 @@ You can customize various aspects of the media player:
 | isPause                                               | Manage the pause/resume state of the player.                                                                                    |
 | pauseCallback                                         | Callback function triggered when the pause/resume state changes.                                                                |
 | isScreenResizeEnabled                                 | Enable or disable screen resize (Fit/Fill) functionality.                                                                       |
-| bufferCallback                                        | Callback function triggered when Buffer state changes.                                                                          |                                                                      |
-| didEndVideo                                           | Callback function triggered when current video end.                                                                             |                                                                      |
-| loop                                                  | Enable or disable video playing in loop.                                                                                        |                                                                      |
+| bufferCallback                                        | Callback function triggered when Buffer state changes.                                                                          |                                                                      
+| didEndVideo                                           | Callback function triggered when current video end.                                                                             |                                                                      
+| loop                                                  | Enable or disable video playing in loop.                                                                                        |                                                                      
 | showDesktopControls                                   | Hide/Show Desktop video player advance controls                                                                                 |
 | loadingIndicatorColor                                 | Customize the color of the loading indicator.                                                                                   |
 | loaderView                                            | Custom loader for showing loading state.                                                                                        |
+| videoFitMode                                          | Default video screen mode to either Fit or Fill.                                                                                |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   
