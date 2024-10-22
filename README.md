@@ -12,8 +12,11 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
 
-## 🎉 What's New in Version 1.0.24
-🚀 **Compose 1.7.0 Compatibility:** Now fully compatible with the latest Compose 1.7.0, ensuring smooth integration with your projects.
+## 🎉 What's New in Version 1.0.25
+📽️ **Video Configurations:**
+- ⏳ **totalTimeInSeconds:** Returns the total duration of the video in seconds.
+- ⌛ **currentTimeInSeconds:** Retrieves the current playback time of the video in seconds.
+- 🎯 **startTimeInSeconds:** Allows video playback to start from a specific time in seconds.
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
@@ -40,7 +43,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.24")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.25")
 }
 ```
 💡 **Note:** For desktop video playback support, VLC player must be installed on your system.
@@ -143,6 +146,9 @@ You can customize various aspects of the media player:
 | loadingIndicatorColor                                 | Customize the color of the loading indicator.                                                                                   |
 | loaderView                                            | Custom loader for showing loading state.                                                                                        |
 | videoFitMode                                          | Default video screen mode to either Fit or Fill.                                                                                |
+| totalTimeInSeconds                                    | Callback function that returns the total duration of the video in seconds.                                                      |
+| currentTimeInSeconds                                  | Callback function that returns the current playback time of the video in seconds.                                               |
+| startTimeInSeconds                                    | Allows setting a specific starting point for the video, defined in seconds.                                                     |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   
