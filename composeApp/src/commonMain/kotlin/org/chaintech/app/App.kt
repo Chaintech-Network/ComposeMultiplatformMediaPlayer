@@ -48,7 +48,7 @@ import org.chaintech.app.utility.getSafeAreaSize
 @Composable
 fun MainView() {
     val tabs: List<Tab> = if (isDesktop()) {
-        listOf(HomeTab, MusicTab)
+        listOf(HomeTab, MusicTab, YoutubeTab)
     } else {
         listOf(HomeTab, ReelsTab, MusicTab, YoutubeTab)
     }
@@ -116,7 +116,7 @@ class HomeScreen : Screen {
     @Composable
     private fun DesktopNavigation() {
         Column(
-            modifier = Modifier.width(100.dp).fillMaxHeight()
+            modifier = Modifier.width(50.sdp).fillMaxHeight()
         ) {
             BottomNavigation(
                 modifier = Modifier
@@ -133,6 +133,15 @@ class HomeScreen : Screen {
                 backgroundColor = MyApplicationTheme.colors.bottomTabBarColor,
             ) {
                 TabNavigationItem(tab = MusicTab)
+            }
+
+            BottomNavigation(
+                modifier = Modifier
+                    .height(BottomNavigationBarHeight),
+                contentColor = MyApplicationTheme.colors.bottomTabBarColor,
+                backgroundColor = MyApplicationTheme.colors.bottomTabBarColor,
+            ) {
+                TabNavigationItem(tab = YoutubeTab)
             }
         }
     }

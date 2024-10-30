@@ -8,28 +8,26 @@
 ![badge-ios](http://img.shields.io/badge/platform-ios-FF375F.svg?style=flat)
 ![badge-desktop](http://img.shields.io/badge/platform-desktop-FF9500.svg?style=flat)
 
-Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video playback, reels viewing, audio playing, YouTube video integration, and now HLS m3u8 support on iOS, Android, and Desktop platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
+Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video player, reels viewing, audio playing, YouTube video integration, and HLS m3u8 support on iOS, Android, and Desktop platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
 
-## 🎉 What's New in Version 1.0.25
-📽️ **Video Configurations:**
-- ⏳ **totalTimeInSeconds:** Returns the total duration of the video in seconds.
-- ⌛ **currentTimeInSeconds:** Retrieves the current playback time of the video in seconds.
-- 🎯 **startTimeInSeconds:** Allows video playback to start from a specific time in seconds.
+## 🎉 What's New in Version 1.0.26
+- 🖥️ **YouTube Support for Desktop:** Seamlessly enjoy YouTube playback on desktop platforms!
+- 📲 **Video Caching:** Enhanced playback experience with optimized video caching on Android devices!
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
 
-**Video Playback:** Effortlessly play videos in your app with high performance and reliability.
+**Video Player:** Effortlessly play videos in your app with high performance and reliability.
 
 **HLS m3u8 Playback:** Stream live and on-demand content using the HLS .m3u8 format.
 
-**YouTube Playback:** Integrate YouTube videos directly into your app, with full control over playback and video state management.
+**YouTube Player:** Integrate YouTube videos directly into your app, with full control over playback and video state management.
 
 **Reel Viewing:** Enjoy reel viewing with support for horizontal and vertical scrolling.
 
-**Audio Playback:** Enjoy high-quality audio playback with customizable controls.
+**Audio Player:** Enjoy high-quality audio playback with customizable controls.
 
 **Customizable Controls:** Enable/disable pause/resume functionality and adjust the appearance and visibility of the seek bar, along with various control icons and colors.
 
@@ -43,10 +41,10 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.25")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.26")
 }
 ```
-💡 **Note:** For desktop video playback support, VLC player must be installed on your system.
+💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
 
 ## 🚨 **Compatibility Notice** 🚨
 
@@ -59,7 +57,7 @@ commonMain.dependencies {
 
 ## 🎬 Usage
 
-### 📹 Video Playback
+### 📹 Video Player
 To play videos in your app, use the VideoPlayerView composable:
 ```kotlin
 VideoPlayerView(
@@ -69,7 +67,7 @@ VideoPlayerView(
 ```
 💡 **Note:** The VideoPlayerView supports both online and local video playback. You can provide a URL for a remote video or a local file path.
 
-### ▶️ YouTube Playback
+### ▶️ YouTube Player
 To play youtube videos in your app, use the YouTubePlayerView composable:
 ```kotlin
 YouTubePlayerView(
@@ -87,7 +85,7 @@ ReelsPlayerView(
 )
 ```
 
-### 🎧 Audio Playback
+### 🎧 Audio Player
 To play audio in your app, use the AudioPlayerView composable:
 ```kotlin
 AudioPlayerView(
@@ -278,7 +276,7 @@ AudioPlayerView(
 |   AIF    |    ❌     |    ✅     |    ✅     |
 |   ALAC   |    ✅     |    ❌     |    ✅     |
 |   OGG    |    ✅     |    ❌     |    ✅     |
-| YouTube  |    ✅     |    ✅     |    ❌     |
+| YouTube  |    ✅     |    ✅     |    ✅     |
 
 ## 📖 Detailed Explanation
 For an in-depth guide and detailed explanation, check out our comprehensive Medium Blog Post.
@@ -291,7 +289,7 @@ We're committed to continuously improving and expanding the capabilities of our 
 
 ### 🌟 Upcoming Features
 - Picture-in-Picture (PiP) Mode
-- YouTube support for Desktop
+- Video Caching for iOS & Desktop
 
 ## 📄 License
 ```
