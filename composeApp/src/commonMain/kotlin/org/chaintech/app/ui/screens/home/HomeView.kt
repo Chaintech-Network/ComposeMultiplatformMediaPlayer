@@ -25,7 +25,7 @@ import org.chaintech.app.ui.components.LiveStreamSection
 import org.chaintech.app.ui.components.LocalVideoSection
 
 @Composable
-fun HomeView() {
+fun HomeScreen() {
     val dataStore = MockData()
 
     LazyColumn(
@@ -85,7 +85,7 @@ private fun TopSection() {
                 .padding(top = getSafeAreaSize().top.dp)
                 .fillMaxSize()
         ) {
-            TopView()
+            TopComponent()
         }
     }
 }

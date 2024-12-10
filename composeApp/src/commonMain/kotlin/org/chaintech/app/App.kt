@@ -38,10 +38,10 @@ import org.chaintech.app.navigation.LocalScreenContainer
 import org.chaintech.app.navigation.NavigationProvider
 import org.chaintech.app.navigation.ScreenContainerProvider
 import org.chaintech.app.theme.MyApplicationTheme
-import org.chaintech.app.ui.screens.tabsview.HomeTab
-import org.chaintech.app.ui.screens.tabsview.MusicTab
-import org.chaintech.app.ui.screens.tabsview.ReelsTab
-import org.chaintech.app.ui.screens.tabsview.YoutubeTab
+import org.chaintech.app.ui.screens.tabs.HomeTab
+import org.chaintech.app.ui.screens.tabs.MusicTab
+import org.chaintech.app.ui.screens.tabs.ReelsTab
+import org.chaintech.app.ui.screens.tabs.YoutubeTab
 import org.chaintech.app.utility.BottomNavigationBarHeight
 import org.chaintech.app.utility.getSafeAreaSize
 

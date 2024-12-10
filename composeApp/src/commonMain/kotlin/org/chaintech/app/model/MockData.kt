@@ -401,7 +401,7 @@ class MockData {
         VideoModel(
             id = "1",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-THE-EXPLORERS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/83ef2074-ee38-482c-8faf-1a1faf297446/2.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-THE-EXPLORERS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/aa0a8257-aa6d-4377-94b3-23a0bb92edc9/2.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/ggdzvt.png",
             title = "The Explorers"
@@ -409,7 +409,7 @@ class MockData {
         VideoModel(
             id = "2",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-SCIFI-WORLD-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/a985e052-6868-4365-ac45-52afe9008b25/33ae1243-ba38-476f-aca5-0783f96616d5/0.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-SCIFI-WORLD-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/a985e052-6868-4365-ac45-52afe9008b25/b3543049-eab5-477a-be1f-d7df524d183a/1.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/oxsgsi.png",
             title = "Scifi World"
@@ -417,7 +417,7 @@ class MockData {
         VideoModel(
             id = "3",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-HERITAGE-ENG_yuppfast/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/e4523706-f2a8-4b0f-b081-40fe59a46f81/66a79ab3-dd0b-4f7a-bdc7-41ff00518640/2.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-HERITAGE-ENG_yuppfast/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/e4523706-f2a8-4b0f-b081-40fe59a46f81/d4b85dcd-0d0a-4279-8136-6ca73ad778ae/2.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/fndjia.png",
             title = "Heritage"
@@ -425,7 +425,7 @@ class MockData {
         VideoModel(
             id = "4",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-KIDDO-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/5bcf9d24-04f2-401d-a93f-7af54f29461a/33283b70-ec76-4ad3-8241-26cd76ef6a08/0.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-KIDDO-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/5bcf9d24-04f2-401d-a93f-7af54f29461a/683cee21-cb14-440f-81bf-3f3f17c109fa/0.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/kiddo.png",
             title = "Kiddo"
@@ -433,7 +433,7 @@ class MockData {
         VideoModel(
             id = "5",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-FIGHT-TV-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/70e45fc8-1f6c-4492-ac26-9868f70f4e02/5d716b79-ad30-4b8b-9994-cf48290c8997/2.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-FIGHT-TV-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/70e45fc8-1f6c-4492-ac26-9868f70f4e02/c42d9e8b-9c8a-4003-83dc-11963e79f847/2.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/fight-tv.png",
             title = "Fight TV"

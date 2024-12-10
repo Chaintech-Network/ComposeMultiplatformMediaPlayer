@@ -47,7 +47,7 @@ import reelsdemo.composeapp.generated.resources.Res
 import reelsdemo.composeapp.generated.resources.youtubeLogo
 
 @Composable
-fun YoutubeContentView() {
+fun YoutubeContentScreen() {
     val videoList = MockData().youtbeMockData.shuffled()
     val navigator = LocalNavigation.current
 

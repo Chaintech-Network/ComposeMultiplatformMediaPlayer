@@ -1,18 +1,18 @@
 [versions]
 
-kotlin = "2.0.20"
-compose = "1.7.0"
-agp = "8.5.2"
+kotlin = "2.1.0"
+compose = "1.7.1"
+agp = "8.7.3"
 androidx-activityCompose = "1.9.3"
 voyager_version = "1.0.0"
 sdp_ssp_version = "1.0.4"
 image_loader_version = "1.8.1"
-media-player-version = "1.0.26"
+media-player-version = "1.0.27"
 
 [libraries]
 
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-androidx-core = { group = "androidx.core", name = "core", version = "1.13.1" }
+androidx-core = { group = "androidx.core", name = "core", version = "1.15.0" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager_version" }
 voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager_version" }
 voyager-tab = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager_version" }
@@ -27,4 +27,4 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-mavenPublish = { id = "com.vanniktech.maven.publish", version = "0.28.0" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version = "0.29.0" }

@@ -1,4 +1,4 @@
-package org.chaintech.app.ui.screens.videoplayerview
+package org.chaintech.app.ui.screens.videoplayer
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -37,7 +37,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import chaintech.videoplayer.model.PlayerConfig
-import chaintech.videoplayer.ui.video.VideoPlayerView
+import chaintech.videoplayer.ui.video.VideoPlayerComposable
 import chaintech.videoplayer.util.isDesktop
 import network.chaintech.sdpcomposemultiplatform.sdp
 import network.chaintech.sdpcomposemultiplatform.ssp
@@ -58,15 +58,15 @@ import reelsdemo.composeapp.generated.resources.icn_add
 import reelsdemo.composeapp.generated.resources.icn_download
 import reelsdemo.composeapp.generated.resources.icn_share
 
-class VideoPlayerView(private val currentVideo: VideoModel, private val videoList: List<VideoModel>) : Screen {
+class VideoPlayerScreen(private val currentVideo: VideoModel, private val videoList: List<VideoModel>) : Screen {
     @Composable
     override fun Content() {
-        VideoPlayerContentView(currentVideo, videoList)
+        VideoPlayerContent(currentVideo, videoList)
     }
 }
 
 @Composable
-private fun VideoPlayerContentView(currentVideo: VideoModel, videoList: List<VideoModel>) {
+private fun VideoPlayerContent(currentVideo: VideoModel, videoList: List<VideoModel>) {
     val navigator = LocalNavigation.current
     var video by remember { mutableStateOf(currentVideo) }
 
@@ -110,7 +110,7 @@ private fun VideoPlayerBox(video: VideoModel) {
         modifier = Modifier.fillMaxWidth(),
         contentAlignment = Alignment.TopStart
     ) {
-        VideoPlayerView(
+        VideoPlayerComposable(
             modifier = Modifier.then(
                 if (isDesktop()) Modifier.fillMaxSize() else Modifier.height(224.sdp).fillMaxWidth()
             ),
@@ -163,7 +163,7 @@ private fun videoDetails(video: VideoModel) {
                 overflow = TextOverflow.Ellipsis
             )
 
-            downLoadView()
+            downLoadComponent()
 
             Spacer(modifier = Modifier.height(8.sdp))
 
@@ -186,7 +186,7 @@ private fun videoDetails(video: VideoModel) {
 }
 
 @Composable
-private fun downLoadView() {
+private fun downLoadComponent() {
     Row(
         modifier = Modifier.padding(vertical = 12.sdp, horizontal = 4.sdp),
         verticalAlignment = Alignment.Top,

@@ -74,11 +74,11 @@ kotlin {
 
 android {
     namespace = "org.chaintech.app"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
 
         applicationId = "org.chaintech.app.androidApp"
         versionCode = 1

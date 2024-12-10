@@ -28,7 +28,7 @@ import org.chaintech.app.ui.components.TopBannerCarousel
 import org.chaintech.app.utility.FromRemote
 
 @Composable
-fun TopView() {
+fun TopComponent() {
     val navigator = LocalNavigation.current
     val videoList = MockData().topBannerData()
 
@@ -41,7 +41,7 @@ fun TopView() {
     ) {
         TopBannerCarousel(pageCount = videoList.size) { index ->
             val item = videoList[index]
-            TopMovieBannerCarouselView(item, onClickEvent = {
+            TopMovieBannerCarousel(item, onClickEvent = {
                 navigator.goToVideoPlayerScreen(item, MockData().mockData)
             })
         }
@@ -49,7 +49,7 @@ fun TopView() {
 }
 
 @Composable
-private fun TopMovieBannerCarouselView(item: VideoModel, onClickEvent: () -> Unit) {
+private fun TopMovieBannerCarousel(item: VideoModel, onClickEvent: () -> Unit) {
     val roundedCornerShape = RoundedCornerShape(7.sdp)
     val heightValue = if (isDesktop()) 160.sdp else 360.sdp
 

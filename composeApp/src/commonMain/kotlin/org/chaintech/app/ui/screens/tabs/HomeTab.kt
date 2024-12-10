@@ -1,10 +1,10 @@
-package org.chaintech.app.ui.screens.tabsview
+package org.chaintech.app.ui.screens.tabs
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
-import org.chaintech.app.ui.screens.home.HomeView
+import org.chaintech.app.ui.screens.home.HomeScreen
 import org.jetbrains.compose.resources.painterResource
 import reelsdemo.composeapp.generated.resources.Res
 import reelsdemo.composeapp.generated.resources.tab_home
@@ -12,7 +12,7 @@ import reelsdemo.composeapp.generated.resources.tab_home
 internal object HomeTab : Tab {
     @Composable
     override fun Content() {
-        HomeView()
+        HomeScreen()
     }
 
     override val options: TabOptions

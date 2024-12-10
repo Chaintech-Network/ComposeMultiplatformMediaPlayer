@@ -4,13 +4,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import chaintech.videoplayer.model.PlayerConfig
-import chaintech.videoplayer.ui.reel.ReelsPlayerView
+import chaintech.videoplayer.ui.reel.ReelsPlayerComposable
 import org.chaintech.app.model.MockData
 import network.chaintech.sdpcomposemultiplatform.sdp
 
 @Composable
-fun ReelsContentView() {
-    ReelsPlayerView(
+fun ReelsScreen() {
+    ReelsPlayerComposable(
         modifier = Modifier
             .fillMaxSize(),
         urls = MockData().reelsUrlArray,

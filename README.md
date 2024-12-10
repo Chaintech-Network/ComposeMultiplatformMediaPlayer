@@ -1,7 +1,7 @@
 # Compose Multiplatform Media Player
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-multiplatform-media-player.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-multiplatform-media-player)
-[![Kotlin](https://img.shields.io/badge/kotlin-v2.0.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.7.0-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Kotlin](https://img.shields.io/badge/kotlin-v2.1.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.7.1-blue)](https://github.com/JetBrains/compose-multiplatform)
 [![License](https://img.shields.io/github/license/Chaintech-Network/ComposeMultiplatformMediaPlayer)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
@@ -11,10 +11,6 @@
 Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video player, reels viewing, audio playing, YouTube video integration, and HLS m3u8 support on iOS, Android, and Desktop platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
-
-## 🎉 What's New in Version 1.0.26
-- 🖥️ **YouTube Support for Desktop:** Seamlessly enjoy YouTube playback on desktop platforms!
-- 📲 **Video Caching:** Enhanced playback experience with optimized video caching on Android devices!
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
@@ -41,59 +37,58 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.26")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.27")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
 
-## 🚨 **Compatibility Notice** 🚨
-
-If you are using **Kotlin version below 2.0.0** and **Jetpack Compose version below 1.6.11**, you may encounter compatibility issues with the current dependencies. ⚠️ To resolve these issues, please consider using an **older version** of the Compose Multiplatform Media Player library. 🎯
-```kotlin
-commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.16")
-}
-```
+## Updated Component Naming Conventions
+| Old Name          | New Name                |
+|-------------------|-------------------------|
+| VideoPlayerView   | VideoPlayerComposable   |
+| YouTubePlayerView | YouTubePlayerComposable |
+| ReelsPlayerView   | ReelsPlayerComposable   |
+| AudioPlayerView   | AudioPlayerComposable   |
 
 ## 🎬 Usage
 
 ### 📹 Video Player
-To play videos in your app, use the VideoPlayerView composable:
+To play videos in your app, use the VideoPlayerComposable:
 ```kotlin
-VideoPlayerView(
+VideoPlayerComposable(
     modifier = Modifier.fillMaxSize(),
     url = videoUrl
 )
 ```
-💡 **Note:** The VideoPlayerView supports both online and local video playback. You can provide a URL for a remote video or a local file path.
+💡 **Note:** The VideoPlayerComposable supports both online and local video playback. You can provide a URL for a remote video or a local file path.
 
 ### ▶️ YouTube Player
-To play youtube videos in your app, use the YouTubePlayerView composable:
+To play youtube videos in your app, use the YouTubePlayerComposable:
 ```kotlin
-YouTubePlayerView(
+YouTubePlayerComposable(
     modifier = Modifier.fillMaxSize(),
     videoId = youtubeVideoId
 )
 ```
 
 ### 🎥 Reel Viewing
-For reel viewing, utilize the ReelsPlayerView composable:
+For reel viewing, utilize the ReelsPlayerComposable:
 ```kotlin
-ReelsPlayerView(
+ReelsPlayerComposable(
     modifier = Modifier.fillMaxSize(),
     urls = videoUrlArray
 )
 ```
 
 ### 🎧 Audio Player
-To play audio in your app, use the AudioPlayerView composable:
+To play audio in your app, use the AudioPlayerComposable:
 ```kotlin
-AudioPlayerView(
+AudioPlayerComposable(
     modifier = Modifier,
     audios = audioFilesArray
 )
 ```
-💡 **Note:** The AudioPlayerView supports both online and local audio playback. You can provide a URL for a remote audio file or a local file path.
+💡 **Note:** The AudioPlayerComposable supports both online and local audio playback. You can provide a URL for a remote audio file or a local file path.
 
 ## ⚙️ Customization
 You can customize various aspects of the media player:
@@ -174,7 +169,7 @@ You can customize various aspects of the media player:
 
 
 ```kotlin
-VideoPlayerView(modifier = Modifier.fillMaxSize(),
+VideoPlayerComposable(modifier = Modifier.fillMaxSize(),
                 url = videoUrl,
                 playerConfig = PlayerConfig(
                     isPauseResumeEnabled = true,
@@ -196,7 +191,7 @@ VideoPlayerView(modifier = Modifier.fillMaxSize(),
 ```
 
 ```kotlin
-YouTubePlayerView(modifier = Modifier.fillMaxSize(),
+YouTubePlayerComposable(modifier = Modifier.fillMaxSize(),
                 videoId = "QFxN2oDKk0E",
                 playerConfig = PlayerConfig(
                     isPauseResumeEnabled = true,
@@ -219,7 +214,7 @@ YouTubePlayerView(modifier = Modifier.fillMaxSize(),
 
 
 ```kotlin
-ReelsPlayerView(modifier = Modifier.fillMaxSize(),
+ReelsPlayerComposable(modifier = Modifier.fillMaxSize(),
         urls = videoUrlArray,
         playerConfig = PlayerConfig(
             isPauseResumeEnabled = true,
@@ -247,7 +242,7 @@ val audioFilesArray = listOf(
         )
     )
 
-AudioPlayerView(
+AudioPlayerComposable(
         modifier = Modifier,
         audios = audioFilesArray,
         audioPlayerConfig = AudioPlayerConfig(
