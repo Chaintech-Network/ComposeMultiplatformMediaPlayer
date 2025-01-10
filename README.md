@@ -8,7 +8,7 @@
 ![badge-ios](http://img.shields.io/badge/platform-ios-FF375F.svg?style=flat)
 ![badge-desktop](http://img.shields.io/badge/platform-desktop-FF9500.svg?style=flat)
 
-Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video player, reels viewing, audio playing, YouTube video integration, and HLS m3u8 support on iOS, Android, and Desktop platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
+Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video player, reels viewing, audio playing, YouTube video integration, video preview thumbnails and HLS m3u8 support on iOS, Android, and Desktop platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
 
@@ -25,6 +25,8 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 **Audio Player:** Enjoy high-quality audio playback with customizable controls.
 
+**Video Preview:** Display animated video previews for a more engaging experience.
+
 **Customizable Controls:** Enable/disable pause/resume functionality and adjust the appearance and visibility of the seek bar, along with various control icons and colors.
 
 ![media-player-animation-updated2](./assets/player_example1.gif)
@@ -37,18 +39,10 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.28")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.29")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
-
-## Updated Component Naming Conventions
-| Old Name          | New Name                |
-|-------------------|-------------------------|
-| VideoPlayerView   | VideoPlayerComposable   |
-| YouTubePlayerView | YouTubePlayerComposable |
-| ReelsPlayerView   | ReelsPlayerComposable   |
-| AudioPlayerView   | AudioPlayerComposable   |
 
 ## 🎬 Usage
 
@@ -61,6 +55,17 @@ VideoPlayerComposable(
 )
 ```
 💡 **Note:** The VideoPlayerComposable supports both online and local video playback. You can provide a URL for a remote video or a local file path.
+
+### 📹 Video Preview
+To display video preview thumbnails, use the VideoPreviewComposable:
+```kotlin
+VideoPreviewComposable(
+    url = videoUrl,
+    frameCount = 5
+)
+```
+💡 **Note:** The VideoPreviewComposable does not support local asset video in Android.
+
 
 ### ▶️ YouTube Player
 To play youtube videos in your app, use the YouTubePlayerComposable:
@@ -188,6 +193,14 @@ VideoPlayerComposable(modifier = Modifier.fillMaxSize(),
                     pauseIconResource = Res.drawable.icn_pause,
                 )
             )
+```
+
+```kotlin
+VideoPreviewComposable(
+    url = videoUrl,
+    loadingIndicatorColor = Color.White,
+    frameCoun = 5
+)
 ```
 
 ```kotlin

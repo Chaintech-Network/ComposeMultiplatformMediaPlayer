@@ -1,6 +1,8 @@
 package org.chaintech.app.model
 
 import chaintech.videoplayer.model.AudioFile
+import chaintech.videoplayer.model.Platform
+import chaintech.videoplayer.util.isPlatform
 import org.chaintech.app.utility.getLocalFilePathFor
 
 class MockData {
@@ -401,7 +403,7 @@ class MockData {
         VideoModel(
             id = "1",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-THE-EXPLORERS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/2e58164c-5c3b-42fe-a593-4406d2fda4bf/0.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-THE-EXPLORERS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/d5067cbc-4b75-41bb-a604-38674ba0eb54/1.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/ggdzvt.png",
             title = "The Explorers"
@@ -409,7 +411,7 @@ class MockData {
         VideoModel(
             id = "2",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-SCIFI-WORLD-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/a985e052-6868-4365-ac45-52afe9008b25/3a43de78-0fb9-462c-9af4-5e82468783de/2.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-SCIFI-WORLD-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/a985e052-6868-4365-ac45-52afe9008b25/e5330557-5c5f-4e96-a2db-ace612397ff9/1.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/oxsgsi.png",
             title = "Scifi World"
@@ -417,7 +419,7 @@ class MockData {
         VideoModel(
             id = "3",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-HERITAGE-ENG_yuppfast/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/e4523706-f2a8-4b0f-b081-40fe59a46f81/d4b85dcd-0d0a-4279-8136-6ca73ad778ae/2.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-HERITAGE-ENG_yuppfast/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/e4523706-f2a8-4b0f-b081-40fe59a46f81/d0f72f08-de34-45ec-b1b4-4c9398dfbe39/1.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/fndjia.png",
             title = "Heritage"
@@ -425,7 +427,7 @@ class MockData {
         VideoModel(
             id = "4",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-KIDDO-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/5bcf9d24-04f2-401d-a93f-7af54f29461a/24db9f8f-3d4c-4593-acbd-ea878400d675/1.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-KIDDO-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/5bcf9d24-04f2-401d-a93f-7af54f29461a/fb2577db-0faa-4099-bda2-c85bdbb5d923/0.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/kiddo.png",
             title = "Kiddo"
@@ -433,7 +435,7 @@ class MockData {
         VideoModel(
             id = "5",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-FIGHT-TV-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/70e45fc8-1f6c-4492-ac26-9868f70f4e02/4d654cb5-fa64-43ee-834f-36c5c39ba232/2.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-FIGHT-TV-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/70e45fc8-1f6c-4492-ac26-9868f70f4e02/b8501a88-0bad-4457-bc5d-1d199cd9d3ac/1.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/fight-tv.png",
             title = "Fight TV"
@@ -537,5 +539,31 @@ class MockData {
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/language-3x4-1713423739488.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1701247349405.jpg"
         ).shuffled()
+    }
+
+    fun previewUrls(): List<String> {
+        return if (isPlatform() == Platform.Android) {
+            listOf(
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+            )
+        } else {
+            listOf(
+                getLocalFilePathFor("1.mp4"),
+                getLocalFilePathFor("2.mp4"),
+                getLocalFilePathFor("3.mp4"),
+                getLocalFilePathFor("4.mp4"),
+                getLocalFilePathFor("5.mp4"),
+                getLocalFilePathFor("6.mp4"),
+                getLocalFilePathFor("7.mp4")
+            )
+        }
     }
 }

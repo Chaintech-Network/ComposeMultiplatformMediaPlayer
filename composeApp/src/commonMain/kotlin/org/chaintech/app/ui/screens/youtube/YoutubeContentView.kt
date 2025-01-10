@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Notifications
@@ -34,6 +36,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import chaintech.videoplayer.ui.preview.VideoPreviewComposable
 import network.chaintech.sdpcomposemultiplatform.sdp
 import org.chaintech.app.font.FontType
 import org.chaintech.app.font.MediaFont
@@ -51,18 +54,23 @@ fun YoutubeContentScreen() {
     val videoList = MockData().youtbeMockData.shuffled()
     val navigator = LocalNavigation.current
 
+    // State to track the scroll position
+    val listState = rememberLazyListState()
+
     Scaffold(
         topBar = { TopBarYouTube() }
     ) {
         LazyColumn(
+            state = listState,
             modifier = Modifier
                 .fillMaxSize()
                 .background(
                     brush = Brush.verticalGradient(colors = MyApplicationTheme.colors.gradientPrimary)
                 )
         ) {
-            items(videoList) { video ->
-                VideoItem(video) {
+            itemsIndexed(videoList) { index, video ->
+                val isFocused = isItemFocused(listState, index) // Check if this item is focused
+                VideoItem(video, isFocused) {
                     navigator.goToVideoPlayerScreen(video, videoList)
                 }
             }
@@ -70,8 +78,31 @@ fun YoutubeContentScreen() {
     }
 }
 
+// Function to check if an item is the most focused one
 @Composable
-private fun VideoItem(video: VideoModel, onClick: () -> Unit) {
+fun isItemFocused(listState: LazyListState, index: Int): Boolean {
+    val visibleItems = listState.layoutInfo.visibleItemsInfo
+    if (visibleItems.isEmpty()) return false
+
+    // Calculate the middle position of the viewport
+    val viewportCenter = listState.layoutInfo.viewportStartOffset +
+            (listState.layoutInfo.viewportEndOffset - listState.layoutInfo.viewportStartOffset) / 2
+
+    // Find the item closest to the center
+    val centeredItem = visibleItems.minByOrNull { item ->
+        val itemCenter = (item.offset + item.size / 2)
+        kotlin.math.abs(itemCenter - viewportCenter)
+    }
+
+    // Return true if the current index matches the centered item's index
+    return centeredItem?.index == index
+}
+
+
+@Composable
+private fun VideoItem(video: VideoModel, isFocused: Boolean, onClick: () -> Unit) {
+    val mockData = MockData().previewUrls()
+
     Column(
         modifier = Modifier.padding(vertical = 5.sdp)
     ) {
@@ -84,11 +115,18 @@ private fun VideoItem(video: VideoModel, onClick: () -> Unit) {
                     detectTapGestures { onClick() }
                 }
         ) {
-            FromRemote(
-                painterResource = video.thumbL,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
-            )
+            if (isFocused) {
+                VideoPreviewComposable(
+                    url = mockData.random(),
+                    frameCount = 7
+                )
+            } else {
+                FromRemote(
+                    painterResource = video.thumbL,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
         }
         VideoDetails(video)
     }
