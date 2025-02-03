@@ -1,7 +1,7 @@
 # Compose Multiplatform Media Player
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-multiplatform-media-player.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-multiplatform-media-player)
 [![Kotlin](https://img.shields.io/badge/kotlin-v2.1.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.7.1-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.7.3-blue)](https://github.com/JetBrains/compose-multiplatform)
 [![License](https://img.shields.io/github/license/Chaintech-Network/ComposeMultiplatformMediaPlayer)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
@@ -11,6 +11,10 @@
 Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video player, reels viewing, audio playing, YouTube video integration, video preview thumbnails and HLS m3u8 support on iOS, Android, and Desktop platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
+
+## 🎉 What's New in Version 1.0.30
+* 🔥 **VideoPlayerHost Integration:** The `VideoPlayerComposable` now works with the new `VideoPlayerHost` composable, separating video player logic from inbuilt UI. This gives you more control over playback and allows you to fully customize or replace the default UI. 
+* 📝 **Updated Configurations:** Simplified the VideoPlayerConfig by removing unnecessary settings. Refer to the customization section for updated configuration properties.
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
@@ -39,19 +43,99 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.29")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.30")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
 
 ## 🎬 Usage
 
+## VideoPlayerHost Class
+### Constructor Parameters
+* **url (String):** The URL of the video to be played.
+* **isPaused (Boolean):** Sets the initial playback state. Defaults to false (play on load).
+* **isMuted (Boolean):** Indicates whether the video is muted initially. Defaults to false.
+* **initialSpeed (PlayerSpeed):** Sets the initial playback speed. Defaults to PlayerSpeed.X1.
+* **initialVideoFitMode (ScreenResize):** Specifies the video resizing mode. Defaults to ScreenResize.FILL.
+* **isLooping (Boolean):** Enables or disables looping. Defaults to true.
+* **startTimeInSeconds (Int?):** Optionally specifies the start time (in seconds) for the video. Defaults to null.
+
+### Available Controls
+* **loadUrl(url: String):** Updates the video URL to load a new video.
+* **play():** Resumes video playback.
+* **pause():** Pauses video playback.
+* **togglePlayPause():** Toggles between play and pause states.
+* **mute():** Mutes the video.
+* **unmute():** Unmutes the video.
+* **toggleMuteUnmute():** Toggles between muted and unmuted states.
+* **setSpeed(speed: PlayerSpeed):** Adjusts the playback speed.
+* **seekTo(seconds: Int?):** Seeks to a specific time in the video.
+* **setVideoFitMode(mode: ScreenResize):** Updates the video resizing mode.
+* **setLooping(isLooping: Boolean):** Enables or disables looping.
+* **setVolume(level: Float):** Adjusts the volume. Value must be between 0.0 and 1.0.
+
+### Internal Updates and Events
+The VideoPlayerHost class manages internal state changes and triggers events via the onEvent callback. These events allow developers to monitor and respond to changes in the video player state:
+
+| Event                                | Description                                                                        |
+|--------------------------------------|------------------------------------------------------------------------------------|
+| PauseChange(isPaused: Boolean)       | Triggered when the playback state changes (play or pause).                         |
+| MuteChange(isMuted: Boolean)         | Triggered when the mute state changes (mute or unmute).                            |
+| BufferChange(isBuffering: Boolean)   | Triggered when the buffering state changes (e.g., when buffering starts/stops).    |
+| TotalTimeChange(totalTime: Int)      | Triggered when the total duration of the video updates.                            |
+| CurrentTimeChange(currentTime: Int)  | Triggered when the current playback position updates.                              |
+| VideoEnd                             | Triggered when the video playback completes.                                       |
+
+### Example Usage
+```kotlin
+val videoPlayerHost = VideoPlayerHost(
+    url = "https://example.com/video.mp4",
+    isPaused = true,
+    isMuted = false,
+    initialSpeed = PlayerSpeed.X1,
+    initialVideoFitMode = ScreenResize.FIT,
+    isLooping = false,
+    startTimeInSeconds = 10
+)
+
+// Play the video
+videoPlayerHost.play()
+
+// Pause the video
+videoPlayerHost.pause()
+
+// Toggle mute
+videoPlayerHost.toggleMuteUnmute()
+
+// Seek to 30 seconds
+videoPlayerHost.seekTo(30)
+
+// Change playback speed to 1.5x
+videoPlayerHost.setSpeed(PlayerSpeed.X1_5)
+
+// Enable looping
+videoPlayerHost.setLooping(true)
+
+videoPlayerHost.onEvent = { event ->
+    when (event) {
+        is VideoPlayerEvent.MuteChange -> { println("Mute status changed: ${event.isMuted}") }
+        is VideoPlayerEvent.PauseChange -> { println("Pause status changed: ${event.isPaused}") }
+        is VideoPlayerEvent.BufferChange -> { println("Buffering status: ${event.isBuffering}") }
+        is VideoPlayerEvent.CurrentTimeChange -> { println("Current playback time: ${event.currentTime}s") }
+        is VideoPlayerEvent.TotalTimeChange -> { println("Video duration updated: ${event.totalTime}s") }
+        VideoPlayerEvent.VideoEnd -> { println("Video playback ended") }
+    }
+}
+```
+
 ### 📹 Video Player
 To play videos in your app, use the VideoPlayerComposable:
 ```kotlin
+val playerHost = remember { VideoPlayerHost(url = url) }
+
 VideoPlayerComposable(
     modifier = Modifier.fillMaxSize(),
-    url = videoUrl
+    playerHost = playerHost
 )
 ```
 💡 **Note:** The VideoPlayerComposable supports both online and local video playback. You can provide a URL for a remote video or a local file path.
@@ -66,15 +150,17 @@ VideoPreviewComposable(
 ```
 💡 **Note:** The VideoPreviewComposable does not support local asset video in Android.
 
-
 ### ▶️ YouTube Player
 To play youtube videos in your app, use the YouTubePlayerComposable:
 ```kotlin
+val playerHost = remember { VideoPlayerHost(url = youtubeVideoId) }
+
 YouTubePlayerComposable(
     modifier = Modifier.fillMaxSize(),
-    videoId = youtubeVideoId
+    playerHost = playerHost
 )
 ```
+💡 **Note:** The YouTubePlayerComposable supports both YouTube video URLs and video IDs. It automatically extracts the video ID if a full URL is provided, ensuring seamless playback.
 
 ### 🎥 Reel Viewing
 For reel viewing, utilize the ReelsPlayerComposable:
@@ -99,13 +185,13 @@ AudioPlayerComposable(
 You can customize various aspects of the media player:
 
 * `modifier`: Modifies the layout and appearance of the video player and reel player.
-* `url`: The URL of the video to be played in the video player.
-* `videoId`: The YouTube video ID or URL to be played in the YouTube player.
+* `playerHost`: The VideoPlayerHost class manages internal state changes of video player.
 * `urls`: An array of URLs for the reel player, allowing playback of multiple reels.
-* `playerConfig`: You can configure various aspects of the video player appearance and behavior using the PlayerConfig data class.
+* `playerConfig`: You can configure various aspects of the video player appearance using the VideoPlayerConfig data class.
 
 | Property                                              | Description                                                                                                                     |
 |-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| showControls                                          | Hide/Show video player inbuilt controls.                                                                                        |
 | isPauseResumeEnabled                                  | Enable or disable the pause/resume functionality.                                                                               |
 | isSeekBarVisible                                      | Toggle the visibility of the seek bar.                                                                                          |
 | isDurationVisible                                     | Control the display of the playback time duration.                                                                              |
@@ -132,21 +218,10 @@ You can customize various aspects of the media player:
 | controlTopPadding                                     | Configure the top padding for controls, ensuring proper alignment within the UI layout.                                         |
 | isScreenLockEnabled                                   | Enable or disable screen lock functionality.                                                                                    |
 | iconsTintColor                                        | Customize the tint color of the control icons.                                                                                  |
-| isMute                                                | Manage the mute/unmute state of the player.                                                                                     |
-| muteCallback                                          | Callback function triggered when the mute state changes.                                                                        |
-| isPause                                               | Manage the pause/resume state of the player.                                                                                    |
-| pauseCallback                                         | Callback function triggered when the pause/resume state changes.                                                                |
 | isScreenResizeEnabled                                 | Enable or disable screen resize (Fit/Fill) functionality.                                                                       |
-| bufferCallback                                        | Callback function triggered when Buffer state changes.                                                                          |                                                                      
-| didEndVideo                                           | Callback function triggered when current video end.                                                                             |                                                                      
-| loop                                                  | Enable or disable video playing in loop.                                                                                        |                                                                      
-| showDesktopControls                                   | Hide/Show Desktop video player advance controls                                                                                 |
 | loadingIndicatorColor                                 | Customize the color of the loading indicator.                                                                                   |
 | loaderView                                            | Custom loader for showing loading state.                                                                                        |
-| videoFitMode                                          | Default video screen mode to either Fit or Fill.                                                                                |
-| totalTimeInSeconds                                    | Callback function that returns the total duration of the video in seconds.                                                      |
-| currentTimeInSeconds                                  | Callback function that returns the current playback time of the video in seconds.                                               |
-| startTimeInSeconds                                    | Allows setting a specific starting point for the video, defined in seconds.                                                     |
+| isLiveStream                                          | A boolean property that indicates whether the currently playing video is a live stream.                                         |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   
@@ -174,9 +249,11 @@ You can customize various aspects of the media player:
 
 
 ```kotlin
+val playerHost = remember { VideoPlayerHost(url = videoUrl) }
+
 VideoPlayerComposable(modifier = Modifier.fillMaxSize(),
-                url = videoUrl,
-                playerConfig = PlayerConfig(
+                playerHost = playerHost,
+                playerConfig = VideoPlayerConfig(
                     isPauseResumeEnabled = true,
                     isSeekBarVisible = true,
                     isDurationVisible = true,
@@ -199,14 +276,16 @@ VideoPlayerComposable(modifier = Modifier.fillMaxSize(),
 VideoPreviewComposable(
     url = videoUrl,
     loadingIndicatorColor = Color.White,
-    frameCoun = 5
+    frameCount = 5
 )
 ```
 
 ```kotlin
+val playerHost = remember { VideoPlayerHost(url = "QFxN2oDKk0E") }
+
 YouTubePlayerComposable(modifier = Modifier.fillMaxSize(),
-                videoId = "QFxN2oDKk0E",
-                playerConfig = PlayerConfig(
+                playerHost = playerHost,
+                playerConfig = VideoPlayerConfig(
                     isPauseResumeEnabled = true,
                     isSeekBarVisible = true,
                     isDurationVisible = true,
@@ -229,7 +308,7 @@ YouTubePlayerComposable(modifier = Modifier.fillMaxSize(),
 ```kotlin
 ReelsPlayerComposable(modifier = Modifier.fillMaxSize(),
         urls = videoUrlArray,
-        playerConfig = PlayerConfig(
+        playerConfig = VideoPlayerConfig(
             isPauseResumeEnabled = true,
             isSeekBarVisible = false,
             isDurationVisible = false,

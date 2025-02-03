@@ -14,3 +14,8 @@ actual fun getSafeAreaHeight(): SafeAreaSize {
 actual fun getLocalFilePathFor(item: String): String {
     return "asset:///$item"
 }
+
+@Composable
+actual fun screenWidth(): Float {
+    return 0f
+}

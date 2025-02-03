@@ -3,7 +3,7 @@ package org.chaintech.app.ui.screens.reels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import chaintech.videoplayer.model.PlayerConfig
+import chaintech.videoplayer.model.VideoPlayerConfig
 import chaintech.videoplayer.ui.reel.ReelsPlayerComposable
 import org.chaintech.app.model.MockData
 import network.chaintech.sdpcomposemultiplatform.sdp
@@ -14,7 +14,7 @@ fun ReelsScreen() {
         modifier = Modifier
             .fillMaxSize(),
         urls = MockData().reelsUrlArray,
-        playerConfig = PlayerConfig(
+        playerConfig = VideoPlayerConfig(
             isPauseResumeEnabled  = true,
             isSeekBarVisible = false,
             pauseResumeIconSize = 32.sdp,

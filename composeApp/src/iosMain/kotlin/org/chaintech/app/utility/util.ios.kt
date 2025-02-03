@@ -41,3 +41,8 @@ actual fun getLocalFilePathFor(item: String): String {
     val videoFilePath = NSBundle.mainBundle.pathForResource(item, null)
     return videoFilePath ?: ""
 }
+
+@Composable
+actual fun screenWidth(): Float {
+    return 0f
+}

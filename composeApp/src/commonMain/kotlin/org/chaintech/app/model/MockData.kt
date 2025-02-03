@@ -403,7 +403,7 @@ class MockData {
         VideoModel(
             id = "1",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-THE-EXPLORERS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/d5067cbc-4b75-41bb-a604-38674ba0eb54/1.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-THE-EXPLORERS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/c6486b04-a70e-41f9-af5a-a3609de790b5/2.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/ggdzvt.png",
             title = "The Explorers"
@@ -411,7 +411,7 @@ class MockData {
         VideoModel(
             id = "2",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-SCIFI-WORLD-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/a985e052-6868-4365-ac45-52afe9008b25/e5330557-5c5f-4e96-a2db-ace612397ff9/1.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-SCIFI-WORLD-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/a985e052-6868-4365-ac45-52afe9008b25/e3357bd1-7b44-4008-90cc-2db68f088117/2.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/oxsgsi.png",
             title = "Scifi World"
@@ -419,7 +419,7 @@ class MockData {
         VideoModel(
             id = "3",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-HERITAGE-ENG_yuppfast/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/e4523706-f2a8-4b0f-b081-40fe59a46f81/d0f72f08-de34-45ec-b1b4-4c9398dfbe39/1.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-HERITAGE-ENG_yuppfast/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/e4523706-f2a8-4b0f-b081-40fe59a46f81/74f66d58-6704-44bd-a8dd-f4ee75f5d621/2.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/fndjia.png",
             title = "Heritage"
@@ -427,7 +427,7 @@ class MockData {
         VideoModel(
             id = "4",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-KIDDO-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/5bcf9d24-04f2-401d-a93f-7af54f29461a/fb2577db-0faa-4099-bda2-c85bdbb5d923/0.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-KIDDO-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/5bcf9d24-04f2-401d-a93f-7af54f29461a/8e069f6f-979f-4a91-a781-1f6494f1b42f/2.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/kiddo.png",
             title = "Kiddo"
@@ -435,7 +435,7 @@ class MockData {
         VideoModel(
             id = "5",
             description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-FIGHT-TV-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/70e45fc8-1f6c-4492-ac26-9868f70f4e02/b8501a88-0bad-4457-bc5d-1d199cd9d3ac/1.m3u8",
+            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-FIGHT-TV-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/70e45fc8-1f6c-4492-ac26-9868f70f4e02/83ddc86a-a457-4e64-8f09-fcbf00e767fe/2.m3u8",
             subtitle = "",
             thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/fight-tv.png",
             title = "Fight TV"
@@ -446,10 +446,10 @@ class MockData {
     fun getFilteredData(data: List<VideoModel>, selectedVideo: VideoModel): List<VideoModel> {
         return data.filter { video ->
             video.title != selectedVideo.title
-        }.shuffled()
+        }
     }
     fun topBannerData(): List<VideoModel> {
-        return mockData.take(10).shuffled().take(5)
+        return mockData.take(10).take(5)
     }
 
     fun hotRightNow(): List<String> {
@@ -461,7 +461,7 @@ class MockData {
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/omg-2-3x4-1715057980908.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/language-3x4-1713425519873.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/dhak-dhak-3x4-1713933165718.jpg"
-        ).shuffled()
+        )
     }
     fun machoMix(): List<String> {
         return  listOf(
@@ -473,7 +473,7 @@ class MockData {
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1711200427872.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/bloody_daddy_3x4-1689152042847.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/jioimage/13/5/daad0dd074f611e688d58522ba040c22_1592564179458_p.jpg"
-        ).shuffled()
+        )
     }
 
     fun popularInKids(): List<String> {
@@ -486,7 +486,7 @@ class MockData {
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/pokemon-1704702227097.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/newseason3_4-1714503864626.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/rudra3_4-1714840929249.jpg",
-        ).shuffled()
+        )
     }
 
     fun actionAdventure(): List<String> {
@@ -499,7 +499,7 @@ class MockData {
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4warrior-1714669489518.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1712060324958.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1714658836206.jpg",
-        ).shuffled()
+        )
     }
 
     fun hollywoodFinest(): List<String> {
@@ -512,20 +512,20 @@ class MockData {
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/flash-3x4-lang-1711431077214.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/meg2lang3x4-1704254043974.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/fnf-3x4-1706942972580.jpg"
-        ).shuffled()
+        )
     }
 
     fun southDubbed(): List<String> {
         return  listOf(
-            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/fast-x-call-out-3x4-1700301916853.jpg",
-            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/oppenheimer-3x4-1712046716651.jpg",
-            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/microsoftteams-image-1684218552593.png",
-            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/migration-3x4-1714129702879.jpg",
-            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1714658836206.jpg",
+            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/fnf-3x4-1706942972580.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/flash-3x4-lang-1711431077214.jpg",
+            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/migration-3x4-1714129702879.jpg",
+            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/microsoftteams-image-1684218552593.png",
+            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1714658836206.jpg",
+            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/oppenheimer-3x4-1712046716651.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/meg2lang3x4-1704254043974.jpg",
-            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/fnf-3x4-1706942972580.jpg"
-        ).shuffled()
+            "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/fast-x-call-out-3x4-1700301916853.jpg",
+        )
     }
 
     fun globalHits(): List<String> {
@@ -538,7 +538,7 @@ class MockData {
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/fast-x-call-out-3x4-1700301916853.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/language-3x4-1713423739488.jpg",
             "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1701247349405.jpg"
-        ).shuffled()
+        )
     }
 
     fun previewUrls(): List<String> {
@@ -552,7 +552,9 @@ class MockData {
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
             )
         } else {
             listOf(
@@ -562,7 +564,11 @@ class MockData {
                 getLocalFilePathFor("4.mp4"),
                 getLocalFilePathFor("5.mp4"),
                 getLocalFilePathFor("6.mp4"),
-                getLocalFilePathFor("7.mp4")
+                getLocalFilePathFor("7.mp4"),
+                getLocalFilePathFor("1.mp4"),
+                getLocalFilePathFor("2.mp4"),
+                getLocalFilePathFor("3.mp4"),
+                getLocalFilePathFor("4.mp4"),
             )
         }
     }

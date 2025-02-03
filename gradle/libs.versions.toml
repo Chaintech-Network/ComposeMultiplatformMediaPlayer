@@ -1,13 +1,13 @@
 [versions]
 
 kotlin = "2.1.0"
-compose = "1.7.1"
+compose = "1.7.3"
 agp = "8.7.3"
-androidx-activityCompose = "1.9.3"
+androidx-activityCompose = "1.10.0"
 voyager_version = "1.0.0"
 sdp_ssp_version = "1.0.4"
 image_loader_version = "1.8.1"
-media-player-version = "1.0.29"
+media-player-version = "1.0.30"
 
 [libraries]
 

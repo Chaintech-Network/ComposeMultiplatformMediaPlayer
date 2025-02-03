@@ -36,7 +36,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import chaintech.videoplayer.model.PlayerConfig
+import chaintech.videoplayer.host.VideoPlayerEvent
+import chaintech.videoplayer.host.VideoPlayerHost
+import chaintech.videoplayer.model.VideoPlayerConfig
 import chaintech.videoplayer.ui.video.VideoPlayerComposable
 import chaintech.videoplayer.util.isDesktop
 import network.chaintech.sdpcomposemultiplatform.sdp
@@ -52,6 +54,7 @@ import org.chaintech.app.ui.components.BackButtonNavBar
 import org.chaintech.app.utility.FromLocalDrawable
 import org.chaintech.app.utility.FromRemote
 import org.chaintech.app.utility.getSafeAreaSize
+import org.chaintech.app.utility.isLiveStream
 import org.jetbrains.compose.resources.DrawableResource
 import reelsdemo.composeapp.generated.resources.Res
 import reelsdemo.composeapp.generated.resources.icn_add
@@ -110,12 +113,38 @@ private fun VideoPlayerBox(video: VideoModel) {
         modifier = Modifier.fillMaxWidth(),
         contentAlignment = Alignment.TopStart
     ) {
+        val playerHost = remember { VideoPlayerHost(url = video.sources) }
+        playerHost.loadUrl(video.sources)
+
+        playerHost.onEvent = { event ->
+            when (event) {
+                is VideoPlayerEvent.MuteChange -> {
+//                    println("Mute status changed: ${event.isMuted}")
+                }
+                is VideoPlayerEvent.PauseChange -> {
+//                    println("Pause status changed: ${event.isPaused}")
+                }
+                is VideoPlayerEvent.BufferChange -> {
+//                    println("Buffering status: ${event.isBuffering}")
+                }
+                is VideoPlayerEvent.CurrentTimeChange -> {
+//                    println("Current playback time: ${event.currentTime}s")
+                }
+                is VideoPlayerEvent.TotalTimeChange -> {
+//                    println("Video duration updated: ${event.totalTime}s")
+                }
+                VideoPlayerEvent.VideoEnd -> {
+//                    println("Video playback ended")
+                }
+            }
+        }
+
         VideoPlayerComposable(
             modifier = Modifier.then(
                 if (isDesktop()) Modifier.fillMaxSize() else Modifier.height(224.sdp).fillMaxWidth()
             ),
-            url = video.sources,
-            playerConfig = PlayerConfig(
+            playerHost = playerHost,
+            playerConfig = VideoPlayerConfig(
                 seekBarActiveTrackColor = Color.Red,
                 seekBarInactiveTrackColor = Color.White,
                 seekBarBottomPadding = 8.sdp,
@@ -127,7 +156,8 @@ private fun VideoPlayerBox(video: VideoModel) {
                     type = MediaFont.LexendDeca.Medium
                 ),
                 fastForwardBackwardIconSize = if (isDesktop()) 16.sdp else 28.sdp,
-                controlTopPadding = 10.sdp
+                controlTopPadding = 10.sdp,
+                isLiveStream = isLiveStream(video.sources)
             )
         )
 
@@ -226,7 +256,7 @@ private fun VideoThumbnail(video: VideoModel, onClick: () -> Unit) {
                 .border(width=1.sdp, color=MyApplicationTheme.colors.border, shape=RoundedCornerShape(8.sdp))
                 .pointerInput(Unit) { detectTapGestures { onClick() } }
         ) {
-            FromRemote(painterResource=video.thumb, contentScale=ContentScale.Crop, modifier=Modifier.fillMaxSize())
+            FromRemote(painterResource = video.thumb, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
         }
     }
 }
