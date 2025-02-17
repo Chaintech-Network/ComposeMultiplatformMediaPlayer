@@ -21,7 +21,6 @@ import org.chaintech.app.ui.components.AddBanner
 import org.chaintech.app.ui.components.HomeVideoSection
 import org.chaintech.app.utility.getSafeAreaSize
 import network.chaintech.sdpcomposemultiplatform.sdp
-import org.chaintech.app.ui.components.LiveStreamSection
 import org.chaintech.app.ui.components.LocalVideoSection
 
 @Composable
@@ -42,14 +41,12 @@ fun HomeScreen() {
             ) {
                 TopSection()
 
-                LiveStreamSection(title = "Live Stream \uD83D\uDD34")
+                LocalVideoSection(title = "Local Videos \uD83D\uDD25")
 
                 AddBanner(
                     title = "Subscribe Now",
                     image = dataStore.topAddBanner
                 )
-
-                LocalVideoSection(title = "Local Videos \uD83D\uDD25")
 
                 HomeVideoSection(data = dataStore.hotRightNow(), title = "Hot Right Now")
                 HomeVideoSection(data = dataStore.machoMix(), title = "Macho Mix: Must Watch Movies")

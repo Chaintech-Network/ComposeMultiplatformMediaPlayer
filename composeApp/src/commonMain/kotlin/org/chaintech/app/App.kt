@@ -1,10 +1,17 @@
 package org.chaintech.app
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -17,6 +24,8 @@ import androidx.compose.material.Text
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,6 +38,7 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabDisposable
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import cafe.adriel.voyager.transitions.SlideTransition
+import chaintech.network.connectivitymonitor.ConnectivityStatus
 import chaintech.videoplayer.util.isDesktop
 import network.chaintech.sdpcomposemultiplatform.sdp
 import org.chaintech.app.font.FontType
@@ -37,6 +47,8 @@ import org.chaintech.app.navigation.LocalNavigation
 import org.chaintech.app.navigation.LocalScreenContainer
 import org.chaintech.app.navigation.NavigationProvider
 import org.chaintech.app.navigation.ScreenContainerProvider
+import org.chaintech.app.network.ConnectivityViewModel
+import org.chaintech.app.network.InternetOffline
 import org.chaintech.app.theme.MyApplicationTheme
 import org.chaintech.app.ui.screens.tabs.HomeTab
 import org.chaintech.app.ui.screens.tabs.MusicTab
@@ -47,6 +59,16 @@ import org.chaintech.app.utility.getSafeAreaSize
 
 @Composable
 fun MainView() {
+    val viewModel = remember { ConnectivityViewModel() }
+    val connectivityStatus by viewModel.connectivityStatus.collectAsState()
+    val showConnectedBanner by viewModel.connectedFromDisconnect.collectAsState()
+
+    val isOffline = connectivityStatus in setOf(
+        ConnectivityStatus.NOT_CONNECTED,
+        ConnectivityStatus.CONNECTED_VIA_CELLULAR_WITHOUT_INTERNET,
+        ConnectivityStatus.CONNECTED_VIA_WIFI_WITHOUT_INTERNET
+    )
+
     val tabs: List<Tab> = if (isDesktop()) {
         listOf(HomeTab, MusicTab, YoutubeTab)
     } else {
@@ -61,18 +83,27 @@ fun MainView() {
             LocalScreenContainer provides screenContainer,
             LocalNavigation provides navigation,
         ) {
-            TabNavigator(
-                HomeTab,
-                tabDisposable = {
-                    TabDisposable(
-                        navigator = it,
-                        tabs = tabs
-                    )
+            Box(Modifier.fillMaxSize()) {
+                TabNavigator(
+                    HomeTab,
+                    tabDisposable = {
+                        TabDisposable(
+                            navigator = it,
+                            tabs = tabs
+                        )
+                    }
+                ) {
+                    Navigator(HomeScreen()) {
+                        navigation.initialize()
+                        SlideTransition(it)
+                    }
                 }
-            ) {
-                Navigator(HomeScreen()) {
-                    navigation.initialize()
-                    SlideTransition(it)
+                AnimatedVisibility(
+                    visible = (isOffline || showConnectedBanner),
+                    enter = slideInVertically(initialOffsetY = { -it }) + fadeIn(),
+                    exit = slideOutVertically(targetOffsetY = { -it }) + fadeOut()
+                ) {
+                    InternetOffline(showConnectedBanner)
                 }
             }
         }

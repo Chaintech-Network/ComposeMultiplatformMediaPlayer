@@ -12,9 +12,10 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
 
-## 🎉 What's New in Version 1.0.30
-* 🔥 **VideoPlayerHost Integration:** The `VideoPlayerComposable` now works with the new `VideoPlayerHost` composable, separating video player logic from inbuilt UI. This gives you more control over playback and allows you to fully customize or replace the default UI. 
-* 📝 **Updated Configurations:** Simplified the VideoPlayerConfig by removing unnecessary settings. Refer to the customization section for updated configuration properties.
+## 🎉 What's New in Version 1.0.31
+**🔊 Enhanced Audio Player Flexibility!**
+* 🚀 **MediaPlayerHost Integration:** The AudioPlayerComposable now seamlessly integrates with MediaPlayerHost, decoupling playback logic from the built-in UI. This gives you full control to customize or replace the default UI while maintaining smooth audio playback.
+* 📝 **Standalone Audio Player:** The AudioPlayer is now independent, offering more flexibility for different use cases.
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
@@ -43,59 +44,75 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.30")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.31")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
 
 ## 🎬 Usage
 
-## VideoPlayerHost Class
+## MediaPlayerHost Class
 ### Constructor Parameters
-* **url (String):** The URL of the video to be played.
+* **mediaUrl (String):** The URL of the media to be played.
 * **isPaused (Boolean):** Sets the initial playback state. Defaults to false (play on load).
 * **isMuted (Boolean):** Indicates whether the video is muted initially. Defaults to false.
 * **initialSpeed (PlayerSpeed):** Sets the initial playback speed. Defaults to PlayerSpeed.X1.
 * **initialVideoFitMode (ScreenResize):** Specifies the video resizing mode. Defaults to ScreenResize.FILL.
 * **isLooping (Boolean):** Enables or disables looping. Defaults to true.
 * **startTimeInSeconds (Int?):** Optionally specifies the start time (in seconds) for the video. Defaults to null.
+* **isFullScreen (Boolean):** Enables or disables full screen. Defaults to false.
+* **isZoomEnabled (Boolean):** Enables or disables zoom functionality. Defaults to true. (**Note:** Set isZoomEnabled to false when using a pager to prevent conflicts with scrolling.)
 
 ### Available Controls
-* **loadUrl(url: String):** Updates the video URL to load a new video.
-* **play():** Resumes video playback.
-* **pause():** Pauses video playback.
+* **loadUrl(mediaUrl: String):** Updates the media URL to load a new media.
+* **play():** Resumes media playback.
+* **pause():** Pauses media playback.
 * **togglePlayPause():** Toggles between play and pause states.
 * **mute():** Mutes the video.
 * **unmute():** Unmutes the video.
 * **toggleMuteUnmute():** Toggles between muted and unmuted states.
 * **setSpeed(speed: PlayerSpeed):** Adjusts the playback speed.
-* **seekTo(seconds: Int?):** Seeks to a specific time in the video.
+* **seekTo(seconds: Int?):** Seeks to a specific time in the media.
 * **setVideoFitMode(mode: ScreenResize):** Updates the video resizing mode.
 * **setLooping(isLooping: Boolean):** Enables or disables looping.
+* **toggleLoop():** Toggles loop state.
 * **setVolume(level: Float):** Adjusts the volume. Value must be between 0.0 and 1.0.
+* **setFullScreen(isFullScreen: Boolean):** Enables or disables full screen.
+* **toggleFullScreen():** Toggles full screen enable/disable states.
 
 ### Internal Updates and Events
-The VideoPlayerHost class manages internal state changes and triggers events via the onEvent callback. These events allow developers to monitor and respond to changes in the video player state:
+The MediaPlayerHost class manages internal state changes and triggers events via the onEvent callback. These events allow developers to monitor and respond to changes in the media player state:
 
-| Event                                | Description                                                                        |
-|--------------------------------------|------------------------------------------------------------------------------------|
-| PauseChange(isPaused: Boolean)       | Triggered when the playback state changes (play or pause).                         |
-| MuteChange(isMuted: Boolean)         | Triggered when the mute state changes (mute or unmute).                            |
-| BufferChange(isBuffering: Boolean)   | Triggered when the buffering state changes (e.g., when buffering starts/stops).    |
-| TotalTimeChange(totalTime: Int)      | Triggered when the total duration of the video updates.                            |
-| CurrentTimeChange(currentTime: Int)  | Triggered when the current playback position updates.                              |
-| VideoEnd                             | Triggered when the video playback completes.                                       |
+| Event                                | Description                                                                     |
+|--------------------------------------|---------------------------------------------------------------------------------|
+| PauseChange(isPaused: Boolean)       | Triggered when the playback state changes (play or pause).                      |
+| MuteChange(isMuted: Boolean)         | Triggered when the mute state changes (mute or unmute).                         |
+| BufferChange(isBuffering: Boolean)   | Triggered when the buffering state changes (e.g., when buffering starts/stops). |
+| TotalTimeChange(totalTime: Int)      | Triggered when the total duration of the video updates.                         |
+| CurrentTimeChange(currentTime: Int)  | Triggered when the current playback position updates.                           |
+| MediaEnd                             | Triggered when the media playback completes.                                    |
+
+### Error Handling
+The MediaPlayerHost class provides an onError callback to handle various errors that may occur during media playback.
+
+| Error Type                           | Description                                                                  |
+|--------------------------------------|------------------------------------------------------------------------------|
+| VlcNotFound                          | Triggered when the VLC library is not found, preventing playback in Desktop. |
+| InitializationError(details: String) | Occurs if the media player fails to initialize properly.                     |
+| PlaybackError(details: String)       | Triggered when an error occurs during media playback                         |
+| ResourceError(details: String)       | Occurs when the media resource is unavailable or cannot be loaded.           |
 
 ### Example Usage
 ```kotlin
-val videoPlayerHost = VideoPlayerHost(
-    url = "https://example.com/video.mp4",
+val videoPlayerHost = MediaPlayerHost(
+    mediaUrl = "https://example.com/video.mp4",
     isPaused = true,
     isMuted = false,
     initialSpeed = PlayerSpeed.X1,
     initialVideoFitMode = ScreenResize.FIT,
     isLooping = false,
-    startTimeInSeconds = 10
+    startTimeInSeconds = 10,
+    isFullScreen = true
 )
 
 // Play the video
@@ -116,14 +133,26 @@ videoPlayerHost.setSpeed(PlayerSpeed.X1_5)
 // Enable looping
 videoPlayerHost.setLooping(true)
 
+// Enable Full screen
+videoPlayerHost.setFullScreen(true)
+
 videoPlayerHost.onEvent = { event ->
     when (event) {
-        is VideoPlayerEvent.MuteChange -> { println("Mute status changed: ${event.isMuted}") }
-        is VideoPlayerEvent.PauseChange -> { println("Pause status changed: ${event.isPaused}") }
-        is VideoPlayerEvent.BufferChange -> { println("Buffering status: ${event.isBuffering}") }
-        is VideoPlayerEvent.CurrentTimeChange -> { println("Current playback time: ${event.currentTime}s") }
-        is VideoPlayerEvent.TotalTimeChange -> { println("Video duration updated: ${event.totalTime}s") }
-        VideoPlayerEvent.VideoEnd -> { println("Video playback ended") }
+        is MediaPlayerEvent.MuteChange -> { println("Mute status changed: ${event.isMuted}") }
+        is MediaPlayerEvent.PauseChange -> { println("Pause status changed: ${event.isPaused}") }
+        is MediaPlayerEvent.BufferChange -> { println("Buffering status: ${event.isBuffering}") }
+        is MediaPlayerEvent.CurrentTimeChange -> { println("Current playback time: ${event.currentTime}s") }
+        is MediaPlayerEvent.TotalTimeChange -> { println("Video duration updated: ${event.totalTime}s") }
+        MediaPlayerEvent.MediaEnd -> { println("Video playback ended") }
+    }
+}
+
+videoPlayerHost.onError = { error ->
+    when(error) {
+        is MediaPlayerError.VlcNotFound -> { println("Error: VLC library not found. Please ensure VLC is installed.") }
+        is MediaPlayerError.InitializationError -> { println("Initialization Error: ${error.details}") }
+        is MediaPlayerError.PlaybackError -> { println("Playback Error: ${error.details}") }
+        is MediaPlayerError.ResourceError -> { println("Resource Error: ${error.details}") }
     }
 }
 ```
@@ -131,7 +160,7 @@ videoPlayerHost.onEvent = { event ->
 ### 📹 Video Player
 To play videos in your app, use the VideoPlayerComposable:
 ```kotlin
-val playerHost = remember { VideoPlayerHost(url = url) }
+val playerHost = remember { MediaPlayerHost(mediaUrl = url) }
 
 VideoPlayerComposable(
     modifier = Modifier.fillMaxSize(),
@@ -145,7 +174,8 @@ To display video preview thumbnails, use the VideoPreviewComposable:
 ```kotlin
 VideoPreviewComposable(
     url = videoUrl,
-    frameCount = 5
+    frameCount = 5,
+    contentScale = ContentScale.Crop
 )
 ```
 💡 **Note:** The VideoPreviewComposable does not support local asset video in Android.
@@ -153,7 +183,7 @@ VideoPreviewComposable(
 ### ▶️ YouTube Player
 To play youtube videos in your app, use the YouTubePlayerComposable:
 ```kotlin
-val playerHost = remember { VideoPlayerHost(url = youtubeVideoId) }
+val playerHost = remember { MediaPlayerHost(mediaUrl = youtubeVideoId) }
 
 YouTubePlayerComposable(
     modifier = Modifier.fillMaxSize(),
@@ -172,12 +202,20 @@ ReelsPlayerComposable(
 ```
 
 ### 🎧 Audio Player
-To play audio in your app, use the AudioPlayerComposable:
+To play audio in your app, use `AudioPlayerComposable` for a built-in UI experience or `AudioPlayer` for a fully customizable, independent player. 🎵
 ```kotlin
+val playerHost = remember { MediaPlayerHost(mediaUrl = url) }
 AudioPlayerComposable(
     modifier = Modifier,
-    audios = audioFilesArray
+    audios = audioFilesArray,
+    playerHost = playerHost,
 )
+
+//Independent player
+AudioPlayer(
+    playerHost = playerHost
+)
+
 ```
 💡 **Note:** The AudioPlayerComposable supports both online and local audio playback. You can provide a URL for a remote audio file or a local file path.
 
@@ -227,6 +265,7 @@ You can customize various aspects of the media player:
   
 | Property                                       | Description                                                                                                                     |
 |------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| showControl                                    | Toggle to show or hide the AudioPlayer UI for a customizable playback experience.                                               |
 | isControlsVisible                              | Toggle the visibility of the player controls.                                                                                   |
 | backgroundColor                                | Customize the background color of the audio player.                                                                             |
 | coverBackground                                | Customize the background color of the cover image.                                                                              |
@@ -249,7 +288,7 @@ You can customize various aspects of the media player:
 
 
 ```kotlin
-val playerHost = remember { VideoPlayerHost(url = videoUrl) }
+val playerHost = remember { MediaPlayerHost(mediaUrl = videoUrl) }
 
 VideoPlayerComposable(modifier = Modifier.fillMaxSize(),
                 playerHost = playerHost,
@@ -281,7 +320,7 @@ VideoPreviewComposable(
 ```
 
 ```kotlin
-val playerHost = remember { VideoPlayerHost(url = "QFxN2oDKk0E") }
+val playerHost = remember { MediaPlayerHost(mediaUrl = "QFxN2oDKk0E") }
 
 YouTubePlayerComposable(modifier = Modifier.fillMaxSize(),
                 playerHost = playerHost,
@@ -334,9 +373,12 @@ val audioFilesArray = listOf(
         )
     )
 
+val playerHost = remember { MediaPlayerHost(mediaUrl = audioFilesArray.first().audioUrl) }
+
 AudioPlayerComposable(
         modifier = Modifier,
         audios = audioFilesArray,
+        playerHost = playerHost,
         audioPlayerConfig = AudioPlayerConfig(
             isControlsVisible = true,
             fontColor = Color.White,
@@ -377,6 +419,29 @@ We're committed to continuously improving and expanding the capabilities of our 
 ### 🌟 Upcoming Features
 - Picture-in-Picture (PiP) Mode
 - Video Caching for iOS & Desktop
+- WasmJs support
+
+## 🛠️ Libraries Used in Demo
+The demo project utilizes the following libraries:
+
+**SDP & SSP for Compose Multiplatform** – Scalable size units for responsive UI
+- [sdp-ssp-compose-multiplatform](https://github.com/Chaintech-Network/sdp-ssp-compose-multiplatform) – network.chaintech:sdp-ssp-compose-multiplatform
+
+**Connectivity Monitor** – Seamless Network Monitoring for Compose Multiplatform
+- [compose-connectivity-monitor](https://github.com/Chaintech-Network/CMPConnectivityMonitor) – network.chaintech:compose-connectivity-monitor
+
+**Voyager Navigation** – Simple and scalable navigation for Compose Multiplatform
+- `voyager-navigator` – cafe.adriel.voyager:voyager-navigator
+- `voyager-transitions` – cafe.adriel.voyager:voyager-transitions
+- `voyager-tab` – cafe.adriel.voyager:voyager-tab-navigator
+
+**Image Loader** – Efficient image loading and caching
+- `image-loader` – io.github.qdsfdhvh:image-loader
+
+## 📚 Additional Resources & Guides
+- 📦 [Fixing iOS Duplicate Symbols in KMM: Exporting Multiple Modules as an XCFramework](https://medium.com/mobile-innovation-network/fixing-ios-duplicate-symbols-in-kmm-exporting-multiple-modules-as-an-xcframework-ea408d948c00)
+- 📚 [Essential Libraries for Compose Multiplatform: Boost Your Android and iOS Development](https://medium.com/mobile-innovation-network/essential-libraries-for-compose-multiplatform-boost-your-android-and-ios-development-9f74f6f58a40)
+
 
 ## 📄 License
 ```

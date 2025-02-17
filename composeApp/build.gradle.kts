@@ -52,6 +52,7 @@ kotlin {
             implementation(libs.voyager.tab)
             implementation(libs.sdp.ssp)
             implementation(libs.image.loader)
+            implementation(libs.network.monitor)
 
             implementation(libs.media.player)
         }

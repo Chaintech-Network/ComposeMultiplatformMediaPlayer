@@ -5,9 +5,10 @@ compose = "1.7.3"
 agp = "8.7.3"
 androidx-activityCompose = "1.10.0"
 voyager_version = "1.0.0"
-sdp_ssp_version = "1.0.4"
+sdp_ssp_version = "1.0.5"
 image_loader_version = "1.8.1"
-media-player-version = "1.0.30"
+network_monitor_version = "1.0.1"
+media-player-version = "1.0.31"
 
 [libraries]
 
@@ -18,6 +19,7 @@ voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", vers
 voyager-tab = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager_version" }
 sdp-ssp = { module = "network.chaintech:sdp-ssp-compose-multiplatform", version.ref = "sdp_ssp_version" }
 image-loader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "image_loader_version" }
+network-monitor = { module = "network.chaintech:compose-connectivity-monitor", version.ref = "network_monitor_version" }
 media-player = { module = "network.chaintech:compose-multiplatform-media-player", version.ref = "media-player-version" }
 
 [plugins]

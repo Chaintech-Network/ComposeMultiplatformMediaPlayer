@@ -36,8 +36,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import chaintech.videoplayer.host.VideoPlayerEvent
-import chaintech.videoplayer.host.VideoPlayerHost
+import chaintech.videoplayer.host.MediaPlayerError
+import chaintech.videoplayer.host.MediaPlayerEvent
+import chaintech.videoplayer.host.MediaPlayerHost
 import chaintech.videoplayer.model.VideoPlayerConfig
 import chaintech.videoplayer.ui.video.VideoPlayerComposable
 import chaintech.videoplayer.util.isDesktop
@@ -113,27 +114,43 @@ private fun VideoPlayerBox(video: VideoModel) {
         modifier = Modifier.fillMaxWidth(),
         contentAlignment = Alignment.TopStart
     ) {
-        val playerHost = remember { VideoPlayerHost(url = video.sources) }
+        val playerHost = remember { MediaPlayerHost(mediaUrl = video.sources) }
         playerHost.loadUrl(video.sources)
 
+        playerHost.onError = { error ->
+            when(error) {
+                is MediaPlayerError.VlcNotFound -> {
+//                    println("Error: ${error.message}")
+                }
+                is MediaPlayerError.InitializationError -> {
+//                    println("Error: ${error.message}")
+                }
+                is MediaPlayerError.PlaybackError -> {
+//                    println("Error: ${error.message}")
+                }
+                is MediaPlayerError.ResourceError -> {
+//                    println("Error: ${error.message}")
+                }
+            }
+        }
         playerHost.onEvent = { event ->
             when (event) {
-                is VideoPlayerEvent.MuteChange -> {
+                is MediaPlayerEvent.MuteChange -> {
 //                    println("Mute status changed: ${event.isMuted}")
                 }
-                is VideoPlayerEvent.PauseChange -> {
+                is MediaPlayerEvent.PauseChange -> {
 //                    println("Pause status changed: ${event.isPaused}")
                 }
-                is VideoPlayerEvent.BufferChange -> {
+                is MediaPlayerEvent.BufferChange -> {
 //                    println("Buffering status: ${event.isBuffering}")
                 }
-                is VideoPlayerEvent.CurrentTimeChange -> {
+                is MediaPlayerEvent.CurrentTimeChange -> {
 //                    println("Current playback time: ${event.currentTime}s")
                 }
-                is VideoPlayerEvent.TotalTimeChange -> {
+                is MediaPlayerEvent.TotalTimeChange -> {
 //                    println("Video duration updated: ${event.totalTime}s")
                 }
-                VideoPlayerEvent.VideoEnd -> {
+                MediaPlayerEvent.MediaEnd -> {
 //                    println("Video playback ended")
                 }
             }

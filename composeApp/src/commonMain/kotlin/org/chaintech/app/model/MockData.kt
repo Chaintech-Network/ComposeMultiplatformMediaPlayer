@@ -399,50 +399,6 @@ class MockData {
         )
     )
 
-    val liveStreamData = listOf(
-        VideoModel(
-            id = "1",
-            description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-THE-EXPLORERS-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/c6486b04-a70e-41f9-af5a-a3609de790b5/2.m3u8",
-            subtitle = "",
-            thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/ggdzvt.png",
-            title = "The Explorers"
-        ),
-        VideoModel(
-            id = "2",
-            description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-SCIFI-WORLD-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/a985e052-6868-4365-ac45-52afe9008b25/e3357bd1-7b44-4008-90cc-2db68f088117/2.m3u8",
-            subtitle = "",
-            thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/oxsgsi.png",
-            title = "Scifi World"
-        ),
-        VideoModel(
-            id = "3",
-            description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-HERITAGE-ENG_yuppfast/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/e4523706-f2a8-4b0f-b081-40fe59a46f81/74f66d58-6704-44bd-a8dd-f4ee75f5d621/2.m3u8",
-            subtitle = "",
-            thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/fndjia.png",
-            title = "Heritage"
-        ),
-        VideoModel(
-            id = "4",
-            description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-KIDDO-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/5bcf9d24-04f2-401d-a93f-7af54f29461a/8e069f6f-979f-4a91-a781-1f6494f1b42f/2.m3u8",
-            subtitle = "",
-            thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/kiddo.png",
-            title = "Kiddo"
-        ),
-        VideoModel(
-            id = "5",
-            description = "",
-            sources = "https://streams2.sofast.tv/ptnr-yupptv/title-FIGHT-TV-ENG_yupptv/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/70e45fc8-1f6c-4492-ac26-9868f70f4e02/83ddc86a-a457-4e64-8f09-fcbf00e767fe/2.m3u8",
-            subtitle = "",
-            thumb = "https://d229kpbsb5jevy.cloudfront.net/yuppfast/content/common/logos/channel/logos/fight-tv.png",
-            title = "Fight TV"
-        )
-    ).reversed()
-
-
     fun getFilteredData(data: List<VideoModel>, selectedVideo: VideoModel): List<VideoModel> {
         return data.filter { video ->
             video.title != selectedVideo.title
