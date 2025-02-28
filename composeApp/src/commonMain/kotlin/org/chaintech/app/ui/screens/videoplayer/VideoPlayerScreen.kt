@@ -150,6 +150,9 @@ private fun VideoPlayerBox(video: VideoModel) {
                 is MediaPlayerEvent.TotalTimeChange -> {
 //                    println("Video duration updated: ${event.totalTime}s")
                 }
+                is MediaPlayerEvent.FullScreenChange -> {
+//                    println("FullScreen status changed: ${event.isFullScreen}")
+                }
                 MediaPlayerEvent.MediaEnd -> {
 //                    println("Video playback ended")
                 }

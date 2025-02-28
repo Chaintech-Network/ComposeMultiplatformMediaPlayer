@@ -12,11 +12,6 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
 
-## 🎉 What's New in Version 1.0.31
-**🔊 Enhanced Audio Player Flexibility!**
-* 🚀 **MediaPlayerHost Integration:** The AudioPlayerComposable now seamlessly integrates with MediaPlayerHost, decoupling playback logic from the built-in UI. This gives you full control to customize or replace the default UI while maintaining smooth audio playback.
-* 📝 **Standalone Audio Player:** The AudioPlayer is now independent, offering more flexibility for different use cases.
-
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
 
@@ -44,7 +39,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.31")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.33")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
@@ -59,12 +54,14 @@ commonMain.dependencies {
 * **initialSpeed (PlayerSpeed):** Sets the initial playback speed. Defaults to PlayerSpeed.X1.
 * **initialVideoFitMode (ScreenResize):** Specifies the video resizing mode. Defaults to ScreenResize.FILL.
 * **isLooping (Boolean):** Enables or disables looping. Defaults to true.
-* **startTimeInSeconds (Int?):** Optionally specifies the start time (in seconds) for the video. Defaults to null.
+* **startTimeInSeconds (Float?):** Optionally specifies the start time (in seconds) for the video. Defaults to null.
 * **isFullScreen (Boolean):** Enables or disables full screen. Defaults to false.
-* **isZoomEnabled (Boolean):** Enables or disables zoom functionality. Defaults to true. (**Note:** Set isZoomEnabled to false when using a pager to prevent conflicts with scrolling.)
+* **isZoomEnabled (Boolean):** Enables or disables zoom functionality. Defaults to true. (**Note:** Set isZoomEnabled to false when using in pager or lazyColumn to prevent conflicts with scrolling.)
+* **headers (Map<String, String>?):** Optional HTTP headers to be sent with the media request. Defaults to null.
+* **drmConfig (DrmConfig?):** Optional DRM configuration for protected content. Defaults to null. Supports ClearKey Encryption DRM for playing encrypted media.
 
 ### Available Controls
-* **loadUrl(mediaUrl: String):** Updates the media URL to load a new media.
+* **loadUrl(mediaUrl: String, headers: Map<String, String>? = null, drmConfig: DrmConfig? = null):** Updates the media URL to load a new media. Optionally, you can pass HTTP headers and DRM configuration
 * **play():** Resumes media playback.
 * **pause():** Pauses media playback.
 * **togglePlayPause():** Toggles between play and pause states.
@@ -72,7 +69,7 @@ commonMain.dependencies {
 * **unmute():** Unmutes the video.
 * **toggleMuteUnmute():** Toggles between muted and unmuted states.
 * **setSpeed(speed: PlayerSpeed):** Adjusts the playback speed.
-* **seekTo(seconds: Int?):** Seeks to a specific time in the media.
+* **seekTo(seconds: Float?):** Seeks to a specific time in the media.
 * **setVideoFitMode(mode: ScreenResize):** Updates the video resizing mode.
 * **setLooping(isLooping: Boolean):** Enables or disables looping.
 * **toggleLoop():** Toggles loop state.
@@ -83,14 +80,15 @@ commonMain.dependencies {
 ### Internal Updates and Events
 The MediaPlayerHost class manages internal state changes and triggers events via the onEvent callback. These events allow developers to monitor and respond to changes in the media player state:
 
-| Event                                | Description                                                                     |
-|--------------------------------------|---------------------------------------------------------------------------------|
-| PauseChange(isPaused: Boolean)       | Triggered when the playback state changes (play or pause).                      |
-| MuteChange(isMuted: Boolean)         | Triggered when the mute state changes (mute or unmute).                         |
-| BufferChange(isBuffering: Boolean)   | Triggered when the buffering state changes (e.g., when buffering starts/stops). |
-| TotalTimeChange(totalTime: Int)      | Triggered when the total duration of the video updates.                         |
-| CurrentTimeChange(currentTime: Int)  | Triggered when the current playback position updates.                           |
-| MediaEnd                             | Triggered when the media playback completes.                                    |
+| Event                                   | Description                                                                     |
+|-----------------------------------------|---------------------------------------------------------------------------------|
+| PauseChange(isPaused: Boolean)          | Triggered when the playback state changes (play or pause).                      |
+| MuteChange(isMuted: Boolean)            | Triggered when the mute state changes (mute or unmute).                         |
+| BufferChange(isBuffering: Boolean)      | Triggered when the buffering state changes (e.g., when buffering starts/stops). |
+| TotalTimeChange(totalTime: Int)         | Triggered when the total duration of the video updates.                         |
+| CurrentTimeChange(currentTime: Int)     | Triggered when the current playback position updates.                           |
+| FullScreenChange(isFullScreen: Boolean) | Triggered when the full screen state changes.                                   |
+| MediaEnd                                | Triggered when the media playback completes.                                    |
 
 ### Error Handling
 The MediaPlayerHost class provides an onError callback to handle various errors that may occur during media playback.
@@ -111,8 +109,9 @@ val videoPlayerHost = MediaPlayerHost(
     initialSpeed = PlayerSpeed.X1,
     initialVideoFitMode = ScreenResize.FIT,
     isLooping = false,
-    startTimeInSeconds = 10,
-    isFullScreen = true
+    startTimeInSeconds = 10f,
+    isFullScreen = true,
+    isZoomEnabled = true
 )
 
 // Play the video
@@ -125,7 +124,7 @@ videoPlayerHost.pause()
 videoPlayerHost.toggleMuteUnmute()
 
 // Seek to 30 seconds
-videoPlayerHost.seekTo(30)
+videoPlayerHost.seekTo(30f)
 
 // Change playback speed to 1.5x
 videoPlayerHost.setSpeed(PlayerSpeed.X1_5)
@@ -143,6 +142,7 @@ videoPlayerHost.onEvent = { event ->
         is MediaPlayerEvent.BufferChange -> { println("Buffering status: ${event.isBuffering}") }
         is MediaPlayerEvent.CurrentTimeChange -> { println("Current playback time: ${event.currentTime}s") }
         is MediaPlayerEvent.TotalTimeChange -> { println("Video duration updated: ${event.totalTime}s") }
+        is MediaPlayerEvent.FullScreenChange -> { println("FullScreen status changed: ${event.isFullScreen}") }
         MediaPlayerEvent.MediaEnd -> { println("Video playback ended") }
     }
 }
@@ -419,6 +419,7 @@ We're committed to continuously improving and expanding the capabilities of our 
 ### 🌟 Upcoming Features
 - Picture-in-Picture (PiP) Mode
 - Video Caching for iOS & Desktop
+- Clear key encryption for iOS & Desktop
 - WasmJs support
 
 ## 🛠️ Libraries Used in Demo
@@ -442,6 +443,15 @@ The demo project utilizes the following libraries:
 - 📦 [Fixing iOS Duplicate Symbols in KMM: Exporting Multiple Modules as an XCFramework](https://medium.com/mobile-innovation-network/fixing-ios-duplicate-symbols-in-kmm-exporting-multiple-modules-as-an-xcframework-ea408d948c00)
 - 📚 [Essential Libraries for Compose Multiplatform: Boost Your Android and iOS Development](https://medium.com/mobile-innovation-network/essential-libraries-for-compose-multiplatform-boost-your-android-and-ios-development-9f74f6f58a40)
 
+## Contributing & Feedback
+We appreciate any feedback, bug reports, or feature suggestions to improve **CMPEasyPermission!**
+
+- **Report Issues:** If you encounter any issues or bugs, please open an issue in the [GitHub Issues](https://github.com/Chaintech-Network/ComposeMultiplatformMediaPlayer/issues) section.
+- **Feature Requests:** Have an idea for a new feature? Let us know by creating a feature request issue.
+- **General Feedback:** We welcome any suggestions or feedback to enhance the library. Feel free to start a discussion or share your thoughts.
+- **Contributions:**  If you’d like to contribute, feel free to submit a pull request. We’re happy to review and collaborate on improvements!
+
+Your support and contributions help make ComposeMultiplatformMediaPlayer better for everyone! 🚀
 
 ## 📄 License
 ```
@@ -459,3 +469,5 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+## 🌟 If you find this library useful, consider starring ⭐ the repository to show your support!

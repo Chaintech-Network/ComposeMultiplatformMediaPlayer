@@ -8,7 +8,7 @@ voyager_version = "1.0.0"
 sdp_ssp_version = "1.0.5"
 image_loader_version = "1.8.1"
 network_monitor_version = "1.0.1"
-media-player-version = "1.0.31"
+media-player-version = "1.0.33"
 
 [libraries]
 
