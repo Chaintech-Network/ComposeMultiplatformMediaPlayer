@@ -56,6 +56,7 @@ import org.chaintech.app.utility.FromLocalDrawable
 import org.chaintech.app.utility.FromRemote
 import org.chaintech.app.utility.getSafeAreaSize
 import org.chaintech.app.utility.isLiveStream
+import org.chaintech.app.utility.showSeperateBackButton
 import org.jetbrains.compose.resources.DrawableResource
 import reelsdemo.composeapp.generated.resources.Res
 import reelsdemo.composeapp.generated.resources.icn_add
@@ -81,7 +82,7 @@ private fun VideoPlayerContent(currentVideo: VideoModel, videoList: List<VideoMo
             .padding(top = getSafeAreaSize().top.dp),
         horizontalAlignment = Alignment.Start
     ) {
-        if (isDesktop()) {
+        if (showSeperateBackButton(video.sources)) {
             BackButtonNavBar { navigator.back() }
         }
 
@@ -181,7 +182,7 @@ private fun VideoPlayerBox(video: VideoModel) {
             )
         )
 
-        if (!isDesktop()) {
+        if (!showSeperateBackButton(video.sources)) {
             BackButtonNavBar { navigator.back() }
         }
     }

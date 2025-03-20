@@ -69,11 +69,7 @@ fun MainView() {
         ConnectivityStatus.CONNECTED_VIA_WIFI_WITHOUT_INTERNET
     )
 
-    val tabs: List<Tab> = if (isDesktop()) {
-        listOf(HomeTab, MusicTab, YoutubeTab)
-    } else {
-        listOf(HomeTab, ReelsTab, MusicTab, YoutubeTab)
-    }
+    val tabs: List<Tab> = listOf(HomeTab, ReelsTab, MusicTab, YoutubeTab)
 
     MyApplicationTheme {
         val navigation = remember { NavigationProvider() }
@@ -157,6 +153,15 @@ class HomeScreen : Screen {
             ) {
                 TabNavigationItem(tab = HomeTab)
             }
+            BottomNavigation(
+                modifier = Modifier
+                    .height(BottomNavigationBarHeight),
+                contentColor = MyApplicationTheme.colors.bottomTabBarColor,
+                backgroundColor = MyApplicationTheme.colors.bottomTabBarColor,
+            ) {
+                TabNavigationItem(tab = ReelsTab)
+            }
+
             BottomNavigation(
                 modifier = Modifier
                     .height(BottomNavigationBarHeight),

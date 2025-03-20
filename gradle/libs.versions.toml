@@ -1,14 +1,14 @@
 [versions]
 
-kotlin = "2.1.0"
+kotlin = "2.1.10"
 compose = "1.7.3"
 agp = "8.7.3"
-androidx-activityCompose = "1.10.0"
-voyager_version = "1.0.0"
+androidx-activityCompose = "1.10.1"
+voyager_version = "1.0.1"
 sdp_ssp_version = "1.0.5"
-image_loader_version = "1.8.1"
+image_loader_version = "1.10.0"
 network_monitor_version = "1.0.1"
-media-player-version = "1.0.33"
+media-player-version = "1.0.35"
 
 [libraries]
 

@@ -1,6 +1,6 @@
 # Compose Multiplatform Media Player
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-multiplatform-media-player.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-multiplatform-media-player)
-[![Kotlin](https://img.shields.io/badge/kotlin-v2.1.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-v2.1.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
 [![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.7.3-blue)](https://github.com/JetBrains/compose-multiplatform)
 [![License](https://img.shields.io/github/license/Chaintech-Network/ComposeMultiplatformMediaPlayer)](http://www.apache.org/licenses/LICENSE-2.0)
 
@@ -11,6 +11,11 @@
 Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video player, reels viewing, audio playing, YouTube video integration, video preview thumbnails and HLS m3u8 support on iOS, Android, and Desktop platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
+
+## 🎉 What's New in Version 1.0.35
+* 🔄 **Seamless Resume:** Videos now automatically resume from the last saved position, ensuring a smooth viewing experience.
+* 🎯 **Smart Saving Logic:** Playback position is saved intelligently based on video length, optimizing for movies, short clips, and everything in between.
+* ▶️ **Auto-Play Next Reel:** Automatically plays the next reel when the current one ends for a continuous viewing experience.
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
@@ -29,6 +34,8 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 **Customizable Controls:** Enable/disable pause/resume functionality and adjust the appearance and visibility of the seek bar, along with various control icons and colors.
 
+**Resume Video Playback:**  Automatically resume video playback from the last position.
+
 ![media-player-animation-updated2](./assets/player_example1.gif)
 
 ![media-player-animation-updated2](./assets/desktop_player.gif)
@@ -39,10 +46,23 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.33")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.35")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
+
+## 📦 Setup for Resuming Video Playback
+If you want to enable the feature to resume video playback from the last saved position, you need to initialize PlaybackPreference in your Android app. Add the following setup in your AppActivity:
+
+```kotlin
+class AppActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        PlaybackPreference.initialize(this)
+    }
+}
+```
+This ensures that playback positions are properly saved and retrieved when needed. Without this initialization, the resume feature will not work on Android. 🚀
 
 ## 🎬 Usage
 
@@ -260,6 +280,10 @@ You can customize various aspects of the media player:
 | loadingIndicatorColor                                 | Customize the color of the loading indicator.                                                                                   |
 | loaderView                                            | Custom loader for showing loading state.                                                                                        |
 | isLiveStream                                          | A boolean property that indicates whether the currently playing video is a live stream.                                         |
+| controlClickAnimationDuration                         | Duration (in milliseconds) of the click animation applied to a button or control when the user interacts with it                |
+| backdropAlpha                                         | Controls the transparency of the backdrop beneath the media controls.                                                           |
+| autoPlayNextReel                                      | Automatically plays the next reel when the current one ends.                                                                    |
+| enableResumePlayback                                  | Resume from last saved position.                                                                                                |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   
@@ -285,7 +309,7 @@ You can customize various aspects of the media player:
 | shuffleOnIconResource & shuffleOffIconResource | Customize the icons for the shuffle control when enabled and disabled.                                                          |
 | advanceControlIconSize                         | Customize the size of the advance control icons (e.g., fast forward/backward).                                                  |
 | repeatOnIconResource & repeatOffIconResource   | Customize the icons for the repeat control when enabled and disabled.                                                           |
-
+| controlClickAnimationDuration                  | Duration (in milliseconds) of the click animation applied to a button or control when the user interacts with it                |
 
 ```kotlin
 val playerHost = remember { MediaPlayerHost(mediaUrl = videoUrl) }
