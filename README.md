@@ -12,10 +12,11 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
 
-## 🎉 What's New in Version 1.0.35
-* 🔄 **Seamless Resume:** Videos now automatically resume from the last saved position, ensuring a smooth viewing experience.
-* 🎯 **Smart Saving Logic:** Playback position is saved intelligently based on video length, optimizing for movies, short clips, and everything in between.
-* ▶️ **Auto-Play Next Reel:** Automatically plays the next reel when the current one ends for a continuous viewing experience.
+## 🎉 What's New in Version 1.0.36
+* 🔍 **Configurable Zoom:** `isZoomEnabled` has been moved from MediaPlayerHost to VideoPlayerConfig for better customization.
+* 🔊 **Volume Control with Gesture:** Adjust volume by dragging vertically on the right side of the player. This feature can be enabled or disabled using `isGestureVolumeControlEnabled`.
+* 📏 **Retrieve Media Duration:** Easily fetch the duration of a media file using the `RetrieveMediaDuration` function.
+* 🎥 **Reels Player Enhancements:** Now, you can retrieve the current reel index while playing multiple videos in a reels format.
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
@@ -46,7 +47,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.35")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.36")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
@@ -76,7 +77,6 @@ This ensures that playback positions are properly saved and retrieved when neede
 * **isLooping (Boolean):** Enables or disables looping. Defaults to true.
 * **startTimeInSeconds (Float?):** Optionally specifies the start time (in seconds) for the video. Defaults to null.
 * **isFullScreen (Boolean):** Enables or disables full screen. Defaults to false.
-* **isZoomEnabled (Boolean):** Enables or disables zoom functionality. Defaults to true. (**Note:** Set isZoomEnabled to false when using in pager or lazyColumn to prevent conflicts with scrolling.)
 * **headers (Map<String, String>?):** Optional HTTP headers to be sent with the media request. Defaults to null.
 * **drmConfig (DrmConfig?):** Optional DRM configuration for protected content. Defaults to null. Supports ClearKey Encryption DRM for playing encrypted media.
 
@@ -130,8 +130,7 @@ val videoPlayerHost = MediaPlayerHost(
     initialVideoFitMode = ScreenResize.FIT,
     isLooping = false,
     startTimeInSeconds = 10f,
-    isFullScreen = true,
-    isZoomEnabled = true
+    isFullScreen = true
 )
 
 // Play the video
@@ -239,6 +238,18 @@ AudioPlayer(
 ```
 💡 **Note:** The AudioPlayerComposable supports both online and local audio playback. You can provide a URL for a remote audio file or a local file path.
 
+### 📏 Retrieve Media Duration
+To retrieve the duration of a media file, use the RetrieveMediaDuration function:
+```kotlin
+RetrieveMediaDuration(
+    url = videoUrl,
+    onDurationRetrieved = { duration ->
+        // Handle the retrieved duration (in seconds)
+    }
+)
+```
+This function asynchronously fetches the total duration of the media file from the provided URL and returns it via the onDurationRetrieved callback.
+
 ## ⚙️ Customization
 You can customize various aspects of the media player:
 
@@ -284,6 +295,8 @@ You can customize various aspects of the media player:
 | backdropAlpha                                         | Controls the transparency of the backdrop beneath the media controls.                                                           |
 | autoPlayNextReel                                      | Automatically plays the next reel when the current one ends.                                                                    |
 | enableResumePlayback                                  | Resume from last saved position.                                                                                                |
+| isZoomEnabled                                         | Enables or disables zoom functionality. Defaults to true.                                                                       |
+| isGestureVolumeControlEnabled                         | Allows to control volume level by using vertical drag gesture on right side of player                                           |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   
@@ -380,7 +393,8 @@ ReelsPlayerComposable(modifier = Modifier.fillMaxSize(),
             isFullScreenEnabled = false,
             isScreenLockEnabled = false,
             reelVerticalScrolling = true
-        )
+        ),
+        currentItemIndex = { /* Current Reel Index */ }
     )
 ```
 
@@ -407,7 +421,8 @@ AudioPlayerComposable(
             isControlsVisible = true,
             fontColor = Color.White,
             iconsTintColor = Color.White
-        )
+        ),
+        currentItemIndex = { /* Current Audio File Index */ }
     )
 ```
 
