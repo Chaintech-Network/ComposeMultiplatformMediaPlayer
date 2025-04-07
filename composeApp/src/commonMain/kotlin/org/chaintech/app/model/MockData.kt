@@ -46,150 +46,151 @@ class MockData {
     )
 
     val mockData = listOf(
-            VideoModel(
-                id = "1",
-                description = "Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself.",
-                sources = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-                subtitle = "By Blender Foundation",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/aquaman_3x4-1685448020016.jpg",
-                title = "Big Buck Bunny",
-                duration = "9 min 56 s",
-                rating = "4",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/inception-tv-1697699284926.jpg"
-            ),
-            VideoModel(
-                id = "2",
-                description = "The first Blender Open Movie from 2006",
-                sources = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-                subtitle = "By Blender Foundation",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1707191348650.jpg",
-                title = "Elephant Dream",
-                duration = "10 min 53 s",
-                rating = "5",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/mad-max--fury-road--tv-1698657374548.jpg"
-            ),
-            VideoModel(
-                id = "3",
-                description = "HBO GO now works with Chromecast -- the easiest way to enjoy online video on your TV.",
-                sources = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" ,
-                subtitle = "By Google",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/dunkirk-3x4-1685712551831.jpg",
-                title = "For Bigger Blazes",
-                duration = "14 s",
-                rating = "4.5",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/godzilla-king-of-the-monsterstv-1697885255069.jpg"
-            ),
-            VideoModel(
-                id = "4",
-                description = "Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for when Batman's escapes aren't quite big enough. ",
-                sources = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" ,
-                subtitle = "By Google",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/hp6_3x4-1687867758365.jpg",
-                title = "For Bigger Escape",
-                duration = "15 s",
-                rating = "3",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/evil-dead-rise-tv-2-1697432060944.jpg"
-            ),
-            VideoModel(
-                id = "5",
-                description = "Introducing Chromecast. The easiest way to enjoy online video and music on your TV. For $35.  Find out more at google.com/chromecast.",
-                sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" ,
-                subtitle = "By Google",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1708145297782.jpg",
-                title = "For Bigger Fun",
-                duration = "1 min",
-                rating = "5",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/puss-in-boots-tv-1696331422101.jpg"
-            ),
-            VideoModel(
-                id = "6",
-                description = "Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for the times that call for bigger joyrides. For $35. Learn how to use Chromecast with YouTube and more at google.com/chromecast.",
-                sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" ,
-                subtitle = "By Google",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/hangover_3x4-1686200517765.jpg",
-                title = "For Bigger Joyrides",
-                duration = "15 s",
-                rating = "4",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1717431474775.jpg"
-            ),
-            VideoModel(
-                id = "7",
-                description ="Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for when you want to make Buster's big meltdowns even bigger. For $35. Learn how to use Chromecast with Netflix and more at google.com/chromecast.",
-                sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" ,
-                subtitle = "By Google",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/theintern-3x4-1686484570836.jpg",
-                title = "For Bigger Meltdowns",
-                duration = "15 s",
-                rating = "4",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/the-dark-knight-tv-1696338828687.jpg"
-            ),
-            VideoModel(
-                id = "8",
-                description = "Sintel is an independently produced short film, initiated by the Blender Foundation as a means to further improve and validate the free/open source 3D creation suite Blender. With initial funding provided by 1000s of donations via the internet community, it has again proven to be a viable development model for both open 3D technology as for independent animation film.\nThis 15 minute film has been realized in the studio of the Amsterdam Blender Institute, by an international team of artists and developers. In addition to that, several crucial technical and creative targets have been realized online, by developers and artists and teams all over the world.\nwww.sintel.org",
-                sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" ,
-                subtitle = "By Blender Foundation",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/funnypeople-3x4-1686899522715.jpg",
-                title = "Sintel",
-                duration = "14 min 47 s",
-                rating = "4",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/flash-tv-1699991069563.jpg"
-            ),
-            VideoModel(
-                id = "9",
-                description = "Smoking Tire takes the all-new Subaru Outback to the highest point we can find in hopes our customer-appreciation Balloon Launch will get some free T-shirts into the hands of our viewers.",
-                sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4" ,
-                subtitle = "By Garage419",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1701247349405.jpg",
-                title = "Subaru Outback On Street And Dirt",
-                duration = "2 hr 10 min",
-                rating = "4",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1714658980641.jpg"
-            ),
-            VideoModel(
-                id = "10",
-                description = "Tears of Steel was realized with crowd-funding by users of the open source 3D creation tool Blender. Target was to improve and test a complete open and free pipeline for visual effects in film - and to make a compelling sci-fi film in Amsterdam, the Netherlands.  The film itself, and all raw material used for making it, have been released under the Creatieve Commons 3.0 Attribution license. Visit the tearsofsteel.org website to find out more about this, or to purchase the 4-DVD box with a lot of extras.  (CC) Blender Foundation - http://www.tearsofsteel.org",
-                sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" ,
-                subtitle = "By Blender Foundation",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/oppenheimer-3x4-1712046716651.jpg",
-                title = "Tears of Steel",
-                duration = "2 hr 10 min",
-                rating = "4",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1703659873046.jpg"
-            ),
-            VideoModel(
-                id = "11",
-                description = "The Smoking Tire heads out to Adams Motorsports Park in Riverside, CA to test the most requested car of 2010, the Volkswagen GTI. Will it beat the Mazdaspeed3's standard-setting lap time? Watch and see...",
-                sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4" ,
-                subtitle = "By Garage419",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/shazam-fury-of-the-gods-3x4-1698688392769.jpg",
-                title = "Volkswagen GTI Review",
-                duration = "2 hr 10 min",
-                rating = "4",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-tv-1723182567870.jpg"
-            ),
-            VideoModel(
-                id = "12",
-                description = "The Smoking Tire is going on the 2010 Bullrun Live Rally in a 2011 Shelby GT500, and posting a video from the road every single day!",
-                sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" ,
-                subtitle = "By Garage419",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1709006719984.jpg",
-                title = "We Are Going On Bullrun",
-                duration = "2 hr 10 min",
-                rating = "4",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_512/v3Storage/assets/kong-skull-island-mobile-1696657717045.jpg"
-            ),
-            VideoModel(
-                id = "13",
-                description = "The Smoking Tire meets up with Chris and Jorge from CarsForAGrand.com to see just how far $1,000 can go when looking for a car.",
-                sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4" ,
-                subtitle = "By Garage419",
-                thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1717082469138.jpg",
-                title = "What care can you get for a grand?",
-                duration = "1 hr 10 min",
-                rating = "4",
-                thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_512/v3Storage/assets/aquaman-mobile-1696657559914.jpg"
-            ),
-        )
+        VideoModel(
+            id = "1",
+            description = "Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself.",
+            sources = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+            subtitle = "By Blender Foundation",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/aquaman_3x4-1685448020016.jpg",
+            title = "Big Buck Bunny",
+            duration = "9 min 56 s",
+            rating = "4",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/inception-tv-1697699284926.jpg"
+        ),
+        VideoModel(
+            id = "2",
+            description = "Sintel is an independently produced short film, initiated by the Blender Foundation as a means to further improve and validate the free/open source 3D creation suite Blender. With initial funding provided by 1000s of donations via the internet community, it has again proven to be a viable development model for both open 3D technology as for independent animation film.\nThis 15 minute film has been realized in the studio of the Amsterdam Blender Institute, by an international team of artists and developers. In addition to that, several crucial technical and creative targets have been realized online, by developers and artists and teams all over the world.\nwww.sintel.org",
+            sources =  "https://bitmovin-a.akamaihd.net/content/sintel/hls/playlist.m3u8" ,
+            subtitle = "By Blender Foundation",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/funnypeople-3x4-1686899522715.jpg",
+            title = "Sintel",
+            duration = "14 min 47 s",
+            rating = "4",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/flash-tv-1699991069563.jpg"
+        ),
+
+        VideoModel(
+            id = "3",
+            description = "The first Blender Open Movie from 2006",
+            sources = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+            subtitle = "By Blender Foundation",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1707191348650.jpg",
+            title = "Elephant Dream",
+            duration = "10 min 53 s",
+            rating = "5",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/mad-max--fury-road--tv-1698657374548.jpg"
+        ),
+        VideoModel(
+            id = "4",
+            description = "HBO GO now works with Chromecast -- the easiest way to enjoy online video on your TV.",
+            sources = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" ,
+            subtitle = "By Google",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/dunkirk-3x4-1685712551831.jpg",
+            title = "For Bigger Blazes",
+            duration = "14 s",
+            rating = "4.5",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/godzilla-king-of-the-monsterstv-1697885255069.jpg"
+        ),
+        VideoModel(
+            id = "5",
+            description = "Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for when Batman's escapes aren't quite big enough. ",
+            sources = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" ,
+            subtitle = "By Google",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/hp6_3x4-1687867758365.jpg",
+            title = "For Bigger Escape",
+            duration = "15 s",
+            rating = "3",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/evil-dead-rise-tv-2-1697432060944.jpg"
+        ),
+        VideoModel(
+            id = "6",
+            description = "Introducing Chromecast. The easiest way to enjoy online video and music on your TV. For $35.  Find out more at google.com/chromecast.",
+            sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" ,
+            subtitle = "By Google",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1708145297782.jpg",
+            title = "For Bigger Fun",
+            duration = "1 min",
+            rating = "5",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/puss-in-boots-tv-1696331422101.jpg"
+        ),
+        VideoModel(
+            id = "7",
+            description = "Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for the times that call for bigger joyrides. For $35. Learn how to use Chromecast with YouTube and more at google.com/chromecast.",
+            sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" ,
+            subtitle = "By Google",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/hangover_3x4-1686200517765.jpg",
+            title = "For Bigger Joyrides",
+            duration = "15 s",
+            rating = "4",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1717431474775.jpg"
+        ),
+        VideoModel(
+            id = "8",
+            description ="Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for when you want to make Buster's big meltdowns even bigger. For $35. Learn how to use Chromecast with Netflix and more at google.com/chromecast.",
+            sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" ,
+            subtitle = "By Google",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/theintern-3x4-1686484570836.jpg",
+            title = "For Bigger Meltdowns",
+            duration = "15 s",
+            rating = "4",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/the-dark-knight-tv-1696338828687.jpg"
+        ),
+        VideoModel(
+            id = "9",
+            description = "Smoking Tire takes the all-new Subaru Outback to the highest point we can find in hopes our customer-appreciation Balloon Launch will get some free T-shirts into the hands of our viewers.",
+            sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4" ,
+            subtitle = "By Garage419",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1701247349405.jpg",
+            title = "Subaru Outback On Street And Dirt",
+            duration = "2 hr 10 min",
+            rating = "4",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1714658980641.jpg"
+        ),
+        VideoModel(
+            id = "10",
+            description = "Tears of Steel was realized with crowd-funding by users of the open source 3D creation tool Blender. Target was to improve and test a complete open and free pipeline for visual effects in film - and to make a compelling sci-fi film in Amsterdam, the Netherlands.  The film itself, and all raw material used for making it, have been released under the Creatieve Commons 3.0 Attribution license. Visit the tearsofsteel.org website to find out more about this, or to purchase the 4-DVD box with a lot of extras.  (CC) Blender Foundation - http://www.tearsofsteel.org",
+            sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" ,
+            subtitle = "By Blender Foundation",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/oppenheimer-3x4-1712046716651.jpg",
+            title = "Tears of Steel",
+            duration = "2 hr 10 min",
+            rating = "4",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-carousel-tv-1703659873046.jpg"
+        ),
+        VideoModel(
+            id = "11",
+            description = "The Smoking Tire heads out to Adams Motorsports Park in Riverside, CA to test the most requested car of 2010, the Volkswagen GTI. Will it beat the Mazdaspeed3's standard-setting lap time? Watch and see...",
+            sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4" ,
+            subtitle = "By Garage419",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/shazam-fury-of-the-gods-3x4-1698688392769.jpg",
+            title = "Volkswagen GTI Review",
+            duration = "2 hr 10 min",
+            rating = "4",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_514/v3Storage/assets/vertical-tv-1723182567870.jpg"
+        ),
+        VideoModel(
+            id = "12",
+            description = "The Smoking Tire is going on the 2010 Bullrun Live Rally in a 2011 Shelby GT500, and posting a video from the road every single day!",
+            sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" ,
+            subtitle = "By Garage419",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1709006719984.jpg",
+            title = "We Are Going On Bullrun",
+            duration = "2 hr 10 min",
+            rating = "4",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_512/v3Storage/assets/kong-skull-island-mobile-1696657717045.jpg"
+        ),
+        VideoModel(
+            id = "13",
+            description = "The Smoking Tire meets up with Chris and Jorge from CarsForAGrand.com to see just how far $1,000 can go when looking for a car.",
+            sources =  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4" ,
+            subtitle = "By Garage419",
+            thumb = "https://v3img.voot.com/resizeMedium,w_384,h_512/v3Storage/assets/3x4-1717082469138.jpg",
+            title = "What care can you get for a grand?",
+            duration = "1 hr 10 min",
+            rating = "4",
+            thumbL = "https://v3img.voot.com/resizeMedium,w_914,h_512/v3Storage/assets/aquaman-mobile-1696657559914.jpg"
+        ),
+    )
 
     val youtbeMockData = listOf(
         VideoModel(

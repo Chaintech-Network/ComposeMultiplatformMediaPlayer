@@ -178,7 +178,7 @@ private fun VideoPlayerBox(video: VideoModel) {
                 ),
                 fastForwardBackwardIconSize = if (isDesktop()) 16.sdp else 28.sdp,
                 controlTopPadding = 10.sdp,
-                isLiveStream = isLiveStream(video.sources)
+//                isLiveStream = isLiveStream(video.sources)
             )
         )
 
