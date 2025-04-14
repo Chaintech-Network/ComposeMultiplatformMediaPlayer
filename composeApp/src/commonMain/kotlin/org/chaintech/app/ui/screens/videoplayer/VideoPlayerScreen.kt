@@ -1,5 +1,6 @@
 package org.chaintech.app.ui.screens.videoplayer
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -40,6 +41,7 @@ import chaintech.videoplayer.host.MediaPlayerError
 import chaintech.videoplayer.host.MediaPlayerEvent
 import chaintech.videoplayer.host.MediaPlayerHost
 import chaintech.videoplayer.model.VideoPlayerConfig
+import chaintech.videoplayer.model.WatermarkConfig
 import chaintech.videoplayer.ui.video.VideoPlayerComposable
 import chaintech.videoplayer.util.isDesktop
 import network.chaintech.sdpcomposemultiplatform.sdp
@@ -55,13 +57,14 @@ import org.chaintech.app.ui.components.BackButtonNavBar
 import org.chaintech.app.utility.FromLocalDrawable
 import org.chaintech.app.utility.FromRemote
 import org.chaintech.app.utility.getSafeAreaSize
-import org.chaintech.app.utility.isLiveStream
 import org.chaintech.app.utility.showSeperateBackButton
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 import reelsdemo.composeapp.generated.resources.Res
 import reelsdemo.composeapp.generated.resources.icn_add
 import reelsdemo.composeapp.generated.resources.icn_download
 import reelsdemo.composeapp.generated.resources.icn_share
+import reelsdemo.composeapp.generated.resources.watermark
 
 class VideoPlayerScreen(private val currentVideo: VideoModel, private val videoList: List<VideoModel>) : Screen {
     @Composable
@@ -179,6 +182,18 @@ private fun VideoPlayerBox(video: VideoModel) {
                 fastForwardBackwardIconSize = if (isDesktop()) 16.sdp else 28.sdp,
                 controlTopPadding = 10.sdp,
 //                isLiveStream = isLiveStream(video.sources)
+                watermarkConfig = WatermarkConfig(
+                    content = {
+                        Image(
+                            painter = painterResource(Res.drawable.watermark) ,
+                            contentDescription = "Watermark",
+                            modifier = Modifier
+                                .size(80.sdp)
+                        )
+                    },
+                    stayDelay = 4000L,
+                    hideDelay = 4000L
+                )
             )
         )
 
