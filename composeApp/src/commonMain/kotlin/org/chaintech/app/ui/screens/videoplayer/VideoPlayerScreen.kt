@@ -193,13 +193,18 @@ private fun VideoPlayerBox(video: VideoModel) {
                     },
                     stayDelay = 4000L,
                     hideDelay = 4000L
-                )
+                ),
+                enableBackButton = true,
+                backActionCallback = {
+                    navigator.back()
+                }
+
             )
         )
 
-        if (!showSeperateBackButton(video.sources)) {
-            BackButtonNavBar { navigator.back() }
-        }
+//        if (!showSeperateBackButton(video.sources)) {
+//            BackButtonNavBar { navigator.back() }
+//        }
     }
 }
 

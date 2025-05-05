@@ -1,3 +1,15 @@
+# 1.0.39 [2025-04-25]
+
+### Customization Options
+| Property                 | Description                                                                       |
+|--------------------------|-----------------------------------------------------------------------------------|
+| enableFullEdgeToEdge     | Uses immersive full-screen mode that extends content into system and cutout areas |
+| enableBackButton         | Shows a back button at the top-left corner when true                              |
+| backIconResource         | Custom icon for the back button (`DrawableResource`)                              |
+| backActionCallback       | Callback triggered when back button is tapped                                     |
+
+
+
 # 1.0.38 [2025-04-11] 
 ### Added
 - 💧 **Dynamic Watermark Overlay:** Display a customizable watermark that appears inside the video player, moves randomly within the player bounds, and supports configurable visibility timing with `stayDelay` and `hideDelay` options. Supports composable or image-based watermark content.

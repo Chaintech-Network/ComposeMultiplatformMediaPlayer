@@ -12,9 +12,6 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
 
-## 🎉 What's New in Version 1.0.38
-- 💧 **Dynamic Watermark Overlay:** Display a customizable watermark that appears inside the video player, moves randomly within the player bounds, and supports configurable visibility timing with `stayDelay` and `hideDelay` options. Supports composable or image-based watermark content.
-- 🔖 **Chapter Support on SeekBar:** Chapters are now visually integrated into the SeekBar track, allowing users to see content sections at a glance. Active chapter title is dynamically displayed during playback or when scrubbing through the video.
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
@@ -45,7 +42,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.38")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.39")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
@@ -303,6 +300,10 @@ You can customize various aspects of the media player:
 | showSubTitlesOptions                                  | Lets users choose from available subtitles.                                                                      |
 | watermarkConfig                                       | Allows adding a dynamic watermark that moves within video bounds with customizable content and timing.           |
 | chapters                                              | Shows chapter points on the SeekBar with titles.                                                                 |
+| enableFullEdgeToEdge                                  | Uses immersive full-screen mode that extends content into system and cutout areas                                |
+| enableBackButton                                      | Shows a back button at the top-left corner when true                                                             |
+| backIconResource                                      | Custom icon for the back button (`DrawableResource`)                                                             |
+| backActionCallback                                    | Callback triggered when back button is tapped                                                                    |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   

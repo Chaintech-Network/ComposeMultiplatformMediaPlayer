@@ -7,19 +7,17 @@ androidx-activityCompose = "1.10.1"
 voyager_version = "1.0.1"
 sdp_ssp_version = "1.0.6"
 image_loader_version = "1.10.0"
-network_monitor_version = "1.0.1"
-media-player-version = "1.0.38"
+media-player-version = "1.0.39"
 
 [libraries]
 
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-androidx-core = { group = "androidx.core", name = "core", version = "1.15.0" }
+androidx-core = { group = "androidx.core", name = "core", version = "1.16.0" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager_version" }
 voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager_version" }
 voyager-tab = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager_version" }
 sdp-ssp = { module = "network.chaintech:sdp-ssp-compose-multiplatform", version.ref = "sdp_ssp_version" }
 image-loader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "image_loader_version" }
-network-monitor = { module = "network.chaintech:compose-connectivity-monitor", version.ref = "network_monitor_version" }
 media-player = { module = "network.chaintech:compose-multiplatform-media-player", version.ref = "media-player-version" }
 
 [plugins]
