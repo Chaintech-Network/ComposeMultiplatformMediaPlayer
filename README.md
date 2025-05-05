@@ -12,6 +12,22 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
 
+## 🎉 What's New in Version 1.0.40
+- 🖥️ **Desktop Fullscreen Support:** Added support for fullscreen mode on desktop. You can manually toggle between fullscreen and floating window modes using control buttons.
+
+### 🖼️ Cross-Platform Drawable Migration Guide
+⚠️ **Background**
+Previously, this library used `org.jetbrains.compose.resources.DrawableResource`, which is only available in Compose Multiplatform.
+However, this causes compatibility issues when used in Android-only Compose projects, which don’t support `DrawableResource`.
+
+To solve this, we’ve introduced a new platform-agnostic abstraction: `PlatformDrawable`.
+
+✅ **Use per platform:**
+
+**Android:** AndroidResourceDrawable(R.drawable.icon)
+
+**Compose Multiplatform:** ComposeResourceDrawable(Res.drawable.icon)
+
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
@@ -42,7 +58,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.39")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.40")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
@@ -59,6 +75,25 @@ class AppActivity : ComponentActivity() {
 }
 ```
 This ensures that playback positions are properly saved and retrieved when needed. Without this initialization, the resume feature will not work on Android. 🚀
+
+## 📋 Setup Guide for Fullscreen Support in Desktop
+To enable fullscreen and window placement control from the library, you need to provide your app's WindowState using CompositionLocalProvider.
+
+**For example:**
+```kotlin
+fun main() = application {
+    val windowState = rememberWindowState(width = 900.dp, height = 700.dp)
+    CompositionLocalProvider(LocalWindowState provides windowState) {
+        Window(
+            title = "MediaPlayer",
+            state = windowState,
+            onCloseRequest = ::exitApplication,
+        ) {
+            MainView()
+        }
+    }
+}
+```
 
 ## 🎬 Usage
 
@@ -351,8 +386,8 @@ VideoPlayerComposable(modifier = Modifier.fillMaxSize(),
                     isAutoHideControlEnabled = true,
                     controlHideIntervalSeconds = 5,
                     isFastForwardBackwardEnabled = true,
-                    playIconResource = Res.drawable.icn_play,
-                    pauseIconResource = Res.drawable.icn_pause,
+                    playIconResource = ComposeResourceDrawable(Res.drawable.icn_play),
+                    pauseIconResource = ComposeResourceDrawable(Res.drawable.icn_pause),
                 )
             )
 ```
@@ -383,8 +418,8 @@ YouTubePlayerComposable(modifier = Modifier.fillMaxSize(),
                     isAutoHideControlEnabled = true,
                     controlHideIntervalSeconds = 5,
                     isFastForwardBackwardEnabled = true,
-                    playIconResource = Res.drawable.icn_play,
-                    pauseIconResource = Res.drawable.icn_pause,
+                    playIconResource = ComposeResourceDrawable(Res.drawable.icn_play),
+                    pauseIconResource = ComposeResourceDrawable(Res.drawable.icn_pause),
                 )
             )
 ```

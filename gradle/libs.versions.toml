@@ -7,7 +7,7 @@ androidx-activityCompose = "1.10.1"
 voyager_version = "1.0.1"
 sdp_ssp_version = "1.0.6"
 image_loader_version = "1.10.0"
-media-player-version = "1.0.39"
+media-player-version = "1.0.40"
 
 [libraries]
 

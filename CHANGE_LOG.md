@@ -1,3 +1,41 @@
+# 1.0.40 [2025-05-01]
+### Added
+- 🖥️ **Desktop Fullscreen Support:** Added support for fullscreen mode on desktop. You can manually toggle between fullscreen and floating window modes using control buttons.
+
+## 🖼️ Cross-Platform Drawable Migration Guide
+⚠️ **Background**
+Previously, this library used `org.jetbrains.compose.resources.DrawableResource`, which is only available in Compose Multiplatform.
+However, this causes compatibility issues when used in Android-only Compose projects, which don’t support `DrawableResource`.
+
+To solve this, we’ve introduced a new platform-agnostic abstraction: `PlatformDrawable`.
+
+✅ **Use per platform:**
+
+**Android:** AndroidResourceDrawable(R.drawable.icon)
+
+**Compose Multiplatform:** ComposeResourceDrawable(Res.drawable.icon)
+
+
+## 📋 Setup Guide for Fullscreen Support in Desktop
+To enable fullscreen and window placement control from the library, you need to provide your app's WindowState using CompositionLocalProvider.
+
+**For example:**
+```kotlin
+fun main() = application {
+    val windowState = rememberWindowState(width = 900.dp, height = 700.dp)
+    CompositionLocalProvider(LocalWindowState provides windowState) {
+        Window(
+            title = "MediaPlayer",
+            state = windowState,
+            onCloseRequest = ::exitApplication,
+        ) {
+            MainView()
+        }
+    }
+}
+```
+
+
 # 1.0.39 [2025-04-25]
 
 ### Customization Options
