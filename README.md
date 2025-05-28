@@ -527,7 +527,7 @@ The demo project utilizes the following libraries:
 - 📚 [Essential Libraries for Compose Multiplatform: Boost Your Android and iOS Development](https://medium.com/mobile-innovation-network/essential-libraries-for-compose-multiplatform-boost-your-android-and-ios-development-9f74f6f58a40)
 
 ## Contributing & Feedback
-We appreciate any feedback, bug reports, or feature suggestions to improve **CMPEasyPermission!**
+We appreciate any feedback, bug reports, or feature suggestions to improve **ComposeMultiplatformMediaPlayer!**
 
 - **Report Issues:** If you encounter any issues or bugs, please open an issue in the [GitHub Issues](https://github.com/Chaintech-Network/ComposeMultiplatformMediaPlayer/issues) section.
 - **Feature Requests:** Have an idea for a new feature? Let us know by creating a feature request issue.
