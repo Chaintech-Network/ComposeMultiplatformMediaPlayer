@@ -1,7 +1,7 @@
 # Compose Multiplatform Media Player
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-multiplatform-media-player.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-multiplatform-media-player)
 [![Kotlin](https://img.shields.io/badge/kotlin-v2.1.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.7.3-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.8.0-blue)](https://github.com/JetBrains/compose-multiplatform)
 [![License](https://img.shields.io/github/license/Chaintech-Network/ComposeMultiplatformMediaPlayer)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
@@ -12,22 +12,8 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
 
-## 🎉 What's New in Version 1.0.40
-- 🖥️ **Desktop Fullscreen Support:** Added support for fullscreen mode on desktop. You can manually toggle between fullscreen and floating window modes using control buttons.
-
-### 🖼️ Cross-Platform Drawable Migration Guide
-⚠️ **Background**
-Previously, this library used `org.jetbrains.compose.resources.DrawableResource`, which is only available in Compose Multiplatform.
-However, this causes compatibility issues when used in Android-only Compose projects, which don’t support `DrawableResource`.
-
-To solve this, we’ve introduced a new platform-agnostic abstraction: `PlatformDrawable`.
-
-✅ **Use per platform:**
-
-**Android:** AndroidResourceDrawable(R.drawable.icon)
-
-**Compose Multiplatform:** ComposeResourceDrawable(Res.drawable.icon)
-
+## 🎉 What's New in Version 1.0.41
+- 🧾 **Custom Headers:** Ability to pass custom headers with media URLs for AudioPlayer.
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
@@ -58,7 +44,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.40")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.41")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
@@ -505,7 +491,20 @@ We're committed to continuously improving and expanding the capabilities of our 
 - Clear key encryption for iOS & Desktop
 - WasmJs support
 
-## 🛠️ Libraries Used in Demo
+## 🛠️ Troubleshooting
+If you encounter the following error during the build:
+
+**Could not find** `org.jogamp.gluegen:gluegen-rt:2.5.0`
+
+This issue occurs because the required dependency is not available in the default Maven repository. To resolve this, add Jogamp's Maven to your project's repositories:
+```kotlin
+repositories {
+    maven("https://jogamp.org/deployment/maven")
+}
+```
+This should resolve the missing dependencies and allow the build to proceed successfully.
+
+## 📚️ Libraries Used in Demo
 The demo project utilizes the following libraries:
 
 **SDP & SSP for Compose Multiplatform** – Scalable size units for responsive UI
@@ -527,7 +526,7 @@ The demo project utilizes the following libraries:
 - 📚 [Essential Libraries for Compose Multiplatform: Boost Your Android and iOS Development](https://medium.com/mobile-innovation-network/essential-libraries-for-compose-multiplatform-boost-your-android-and-ios-development-9f74f6f58a40)
 
 ## Contributing & Feedback
-We appreciate any feedback, bug reports, or feature suggestions to improve **CMPEasyPermission!**
+We appreciate any feedback, bug reports, or feature suggestions to improve **ComposeMultiplatformMediaPlayer**
 
 - **Report Issues:** If you encounter any issues or bugs, please open an issue in the [GitHub Issues](https://github.com/Chaintech-Network/ComposeMultiplatformMediaPlayer/issues) section.
 - **Feature Requests:** Have an idea for a new feature? Let us know by creating a feature request issue.

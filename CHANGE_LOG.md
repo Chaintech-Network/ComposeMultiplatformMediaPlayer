@@ -1,3 +1,7 @@
+# 1.0.41 [2025-06-04]
+### Added
+- 🧾 **Custom Headers:** Ability to pass custom headers with media URLs for AudioPlayer.
+
 # 1.0.40 [2025-05-01]
 ### Added
 - 🖥️ **Desktop Fullscreen Support:** Added support for fullscreen mode on desktop. You can manually toggle between fullscreen and floating window modes using control buttons.
