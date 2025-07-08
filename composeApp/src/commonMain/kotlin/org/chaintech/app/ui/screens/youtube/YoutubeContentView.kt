@@ -46,7 +46,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import chaintech.videoplayer.ui.preview.VideoPreviewComposable
+import chaintech.network.mediaframekit.ui.VideoPreviewComposable
 import network.chaintech.sdpcomposemultiplatform.sdp
 import org.chaintech.app.font.FontType
 import org.chaintech.app.font.MediaFont

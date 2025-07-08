@@ -1,3 +1,37 @@
+# 1.0.42 [2025-07-07]
+## 📦 Feature Migration Notice
+The following features have been **moved to a new package** to support **all platforms (iOS, Android, Desktop):**
+- **📹 Video Preview Thumbnails**
+
+- **📏 Retrieve Media Duration**
+
+These features are now available in the full multiplatform package:
+```kotlin
+implementation("network.chaintech:media-frame-kit:1.0.0")
+```
+✅ **What Remains in This Package**
+This package still supports the above features on **Android** and **iOS** only:
+
+**📹 Video Preview**
+```kotlin
+VideoPreviewComposable(
+    url = videoUrl,
+    frameCount = 5,
+    contentScale = ContentScale.Crop
+)
+```
+**📏 Retrieve Media Duration**
+```kotlin
+RetrieveMediaDuration(
+    url = videoUrl,
+    onDurationRetrieved = { duration ->
+        // Handle retrieved duration
+    }
+)
+```
+⚠️ **Note:** Desktop support has been removed in this package.
+
+
 # 1.0.41 [2025-06-04]
 ### Added
 - 🧾 **Custom Headers:** Ability to pass custom headers with media URLs for AudioPlayer.

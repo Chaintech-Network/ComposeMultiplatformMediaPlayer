@@ -1,7 +1,7 @@
 # Compose Multiplatform Media Player
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-multiplatform-media-player.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-multiplatform-media-player)
-[![Kotlin](https://img.shields.io/badge/kotlin-v2.1.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.8.0-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Kotlin](https://img.shields.io/badge/kotlin-v2.2.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.8.2-blue)](https://github.com/JetBrains/compose-multiplatform)
 [![License](https://img.shields.io/github/license/Chaintech-Network/ComposeMultiplatformMediaPlayer)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
@@ -12,8 +12,18 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner4.jpg)
 
-## 🎉 What's New in Version 1.0.41
-- 🧾 **Custom Headers:** Ability to pass custom headers with media URLs for AudioPlayer.
+## 🎉 What's New in Version 1.0.42
+### 📦 Feature Migration Notice
+The following features have been **moved to a new package** to support **all platforms (iOS, Android, Desktop):**
+- **📹 Video Preview Thumbnails**
+
+- **📏 Retrieve Media Duration**
+
+These features are now available in the full multiplatform package:
+```kotlin
+implementation("network.chaintech:media-frame-kit:1.0.0")
+```
+This package still supports the above features on **Android** and **iOS** only:
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
@@ -44,7 +54,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.41")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.42")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
@@ -213,7 +223,9 @@ VideoPreviewComposable(
     contentScale = ContentScale.Crop
 )
 ```
-💡 **Note:** The VideoPreviewComposable does not support local asset video in Android.
+⚠️ **Note:** 
+- `VideoPreviewComposable` Desktop support has been removed in this package.
+- The VideoPreviewComposable does not support local asset video in Android.
 
 ### ▶️ YouTube Player
 To play youtube videos in your app, use the YouTubePlayerComposable:
@@ -265,6 +277,8 @@ RetrieveMediaDuration(
 )
 ```
 This function asynchronously fetches the total duration of the media file from the provided URL and returns it via the onDurationRetrieved callback.
+
+⚠️ **Note:** `RetrieveMediaDuration` Desktop support has been removed in this package.
 
 ## ⚙️ Customization
 You can customize various aspects of the media player:

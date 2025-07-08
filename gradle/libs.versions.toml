@@ -1,13 +1,14 @@
 [versions]
 
-kotlin = "2.1.10"
-compose = "1.8.0"
-agp = "8.7.3"
+kotlin = "2.2.0"
+compose = "1.8.2"
+agp = "8.10.0"
 androidx-activityCompose = "1.10.1"
 voyager_version = "1.0.1"
-sdp_ssp_version = "1.0.6"
+sdp_ssp_version = "1.0.7"
 image_loader_version = "1.10.0"
-media-player-version = "1.0.41"
+media-player-version = "1.0.42"
+media_kit_version = "1.0.0"
 
 [libraries]
 
@@ -19,6 +20,7 @@ voyager-tab = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.re
 sdp-ssp = { module = "network.chaintech:sdp-ssp-compose-multiplatform", version.ref = "sdp_ssp_version" }
 image-loader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "image_loader_version" }
 media-player = { module = "network.chaintech:compose-multiplatform-media-player", version.ref = "media-player-version" }
+media-kit = { module = "network.chaintech:media-frame-kit", version.ref = "media_kit_version" }
 
 [plugins]
 
