@@ -31,7 +31,7 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabDisposable
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import cafe.adriel.voyager.transitions.SlideTransition
-import chaintech.videoplayer.util.isDesktop
+import chaintech.videoplayer.util.isMobile
 import network.chaintech.sdpcomposemultiplatform.sdp
 import org.chaintech.app.font.FontType
 import org.chaintech.app.font.MediaFont
@@ -88,10 +88,10 @@ class HomeScreen : Screen {
                 .padding(bottom = getSafeAreaSize().bottom.dp),
             scaffoldState = rememberScaffoldState(),
             backgroundColor = MyApplicationTheme.colors.bottomTabBarColor,
-            bottomBar = { if (!isDesktop()) BottomNavigationBar() }
+            bottomBar = { if (isMobile()) BottomNavigationBar() }
         ) {
             Row {
-                if (isDesktop()) {
+                if (!isMobile()) {
                     DesktopNavigation()
                 }
                 CurrentTab()
@@ -169,7 +169,7 @@ private fun RowScope.TabNavigationItem(tab: Tab) {
                 modifier = Modifier.padding(bottom = 4.sdp),
                 text = title,
                 style = MediaFont.lexendDeca(
-                    size = if (isDesktop()) FontType.ExtraSmall else FontType.Small,
+                    size = if (!isMobile()) FontType.ExtraSmall else FontType.Small,
                     type = MediaFont.LexendDeca.Regular
                 ),
             )
@@ -183,7 +183,7 @@ private fun RowScope.TabNavigationItem(tab: Tab) {
                     contentDescription = tab.options.title,
                     modifier = Modifier
                         .padding(top = 10.sdp, bottom = 5.sdp)
-                        .size(if (isDesktop()) 14.sdp else 20.sdp)
+                        .size(if (!isMobile()) 14.sdp else 20.sdp)
                 )
             }
         },

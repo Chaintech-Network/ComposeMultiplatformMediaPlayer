@@ -18,7 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
-import chaintech.videoplayer.util.isDesktop
+import chaintech.videoplayer.util.isMobile
 import network.chaintech.sdpcomposemultiplatform.sdp
 import org.chaintech.app.model.MockData
 import org.chaintech.app.model.VideoModel
@@ -51,7 +51,7 @@ fun TopComponent() {
 @Composable
 private fun TopMovieBannerCarousel(item: VideoModel, onClickEvent: () -> Unit) {
     val roundedCornerShape = RoundedCornerShape(7.sdp)
-    val heightValue = if (isDesktop()) 160.sdp else 360.sdp
+    val heightValue = if (!isMobile()) 160.sdp else 360.sdp
 
     Box(
         modifier = Modifier
@@ -65,7 +65,7 @@ private fun TopMovieBannerCarousel(item: VideoModel, onClickEvent: () -> Unit) {
             }
     ) {
         FromRemote(
-            painterResource = if (isDesktop()) item.thumbL else item.thumb,
+            painterResource = if (!isMobile()) item.thumbL else item.thumb,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxSize()

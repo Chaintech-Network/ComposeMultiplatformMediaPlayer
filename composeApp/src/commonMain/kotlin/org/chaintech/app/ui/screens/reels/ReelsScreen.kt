@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import chaintech.videoplayer.model.VideoPlayerConfig
 import chaintech.videoplayer.ui.reel.ReelsPlayerComposable
-import chaintech.videoplayer.util.isDesktop
+import chaintech.videoplayer.util.isMobile
 import org.chaintech.app.model.MockData
 import network.chaintech.sdpcomposemultiplatform.sdp
 
@@ -18,7 +18,7 @@ fun ReelsScreen() {
         playerConfig = VideoPlayerConfig(
             isPauseResumeEnabled  = true,
             isSeekBarVisible = false,
-            pauseResumeIconSize = if (isDesktop()) 20.sdp else 32.sdp,
+            pauseResumeIconSize = if (!isMobile()) 20.sdp else 32.sdp,
             reelVerticalScrolling = true,
             isFastForwardBackwardEnabled = false,
             isMuteControlEnabled = false,

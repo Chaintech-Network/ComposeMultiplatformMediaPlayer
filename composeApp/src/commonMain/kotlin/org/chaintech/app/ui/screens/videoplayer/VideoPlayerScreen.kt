@@ -43,7 +43,7 @@ import chaintech.videoplayer.host.MediaPlayerHost
 import chaintech.videoplayer.model.VideoPlayerConfig
 import chaintech.videoplayer.model.WatermarkConfig
 import chaintech.videoplayer.ui.video.VideoPlayerComposable
-import chaintech.videoplayer.util.isDesktop
+import chaintech.videoplayer.util.isMobile
 import network.chaintech.sdpcomposemultiplatform.sdp
 import network.chaintech.sdpcomposemultiplatform.ssp
 import org.chaintech.app.font.FontType
@@ -74,7 +74,7 @@ class VideoPlayerScreen(private val currentVideo: VideoModel, private val videoL
 }
 
 @Composable
-private fun VideoPlayerContent(currentVideo: VideoModel, videoList: List<VideoModel>) {
+fun VideoPlayerContent(currentVideo: VideoModel, videoList: List<VideoModel>) {
     val navigator = LocalNavigation.current
     var video by remember { mutableStateOf(currentVideo) }
 
@@ -91,7 +91,7 @@ private fun VideoPlayerContent(currentVideo: VideoModel, videoList: List<VideoMo
 
         VideoPlayerBox(video)
 
-        if (!isDesktop()) {
+        if (isMobile()) {
             Spacer(modifier = Modifier.height(4.sdp))
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
@@ -165,21 +165,21 @@ private fun VideoPlayerBox(video: VideoModel) {
 
         VideoPlayerComposable(
             modifier = Modifier.then(
-                if (isDesktop()) Modifier.fillMaxSize() else Modifier.height(224.sdp).fillMaxWidth()
+                if (!isMobile()) Modifier.fillMaxSize() else Modifier.height(224.sdp).fillMaxWidth()
             ),
             playerHost = playerHost,
             playerConfig = VideoPlayerConfig(
                 seekBarActiveTrackColor = Color.Red,
                 seekBarInactiveTrackColor = Color.White,
                 seekBarBottomPadding = 8.sdp,
-                pauseResumeIconSize = if (isDesktop()) 18.sdp else 30.sdp,
+                pauseResumeIconSize = if (!isMobile()) 18.sdp else 30.sdp,
                 controlHideIntervalSeconds = 5,
-                topControlSize = if (isDesktop()) 16.sdp else 20.sdp,
+                topControlSize = if (!isMobile()) 16.sdp else 20.sdp,
                 durationTextStyle = MediaFont.lexendDeca(
-                    size = if (isDesktop()) FontType.ExtraSmall else FontType.Regular,
+                    size = if (!isMobile()) FontType.ExtraSmall else FontType.Regular,
                     type = MediaFont.LexendDeca.Medium
                 ),
-                fastForwardBackwardIconSize = if (isDesktop()) 16.sdp else 28.sdp,
+                fastForwardBackwardIconSize = if (!isMobile()) 16.sdp else 28.sdp,
                 controlTopPadding = 10.sdp,
 //                isLiveStream = isLiveStream(video.sources)
                 watermarkConfig = WatermarkConfig(

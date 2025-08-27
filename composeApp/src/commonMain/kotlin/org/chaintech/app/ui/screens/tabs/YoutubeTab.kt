@@ -8,7 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
-import chaintech.videoplayer.util.isDesktop
+import chaintech.videoplayer.util.isMobile
 import network.chaintech.sdpcomposemultiplatform.sdp
 import org.chaintech.app.ui.screens.youtube.YoutubeContentScreen
 import org.chaintech.app.utility.BottomNavigationBarHeight
@@ -21,7 +21,7 @@ internal object YoutubeTab: Tab {
     override fun Content() {
         Box(modifier = Modifier
             .fillMaxSize()
-            .padding(bottom = if (isDesktop()) {0.sdp} else {BottomNavigationBarHeight} )
+            .padding(bottom = if (!isMobile()) {0.sdp} else {BottomNavigationBarHeight} )
         ){
             YoutubeContentScreen()
         }

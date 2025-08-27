@@ -1,32 +1,20 @@
 # Compose Multiplatform Media Player
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-multiplatform-media-player.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-multiplatform-media-player)
-[![Kotlin](https://img.shields.io/badge/kotlin-v2.2.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-v2.2.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
 [![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.8.2-blue)](https://github.com/JetBrains/compose-multiplatform)
 [![License](https://img.shields.io/github/license/Chaintech-Network/ComposeMultiplatformMediaPlayer)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
-![badge-ios](http://img.shields.io/badge/platform-ios-FF375F.svg?style=flat)
-![badge-desktop](http://img.shields.io/badge/platform-desktop-FF9500.svg?style=flat)
+![badge-ios](http://img.shields.io/badge/platform-ios-FA7343.svg?style=flat)
+![badge-desktop](http://img.shields.io/badge/platform-desktop-0078D7.svg?style=flat)
+![badge-wasmJs](http://img.shields.io/badge/platform-wasmJs-654FF0.svg?style=flat)
 
-Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video player, reels viewing, audio playing, YouTube video integration, video preview thumbnails and HLS m3u8 support on iOS, Android, and Desktop platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
+Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video player, reels viewing, audio playing, YouTube video integration, video preview thumbnails and HLS m3u8 support on iOS, Android, wasmJs and Desktop platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
 
-![Blog-banner-02 5](./assets/git_banner4.jpg)
-
-## 🎉 What's New in Version 1.0.42
-### 📦 Feature Migration Notice
-The following features have been **moved to a new package** to support **all platforms (iOS, Android, Desktop):**
-- **📹 Video Preview Thumbnails**
-
-- **📏 Retrieve Media Duration**
-
-These features are now available in the full multiplatform package:
-```kotlin
-implementation("network.chaintech:media-frame-kit:1.0.0")
-```
-This package still supports the above features on **Android** and **iOS** only:
+![Blog-banner-02 5](./assets/git_banner.jpg)
 
 ## ✨ Features
-**Cross-Platform Compatibility:** Works seamlessly on iOS, Android, and Desktop platforms within Compose Multiplatform projects.
+**Cross-Platform Compatibility:** Works seamlessly on iOS, Android, wasmJs and Desktop platforms within Compose Multiplatform projects.
 
 **Video Player:** Effortlessly play videos in your app with high performance and reliability.
 
@@ -54,10 +42,31 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.42")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.45")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
+
+## 🌐 Setup for wasmJs (WebAssembly)
+To enable wasmJs support with Shaka Player, you need to include the supporting files shipped with this library.
+
+All required files are available [here](./assets/wasmJs):
+
+### Add Scripts in index.html
+Make sure to add these scripts before your Compose WASM app (composeApp.js).
+
+⚠️ The order matters: Shaka → Global → Helpers → Compose app.
+```kotlin
+<!-- Shaka Player -->
+<script src="shaka-player.compiled.js"></script>
+<script src="shaka-global.js"></script>
+
+<!-- WASM Helpers -->
+<script src="shaka-wasm-helpers.js"></script>
+
+<!-- Your Compose WASM app -->
+<script src="composeApp.js"></script>
+```
 
 ## 📦 Setup for Resuming Video Playback
 If you want to enable the feature to resume video playback from the last saved position, you need to initialize PlaybackPreference in your Android app. Add the following setup in your AppActivity:
@@ -503,7 +512,6 @@ We're committed to continuously improving and expanding the capabilities of our 
 - Picture-in-Picture (PiP) Mode
 - Video Caching for iOS & Desktop
 - Clear key encryption for iOS & Desktop
-- WasmJs support
 
 ## 🛠️ Troubleshooting
 If you encounter the following error during the build:

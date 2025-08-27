@@ -1,19 +1,19 @@
 [versions]
 
-kotlin = "2.2.0"
+kotlin = "2.2.10"
 compose = "1.8.2"
-agp = "8.10.0"
+agp = "8.11.1"
 androidx-activityCompose = "1.10.1"
-voyager_version = "1.0.1"
+voyager_version = "1.1.0-beta03"
 sdp_ssp_version = "1.0.7"
 image_loader_version = "1.10.0"
-media-player-version = "1.0.42"
-media_kit_version = "1.0.0"
+media-player-version = "1.0.45"
+media_kit_version = "1.0.1"
 
 [libraries]
 
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-androidx-core = { group = "androidx.core", name = "core", version = "1.16.0" }
+androidx-core = { group = "androidx.core", name = "core", version = "1.17.0" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager_version" }
 voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager_version" }
 voyager-tab = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager_version" }

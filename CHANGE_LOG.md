@@ -1,3 +1,28 @@
+# 1.0.45 [2025-08-26]
+### Added
+- wasmJs support added
+
+## 🌐 Setup for wasmJs (WebAssembly)
+To enable wasmJs support with Shaka Player, you need to include the supporting files shipped with this library.
+
+All required files are available [here](./assets/wasmJs):
+
+### Add Scripts in index.html
+Make sure to add these scripts before your Compose WASM app (composeApp.js).
+
+⚠️ The order matters: Shaka → Global → Helpers → Compose app.
+```kotlin
+<!-- Shaka Player -->
+<script src="shaka-player.compiled.js"></script>
+<script src="shaka-global.js"></script>
+
+<!-- WASM Helpers -->
+<script src="shaka-wasm-helpers.js"></script>
+
+<!-- Your Compose WASM app -->
+<script src="composeApp.js"></script>
+```
+
 # 1.0.42 [2025-07-07]
 ## 📦 Feature Migration Notice
 The following features have been **moved to a new package** to support **all platforms (iOS, Android, Desktop):**

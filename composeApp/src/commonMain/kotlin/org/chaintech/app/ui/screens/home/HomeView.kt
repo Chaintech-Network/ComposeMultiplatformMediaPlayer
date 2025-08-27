@@ -14,14 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
-import chaintech.videoplayer.util.isDesktop
+import chaintech.videoplayer.util.isMobile
+import network.chaintech.sdpcomposemultiplatform.sdp
 import org.chaintech.app.model.MockData
 import org.chaintech.app.theme.MyApplicationTheme
 import org.chaintech.app.ui.components.AddBanner
 import org.chaintech.app.ui.components.HomeVideoSection
-import org.chaintech.app.utility.getSafeAreaSize
-import network.chaintech.sdpcomposemultiplatform.sdp
 import org.chaintech.app.ui.components.LocalVideoSection
+import org.chaintech.app.utility.getSafeAreaSize
 
 @Composable
 fun HomeScreen() {
@@ -62,7 +62,7 @@ fun HomeScreen() {
                 HomeVideoSection(data = dataStore.southDubbed(), title = "South Dubbed Hits")
                 HomeVideoSection(data = dataStore.globalHits(), title = "Global Hits In Hindi")
 
-                Spacer(modifier = Modifier.height(if (isDesktop()) { 10.sdp } else { 56.sdp }))
+                Spacer(modifier = Modifier.height(if (!isMobile()) { 10.sdp } else { 56.sdp }))
             }
         }
     }

@@ -1,7 +1,8 @@
 package org.chaintech.app.utility
 
 import androidx.compose.runtime.Composable
-import chaintech.videoplayer.util.isDesktop
+import chaintech.videoplayer.model.Platform
+import chaintech.videoplayer.util.isPlatform
 
 @Composable
 expect fun SystemAppearance()
@@ -15,7 +16,7 @@ internal fun isLiveStream(url: String): Boolean {
 }
 
 internal fun showSeperateBackButton(url: String) : Boolean {
-    if(isDesktop()) {
+    if(isPlatform() == Platform.Desktop || isPlatform() == Platform.Wasm) {
         val regex = Regex(
             "https?:\\/\\/(?:www\\.|m\\.)?youtu(?:\\.be\\/|be\\.com\\/(?:watch\\?v=|embed\\/|v\\/|e\\/|live\\/|shorts\\/|user\\/))([^&#?\\n]+)"
         )
