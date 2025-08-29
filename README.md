@@ -480,24 +480,27 @@ AudioPlayerComposable(
 ```
 
 ## 📀 Format Support
-|  Format  | Android  |   iOS    | Desktop  |
-|:--------:|:--------:|:--------:|:--------:|
-|   MP4    |    ✅     |    ✅     |    ✅     |
-|   MOV    |    ✅     |    ✅     |    ✅     |
-|   3GP    |    ✅     |    ✅     |    ✅     |
-|   AVI    |    ✅     |    ❌     |    ✅     |
-|   MKV    |    ✅     |    ❌     |    ✅     |
-|   WEBM   |    ✅     |    ❌     |    ✅     |
-|   MTS    |    ✅     |    ❌     |    ✅     |
-|   m3u8   |    ✅     |    ✅     |    ✅     |
-|   MP3    |    ✅     |    ✅     |    ✅     |
-|   FLAC   |    ✅     |    ✅     |    ✅     |
-|   WAV    |    ✅     |    ✅     |    ✅     |
-|   AAC    |    ✅     |    ❌     |    ✅     |
-|   AIF    |    ❌     |    ✅     |    ✅     |
-|   ALAC   |    ✅     |    ❌     |    ✅     |
-|   OGG    |    ✅     |    ❌     |    ✅     |
-| YouTube  |    ✅     |    ✅     |    ✅     |
+|  Format  | Android  |   iOS    | Desktop  |  WasmJS  |
+|:--------:|:--------:|:--------:|:--------:|:--------:|
+|   MP4    |    ✅     |    ✅     |    ✅     |    ✅     |
+|   MOV    |    ✅     |    ✅     |    ✅     |    🟡     |
+|   3GP    |    ✅     |    ✅     |    ✅     |    ✅     |
+|   AVI    |    ✅     |    ❌     |    ✅     |    ❌     |
+|   MKV    |    ✅     |    ❌     |    ✅     |    ❌     |
+|   WEBM   |    ✅     |    ❌     |    ✅     |    🟡     |
+|   MTS    |    ✅     |    ❌     |    ✅     |    ❌     |
+|   m3u8   |    ✅     |    ✅     |    ✅     |    ✅     |
+|   MP3    |    ✅     |    ✅     |    ✅     |    ✅     |
+|   FLAC   |    ✅     |    ✅     |    ✅     |    🟡     |
+|   WAV    |    ✅     |    ✅     |    ✅     |    🟡     |
+|   AAC    |    ✅     |    ❌     |    ✅     |    ✅     |
+|   AIF    |    ❌     |    ✅     |    ✅     |    ❌     |
+|   ALAC   |    ✅     |    ❌     |    ✅     |    ❌     |
+|   OGG    |    ✅     |    ❌     |    ✅     |    🟡     |
+| YouTube  |    ✅     |    ✅     |    ✅     |    ✅     |
+
+⚠️ **Note:** 
+- '🟡' - Support depends entirely on the browser.
 
 ## 📖 Detailed Explanation
 For an in-depth guide and detailed explanation, check out our comprehensive Medium Blog Post.
