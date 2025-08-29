@@ -496,11 +496,11 @@ AudioPlayerComposable(
 |   AAC    |    ✅     |    ❌     |    ✅     |    ✅     |
 |   AIF    |    ❌     |    ✅     |    ✅     |    ❌     |
 |   ALAC   |    ✅     |    ❌     |    ✅     |    ❌     |
-|   OGG    |    ✅     |    ❌     |    ✅     |    ❌     |
+|   OGG    |    ✅     |    ❌     |    ✅     |    🟡     |
 | YouTube  |    ✅     |    ✅     |    ✅     |    ✅     |
 
 ⚠️ **Note:** 
-- Support depends entirely on the browser (e.g., Chrome vs. Safari).
+- '🟡' - Support depends entirely on the browser.
 
 ## 📖 Detailed Explanation
 For an in-depth guide and detailed explanation, check out our comprehensive Medium Blog Post.
