@@ -157,6 +157,9 @@ private fun VideoPlayerBox(video: VideoModel) {
                 is MediaPlayerEvent.FullScreenChange -> {
 //                    println("FullScreen status changed: ${event.isFullScreen}")
                 }
+                is MediaPlayerEvent.PIPChange -> {
+//                    println("PIP status changed: ${event.isPip}")
+                }
                 MediaPlayerEvent.MediaEnd -> {
 //                    println("Video playback ended")
                 }

@@ -13,6 +13,9 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner.jpg)
 
+## 🎉 What's New in Version 1.0.46
+- **Picture-in-Picture:**  Seamless PiP support on mobile.
+
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, wasmJs and Desktop platforms within Compose Multiplatform projects.
 
@@ -32,6 +35,8 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 **Resume Video Playback:**  Automatically resume video playback from the last position.
 
+**Picture-in-Picture:**  Seamless PiP support on mobile, allowing video playback to continue in a floating window while users multitask.
+
 ![media-player-animation-updated2](./assets/player_example1.gif)
 
 ![media-player-animation-updated2](./assets/desktop_player.gif)
@@ -42,7 +47,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.45")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.46")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
@@ -68,7 +73,26 @@ Make sure to add these scripts before your Compose WASM app (composeApp.js).
 <script src="composeApp.js"></script>
 ```
 
-## 📦 Setup for Resuming Video Playback
+## 📦 Setup for Picture-in-Picture (PiP)
+**🤖 Android**
+
+Before using PiP mode in your media player, you need to enable it in your app’s AndroidManifest.xml.
+
+Add the following flags inside your <activity> (usually MainActivity):
+```kotlin
+<activity
+    android:name=".MainActivity"
+    android:supportsPictureInPicture="true"
+    android:resizeableActivity="true"
+    android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboardHidden"/>
+```
+**📱 iOS**
+
+In Xcode, enable Background Modes capability.
+
+Check ✅ Audio, AirPlay, and Picture in Picture.
+
+## 📦 Setup for Resuming Video Playback in Android
 If you want to enable the feature to resume video playback from the last saved position, you need to initialize PlaybackPreference in your Android app. Add the following setup in your AppActivity:
 
 ```kotlin
@@ -144,6 +168,7 @@ The MediaPlayerHost class manages internal state changes and triggers events via
 | CurrentTimeChange(currentTime: Int)     | Triggered when the current playback position updates.                           |
 | FullScreenChange(isFullScreen: Boolean) | Triggered when the full screen state changes.                                   |
 | MediaEnd                                | Triggered when the media playback completes.                                    |
+| PIPChange(isPip: Boolean)               | Triggered when the PIP Mode changes.                                            |
 
 ### Error Handling
 The MediaPlayerHost class provides an onError callback to handle various errors that may occur during media playback.
@@ -348,6 +373,7 @@ You can customize various aspects of the media player:
 | enableBackButton                                      | Shows a back button at the top-left corner when true                                                             |
 | backIconResource                                      | Custom icon for the back button (`DrawableResource`)                                                             |
 | backActionCallback                                    | Callback triggered when back button is tapped                                                                    |
+| enablePIPControl                                      | Enable a Picture-in-Picture (PiP) for the player                                                                 |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   
@@ -480,24 +506,26 @@ AudioPlayerComposable(
 ```
 
 ## 📀 Format Support
-|  Format  | Android  |   iOS    | Desktop  |
-|:--------:|:--------:|:--------:|:--------:|
-|   MP4    |    ✅     |    ✅     |    ✅     |
-|   MOV    |    ✅     |    ✅     |    ✅     |
-|   3GP    |    ✅     |    ✅     |    ✅     |
-|   AVI    |    ✅     |    ❌     |    ✅     |
-|   MKV    |    ✅     |    ❌     |    ✅     |
-|   WEBM   |    ✅     |    ❌     |    ✅     |
-|   MTS    |    ✅     |    ❌     |    ✅     |
-|   m3u8   |    ✅     |    ✅     |    ✅     |
-|   MP3    |    ✅     |    ✅     |    ✅     |
-|   FLAC   |    ✅     |    ✅     |    ✅     |
-|   WAV    |    ✅     |    ✅     |    ✅     |
-|   AAC    |    ✅     |    ❌     |    ✅     |
-|   AIF    |    ❌     |    ✅     |    ✅     |
-|   ALAC   |    ✅     |    ❌     |    ✅     |
-|   OGG    |    ✅     |    ❌     |    ✅     |
-| YouTube  |    ✅     |    ✅     |    ✅     |
+| Format  | Android | iOS | Desktop | WasmJS |
+|:-------:|:-------:|:---:|:-------:|:------:|
+|   MP4   |    ✅    |  ✅  |    ✅    |   ✅    |
+|   MOV   |    ✅    |  ✅  |    ✅    |   🟡   |
+|   3GP   |    ✅    |  ✅  |    ✅    |   ✅    |
+|   AVI   |    ✅    |  ❌  |    ✅    |   ❌    |
+|   MKV   |    ✅    |  ❌  |    ✅    |   ❌    |
+|  WEBM   |    ✅    |  ❌  |    ✅    |   🟡   |
+|   MTS   |    ✅    |  ❌  |    ✅    |   ❌    |
+|  m3u8   |    ✅    |  ✅  |    ✅    |   ✅    |
+|   MP3   |    ✅    |  ✅  |    ✅    |   ✅    |
+|  FLAC   |    ✅    |  ✅  |    ✅    |   🟡   |
+|   WAV   |    ✅    |  ✅  |    ✅    |   🟡   |
+|   AAC   |    ✅    |  ❌  |    ✅    |   ✅    |
+|   AIF   |    ❌    |  ✅  |    ✅    |   ❌    |
+|  ALAC   |    ✅    |  ❌  |    ✅    |   ❌    |
+|   OGG   |    ✅    |  ❌  |    ✅    |   🟡   |
+| YouTube |    ✅    |  ✅  |    ✅    |   ✅    |
+⚠️ **Note:**
+- '🟡' - Support depends entirely on the browser.
 
 ## 📖 Detailed Explanation
 For an in-depth guide and detailed explanation, check out our comprehensive Medium Blog Post.
@@ -509,7 +537,6 @@ For an in-depth guide and detailed explanation, check out our comprehensive Medi
 We're committed to continuously improving and expanding the capabilities of our media player library. Here's a glimpse into our future plans:
 
 ### 🌟 Upcoming Features
-- Picture-in-Picture (PiP) Mode
 - Video Caching for iOS & Desktop
 - Clear key encryption for iOS & Desktop
 

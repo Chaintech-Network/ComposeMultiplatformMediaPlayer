@@ -1,3 +1,32 @@
+# 1.0.46 [2025-09-05]
+### Added
+- **PIP**: Added Picture-in-Picture for mobile.
+
+### Customization Options
+| Property            | Description                                       |
+|---------------------|---------------------------------------------------|
+| enablePIPControl    | Enable a Picture-in-Picture (PiP) for the player  |
+
+
+## 📦 Setup for Picture-in-Picture (PiP)
+**🤖 Android**
+
+Before using PiP mode in your media player, you need to enable it in your app’s AndroidManifest.xml.
+
+Add the following flags inside your <activity> (usually MainActivity):
+```kotlin
+<activity
+    android:name=".MainActivity"
+    android:supportsPictureInPicture="true"
+    android:resizeableActivity="true"
+    android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboardHidden"/>
+```
+**📱 iOS**
+
+In Xcode, enable Background Modes capability.
+
+Check ✅ Audio, AirPlay, and Picture in Picture.
+
 # 1.0.45 [2025-08-26]
 ### Added
 - wasmJs support added

@@ -8,10 +8,12 @@
         android:theme="@android:style/Theme.Material.NoActionBar">
         <activity
             android:name=".AppActivity"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|smallestScreenSize|orientation"
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustPan"
-            android:exported="true">
+            android:exported="true"
+            android:supportsPictureInPicture="true"
+            android:resizeableActivity="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

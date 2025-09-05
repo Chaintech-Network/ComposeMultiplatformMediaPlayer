@@ -25,7 +25,11 @@ fun ReelsScreen() {
             isSpeedControlEnabled = false,
             isFullScreenEnabled = false,
             isScreenLockEnabled = false,
-            isScreenResizeEnabled = false
+            isScreenResizeEnabled = false,
+            showSubTitlesOptions = false,
+            showAudioTracksOptions = false,
+            showVideoQualityOptions = false,
+            enablePIPControl = false
         )
     )
 }

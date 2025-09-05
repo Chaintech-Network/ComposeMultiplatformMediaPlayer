@@ -11,10 +11,6 @@ expect fun getSafeAreaHeight(): SafeAreaSize
 
 expect fun getLocalFilePathFor(item: String): String
 
-internal fun isLiveStream(url: String): Boolean {
-    return url.endsWith(".m3u8")
-}
-
 internal fun showSeperateBackButton(url: String) : Boolean {
     if(isPlatform() == Platform.Desktop || isPlatform() == Platform.Wasm) {
         val regex = Regex(
