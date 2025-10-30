@@ -1,7 +1,7 @@
 # Compose Multiplatform Media Player
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-multiplatform-media-player.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-multiplatform-media-player)
-[![Kotlin](https://img.shields.io/badge/kotlin-v2.2.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.8.2-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Kotlin](https://img.shields.io/badge/kotlin-v2.2.21-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.9.1-blue)](https://github.com/JetBrains/compose-multiplatform)
 [![License](https://img.shields.io/github/license/Chaintech-Network/ComposeMultiplatformMediaPlayer)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
@@ -12,9 +12,6 @@
 Compose Multiplatform Media Player is a powerful media player library designed for Compose Multiplatform projects. It enables seamless video player, reels viewing, audio playing, YouTube video integration, video preview thumbnails and HLS m3u8 support on iOS, Android, wasmJs and Desktop platforms. The library offers extensive customization options for various controls, making it flexible for different types of media applications.
 
 ![Blog-banner-02 5](./assets/git_banner.jpg)
-
-## 🎉 What's New in Version 1.0.46
-- **Picture-in-Picture:**  Seamless PiP support on mobile.
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, wasmJs and Desktop platforms within Compose Multiplatform projects.
@@ -47,12 +44,20 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.46")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.49")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
 
 ## 🌐 Setup for wasmJs (WebAssembly)
+> ⚠️ **Experimental Notice**
+>
+> The WebAssembly (wasmJs) target in JetBrains Compose Multiplatform is still in **experimental** status.
+> While this library provides preliminary support using **Shaka Player** for media playback,
+> stability, performance, and feature parity may vary between browsers.
+>
+> Use this feature for testing, prototyping, or early adoption — not production-critical scenarios yet.
+
 To enable wasmJs support with Shaka Player, you need to include the supporting files shipped with this library.
 
 All required files are available [here](./assets/wasmJs):
@@ -262,6 +267,15 @@ VideoPreviewComposable(
 - The VideoPreviewComposable does not support local asset video in Android.
 
 ### ▶️ YouTube Player
+> ⚠️ **Experimental Notice**
+>
+> The YouTube player integration in `YouTubePlayerComposable` uses a custom HTML wrapper with YouTube's IFrame API.  
+> Due to frequent backend or policy changes from YouTube, playback behavior may vary across platforms.  
+> This feature is provided **as experimental** and may require adjustments or updates if YouTube changes its embedding restrictions.
+>
+> We recommend testing on all target platforms before production use.
+>
+
 To play youtube videos in your app, use the YouTubePlayerComposable:
 ```kotlin
 val playerHost = remember { MediaPlayerHost(mediaUrl = youtubeVideoId) }
@@ -524,8 +538,9 @@ AudioPlayerComposable(
 |  ALAC   |    ✅    |  ❌  |    ✅    |   ❌    |
 |   OGG   |    ✅    |  ❌  |    ✅    |   🟡   |
 | YouTube |    ✅    |  ✅  |    ✅    |   ✅    |
+
 ⚠️ **Note:**
-- '🟡' - Support depends entirely on the browser.
+- '🟡' : Support depends entirely on the browser.
 
 ## 📖 Detailed Explanation
 For an in-depth guide and detailed explanation, check out our comprehensive Medium Blog Post.
@@ -539,6 +554,7 @@ We're committed to continuously improving and expanding the capabilities of our 
 ### 🌟 Upcoming Features
 - Video Caching for iOS & Desktop
 - Clear key encryption for iOS & Desktop
+- Control Center (iOS) and Media Notification (Android) integration
 
 ## 🛠️ Troubleshooting
 If you encounter the following error during the build:

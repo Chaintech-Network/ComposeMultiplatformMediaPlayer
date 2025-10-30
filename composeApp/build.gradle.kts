@@ -93,7 +93,7 @@ android {
 
     defaultConfig {
         minSdk = 24
-
+        targetSdk = 36
         applicationId = "org.chaintech.app.androidApp"
         versionCode = 1
         versionName = "1.0.0"
