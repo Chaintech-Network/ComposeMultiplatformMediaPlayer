@@ -1,3 +1,11 @@
+# 1.0.50 [2025-11-14]
+
+### Customization Options
+| Property                     | Description                                                                 |
+|------------------------------|-----------------------------------------------------------------------------|
+| enableLongPressFastForward   | Enables long-press gesture to temporarily increase playback speed.          |
+| longPressPlaybackSpeed       | The playback speed value applied while long-press fast-forward is active.   |
+
 # 1.0.46 [2025-09-05]
 ### Added
 - **PIP**: Added Picture-in-Picture for mobile.

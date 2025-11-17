@@ -13,6 +13,11 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner.jpg)
 
+
+## 🎉 What's New in Version 1.0.50
+* ️ **enableLongPressFastForward:** Enables long-press gesture to temporarily increase playback speed
+* ️ **longPressPlaybackSpeed:** The playback speed value applied while long-press fast-forward is active.
+
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, wasmJs and Desktop platforms within Compose Multiplatform projects.
 
@@ -44,7 +49,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.49")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.50")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
@@ -388,6 +393,8 @@ You can customize various aspects of the media player:
 | backIconResource                                      | Custom icon for the back button (`DrawableResource`)                                                             |
 | backActionCallback                                    | Callback triggered when back button is tapped                                                                    |
 | enablePIPControl                                      | Enable a Picture-in-Picture (PiP) for the player                                                                 |
+| enableLongPressFastForward                            | Enables long-press gesture to temporarily increase playback speed.                                               |
+| longPressPlaybackSpeed                                | The playback speed value applied while long-press fast-forward is active.                                        |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   

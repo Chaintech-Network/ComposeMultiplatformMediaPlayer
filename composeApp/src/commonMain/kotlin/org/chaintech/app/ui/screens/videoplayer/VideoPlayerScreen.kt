@@ -200,7 +200,8 @@ private fun VideoPlayerBox(video: VideoModel) {
                 enableBackButton = true,
                 backActionCallback = {
                     navigator.back()
-                }
+                },
+                enableLongPressFastForward = true
 
             )
         )
