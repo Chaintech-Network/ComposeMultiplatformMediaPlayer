@@ -13,10 +13,35 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner.jpg)
 
+## 🎉 What's New in Version 1.0.51
+### Migration Note: Time Events Type Change
+The following media player events have been updated to use Float instead of Int:
+```kotlin
+TotalTimeChange(totalTime: Float)
+CurrentTimeChange(currentTime: Float)
+```
+Previously, these values were emitted as Int (seconds).
 
-## 🎉 What's New in Version 1.0.50
-* ️ **enableLongPressFastForward:** Enables long-press gesture to temporarily increase playback speed
-* ️ **longPressPlaybackSpeed:** The playback speed value applied while long-press fast-forward is active.
+They are now Float to provide better precision for playback progress and seeking.
+
+### Migration Note: isPaused → autoPlay
+
+In previous versions of MediaPlayerHost, the constructor used the isPaused parameter to control initial playback:
+```kotlin
+val player = MediaPlayerHost(mediaUrl = "https://example.com/video.mp4", isPaused = true)
+```
+
+In the latest version, isPaused has been renamed to autoPlay for clarity and better semantics:
+```kotlin
+val player = MediaPlayerHost(mediaUrl = "https://example.com/video.mp4", autoPlay = true)
+```
+
+**autoPlay = true** → media plays automatically on load
+
+**autoPlay = false** → media starts paused
+
+**Important:** The logic is inverted compared to isPaused. Make sure to update your calls when migrating to the new version.
+
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, wasmJs and Desktop platforms within Compose Multiplatform projects.
@@ -49,7 +74,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.50")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.51")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
@@ -139,7 +164,7 @@ fun main() = application {
 ## MediaPlayerHost Class
 ### Constructor Parameters
 * **mediaUrl (String):** The URL of the media to be played.
-* **isPaused (Boolean):** Sets the initial playback state. Defaults to false (play on load).
+* **autoPlay (Boolean):** Sets the initial playback state. Defaults to true (play on load).
 * **isMuted (Boolean):** Indicates whether the video is muted initially. Defaults to false.
 * **initialSpeed (PlayerSpeed):** Sets the initial playback speed. Defaults to PlayerSpeed.X1.
 * **initialVideoFitMode (ScreenResize):** Specifies the video resizing mode. Defaults to ScreenResize.FILL.
@@ -174,8 +199,8 @@ The MediaPlayerHost class manages internal state changes and triggers events via
 | PauseChange(isPaused: Boolean)          | Triggered when the playback state changes (play or pause).                      |
 | MuteChange(isMuted: Boolean)            | Triggered when the mute state changes (mute or unmute).                         |
 | BufferChange(isBuffering: Boolean)      | Triggered when the buffering state changes (e.g., when buffering starts/stops). |
-| TotalTimeChange(totalTime: Int)         | Triggered when the total duration of the video updates.                         |
-| CurrentTimeChange(currentTime: Int)     | Triggered when the current playback position updates.                           |
+| TotalTimeChange(totalTime: Float)       | Triggered when the total duration of the video updates.                         |
+| CurrentTimeChange(currentTime: Float)   | Triggered when the current playback position updates.                           |
 | FullScreenChange(isFullScreen: Boolean) | Triggered when the full screen state changes.                                   |
 | MediaEnd                                | Triggered when the media playback completes.                                    |
 | PIPChange(isPip: Boolean)               | Triggered when the PIP Mode changes.                                            |
@@ -194,7 +219,7 @@ The MediaPlayerHost class provides an onError callback to handle various errors 
 ```kotlin
 val videoPlayerHost = MediaPlayerHost(
     mediaUrl = "https://example.com/video.mp4",
-    isPaused = true,
+    autoPlay = true,
     isMuted = false,
     initialSpeed = PlayerSpeed.X1,
     initialVideoFitMode = ScreenResize.FIT,
