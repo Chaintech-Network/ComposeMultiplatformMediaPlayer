@@ -13,34 +13,9 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner.jpg)
 
-## 🎉 What's New in Version 1.0.51
-### Migration Note: Time Events Type Change
-The following media player events have been updated to use Float instead of Int:
-```kotlin
-TotalTimeChange(totalTime: Float)
-CurrentTimeChange(currentTime: Float)
-```
-Previously, these values were emitted as Int (seconds).
-
-They are now Float to provide better precision for playback progress and seeking.
-
-### Migration Note: isPaused → autoPlay
-
-In previous versions of MediaPlayerHost, the constructor used the isPaused parameter to control initial playback:
-```kotlin
-val player = MediaPlayerHost(mediaUrl = "https://example.com/video.mp4", isPaused = true)
-```
-
-In the latest version, isPaused has been renamed to autoPlay for clarity and better semantics:
-```kotlin
-val player = MediaPlayerHost(mediaUrl = "https://example.com/video.mp4", autoPlay = true)
-```
-
-**autoPlay = true** → media plays automatically on load
-
-**autoPlay = false** → media starts paused
-
-**Important:** The logic is inverted compared to isPaused. Make sure to update your calls when migrating to the new version.
+## 🎉 What's New in Version 1.0.52
+- **Desktop YouTube player** controls are now fully compatible with MediaPlayerHost.
+  Previously, YouTube playback was handled as a simple WebView player; it now supports full control actions through the unified player host interface.
 
 
 ## ✨ Features
@@ -74,7 +49,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.51")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.52")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.

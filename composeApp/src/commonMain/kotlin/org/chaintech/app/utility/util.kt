@@ -12,7 +12,7 @@ expect fun getSafeAreaHeight(): SafeAreaSize
 expect fun getLocalFilePathFor(item: String): String
 
 internal fun showSeperateBackButton(url: String) : Boolean {
-    if(isPlatform() == Platform.Desktop || isPlatform() == Platform.Wasm) {
+    if(isPlatform() == Platform.Wasm) {
         val regex = Regex(
             "https?:\\/\\/(?:www\\.|m\\.)?youtu(?:\\.be\\/|be\\.com\\/(?:watch\\?v=|embed\\/|v\\/|e\\/|live\\/|shorts\\/|user\\/))([^&#?\\n]+)"
         )

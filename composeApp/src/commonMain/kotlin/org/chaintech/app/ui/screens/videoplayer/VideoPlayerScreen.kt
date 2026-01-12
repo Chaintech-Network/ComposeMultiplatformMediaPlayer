@@ -121,6 +121,9 @@ private fun VideoPlayerBox(video: VideoModel) {
         val playerHost = remember { MediaPlayerHost(mediaUrl = video.sources) }
         playerHost.loadUrl(video.sources)
 
+//        val playerHost = remember { MediaPlayerHost(mediaUrl = "rIxRQiChc9w") }
+//        playerHost.loadUrl( "https://www.youtube.com/watch?v=rIxRQiChc9w")
+
         playerHost.onError = { error ->
             when(error) {
                 is MediaPlayerError.VlcNotFound -> {

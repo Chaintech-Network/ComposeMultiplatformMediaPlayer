@@ -1,3 +1,8 @@
+# 1.0.52 [2026-01-09]
+### Added
+- **Desktop YouTube player** controls are now fully compatible with MediaPlayerHost.
+Previously, YouTube playback was handled as a simple WebView player; it now supports full control actions through the unified player host interface.
+
 # 1.0.51 [2025-12-26]
 ### Migration Note: Time Events Type Change
 The following media player events have been updated to use Float instead of Int:
