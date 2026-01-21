@@ -1,7 +1,7 @@
 # Compose Multiplatform Media Player
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/compose-multiplatform-media-player.svg)](https://central.sonatype.com/artifact/network.chaintech/compose-multiplatform-media-player)
-[![Kotlin](https://img.shields.io/badge/kotlin-v2.2.21-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.9.1-blue)](https://github.com/JetBrains/compose-multiplatform)
+[![Kotlin](https://img.shields.io/badge/kotlin-v2.3.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.10.0-blue)](https://github.com/JetBrains/compose-multiplatform)
 [![License](https://img.shields.io/github/license/Chaintech-Network/ComposeMultiplatformMediaPlayer)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
@@ -13,10 +13,9 @@ Compose Multiplatform Media Player is a powerful media player library designed f
 
 ![Blog-banner-02 5](./assets/git_banner.jpg)
 
-## 🎉 What's New in Version 1.0.52
-- **Desktop YouTube player** controls are now fully compatible with MediaPlayerHost.
-  Previously, YouTube playback was handled as a simple WebView player; it now supports full control actions through the unified player host interface.
-
+## 🎉 What's New in Version 1.0.53
+### Customization Option Added
+- **showControlsOverride:** Overrides the internal control visibility state.
 
 ## ✨ Features
 **Cross-Platform Compatibility:** Works seamlessly on iOS, Android, wasmJs and Desktop platforms within Compose Multiplatform projects.
@@ -49,7 +48,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:compose-multiplatform-media-player:1.0.52")
+    implementation("network.chaintech:compose-multiplatform-media-player:1.0.53")
 }
 ```
 💡 **Note:** For desktop video player, ensure VLC Player is installed, and for desktop YouTube support, Java must be installed on your system.
@@ -395,6 +394,7 @@ You can customize various aspects of the media player:
 | enablePIPControl                                      | Enable a Picture-in-Picture (PiP) for the player                                                                 |
 | enableLongPressFastForward                            | Enables long-press gesture to temporarily increase playback speed.                                               |
 | longPressPlaybackSpeed                                | The playback speed value applied while long-press fast-forward is active.                                        |
+| showControlsOverride                                  | Overrides the internal control visibility state.                                                                 |
 
 * `audioPlayerConfig`: You can configure various aspects of the audio player appearance and behavior using the AudioPlayerConfig data class.
   

@@ -15,5 +15,6 @@ dependencyResolutionManagement {
         mavenCentral()
         mavenLocal()
         maven("https://jogamp.org/deployment/maven")
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }

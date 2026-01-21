@@ -1,3 +1,9 @@
+# 1.0.53 [2026-01-20]
+### Customization Options
+| Property              | Description                                       |
+|-----------------------|---------------------------------------------------|
+| showControlsOverride  | Overrides the internal control visibility state.  |
+
 # 1.0.52 [2026-01-09]
 ### Added
 - **Desktop YouTube player** controls are now fully compatible with MediaPlayerHost.
