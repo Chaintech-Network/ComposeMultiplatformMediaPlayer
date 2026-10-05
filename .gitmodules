@@ -1,0 +1,3 @@
+[submodule "compose-multiplatform-media-player"]
+	path = compose-multiplatform-media-player
+	url = git@github.com:cybernhl/ComposeMultiplatformMediaPlayer.git

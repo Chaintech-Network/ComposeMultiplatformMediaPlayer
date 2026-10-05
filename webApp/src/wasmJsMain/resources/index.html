@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Player</title>
+
+    <!-- 1. 依照官方要求順序載入播放器腳本 (由 Gradle 從根目錄 assets/wasmJs 引入) -->
+    <script src="shaka-player.compiled.js"></script>
+    <script src="shaka-global.js"></script>
+    <script src="shaka-wasm-helpers.js"></script>
+
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black !important; /* 確保影片背景為黑 */
+        }
+
+        #compose-target {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 關鍵修正：強制讓 Compose 畫布透明，並使用絕對定位確保與 Video 同層 */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: transparent !important;
+            z-index: 10; /* Compose UI 在上層 */
+        }
+
+        /* 如果播放器產生了 video 標籤，確保它在底層滿版 */
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Video 在底層 */
+        }
+    </style>
+</head>
+<body>
+    <div id="compose-target"></div>
+    <script src="webApp.js"></script>
+</body>
+</html>

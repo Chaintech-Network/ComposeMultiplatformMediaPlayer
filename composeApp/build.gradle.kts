@@ -3,16 +3,17 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.multiplatform)
+    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.compose)
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.android.library)
 }
 
 kotlin {
     androidTarget {
+        publishLibraryVariants("release", "debug")
         compilations.all {
-            compileTaskProvider {
+            compileTaskProvider.configure {
                 compilerOptions {
                     jvmTarget.set(JvmTarget.JVM_1_8)
                     freeCompilerArgs.add("-Xjdk-release=${JavaVersion.VERSION_1_8}")
@@ -23,27 +24,21 @@ kotlin {
 
     jvm()
 
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        browser {
-            commonWebpackConfig {
-                cssSupport {
-                    enabled = true
-                }
-            }
-        }
-        binaries.executable()
-    }
-
+    val xcfName = "ComposeApp"
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = xcfName
             isStatic = true
+            binaryOption("bundleId", "org.chaintech.app")
         }
+    }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
     }
 
     sourceSets {
@@ -53,13 +48,13 @@ kotlin {
             }
         }
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.materialIconsExtended)
-            implementation(compose.material)
-            implementation(compose.material3)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
+            implementation(libs.jetbrains.compose.runtime)
+            implementation(libs.jetbrains.compose.foundation)
+            implementation(libs.jetbrains.compose.material.icons.extended)
+            implementation(libs.jetbrains.compose.material)
+            implementation(libs.jetbrains.compose.material3)
+            implementation(libs.jetbrains.compose.components.resources)
+            implementation(libs.jetbrains.compose.ui.tooling.preview)
 
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.transitions)
@@ -68,35 +63,40 @@ kotlin {
             implementation(libs.image.loader)
             implementation(libs.media.kit)
 
-            implementation(libs.media.player)
+            // 編譯期僅供符號引用，不打包進 Runtime (Shadowing 策略)
+            compileOnly(libs.chaintech.media.player)
         }
 
-
-
         androidMain.dependencies {
-            implementation(compose.uiTooling)
-            implementation(libs.androidx.activityCompose)
+            implementation(libs.jetbrains.compose.ui.tooling)
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.chaintech.media.player) // Android 運行時使用遠端庫
         }
 
         iosMain.dependencies {
+            implementation(libs.chaintech.media.player) // iOS 運行時使用遠端庫
+        }
+
+        wasmJsMain.dependencies {
+            implementation(libs.chaintech.media.player) // Web 運行時使用遠端庫
         }
 
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation("com.github.cybernhl.ComposeMultiplatformMediaPlayer:compose-multiplatform-media-player:1.0.54")
+//            api(project(":compose-multiplatform-media-player"))
         }
     }
 }
 
 android {
     namespace = "org.chaintech.app"
-    compileSdk = 36
-
+    compileSdk = 37
+    buildFeatures {
+        compose = true
+    }
     defaultConfig {
         minSdk = 24
-        targetSdk = 36
-        applicationId = "org.chaintech.app.androidApp"
-        versionCode = 1
-        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -109,18 +109,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    buildFeatures {
-        compose = true
-    }
 }
-compose.desktop {
-    application {
-        mainClass = "MainKt"
 
-        nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "org.chaintech.app.desktopApp"
-            packageVersion = "1.0.0"
-        }
-    }
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "reelsdemo.composeapp.generated.resources"
+    generateResClass = always
 }
